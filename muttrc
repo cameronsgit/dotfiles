@@ -1,17 +1,29 @@
-  # ~/.muttrc
-  set spoolfile="imap://sowderca: :1143/Inbox"
-  set folder="imap://sowderca:"
-  set from="cameron.sowder@vc3.com"
-  set realname='Cameron Sowder'
-  set trash="imap://sowderca::1143/Trash"
-  set imap_user="cameron.sowder@vc3.com"
-  set imap_pass=""
-  set imap_keepalive=900   # Set lower if connection times out
-  set header_cache=~/.mutt/cache/headers
-  set message_cachedir=~/.mutt/cache/bodies
-  set sendmail="/usr/bin/msmtp"
-  my_hdr From: "Cameron Sowder"
+set from = "cmsowder@gmail.com"
+set use_from = yes
+set envelope_from ="yes"
+set sendmail="/usr/bin/msmtp"
 
+# If not set in environment variables:
+set spoolfile = /var/spool/mail/cameron
+set imap_user = 'cmsowder@gmail.com'
+set imap_pass = 'dalamarx1'
+
+# REMOTE GMAIL FOLDERS
+set folder = 'imaps://imap.gmail.com:993'
+set spoolfile = '+INBOX'
+set postponed ='+[Google Mail]/Drafts'
+set trash = '+[Google Mail]/Trash'
+#set any_label = '+[Google Mail]/any_label'
+# LOCAL FOLDERS FOR CACHED HEADERS AND CERTIFICATES
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+# SMTP SETTINGS
+set smtp_url = 'smtp://cmsowder@smtp.gmail.com:587/'
+set smtp_pass = 'dalamarx1' # use the same password as for IMAP
+# SECURING
+set move = no  #Stop asking to move read messages to mbox!
+set imap_keepalive = 900
 # Index View Options ---------------------------------
 set date_format = "%m/%d"
 set index_format = "[%Z]  %D  %-20.20F  %s"
