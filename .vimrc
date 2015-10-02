@@ -1,7 +1,9 @@
 runtime! debian.vim
 call plug#begin()
 Plug 'Align'
+Plug 'w0ng/vim-hybrid'
 Plug 'chriskempson/base16-vim'
+Plug 'joshhartigan/vim-reddit'
 Plug 'itchyny/calendar.vim'
 Plug 'lilydjwg/colorizer'
 Plug 'crontab.vim'
@@ -10,24 +12,34 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'jakedouglas/exuberant-ctags'
 Plug 'tpope/gem-ctags'
 Plug 'JavaScript-Indent'
+Plug 'ramitos/jsctags'
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'walm/jshint.vim'
+Plug 'eagletmt/neco-ghc'
 Plug 'leafo/moonscript-vim'
 Plug 'scrooloose/nerdtree'
+Plug 'othree/tern_for_vim_coffee'
+Plug 'shawncplus/phpcomplete.vim'
 Plug 'StanAngeloff/php.vim'
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'scrooloose/syntastic'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'godlygeek/tabular'
+Plug 'ngmy/vim-rubocop'
 Plug 'majutsushi/tagbar'
 Plug 'marijnh/tern_for_vim'
+Plug 'tpope/vim-fugitive'
 Plug 'Slava/tern-meteor'
 Plug 'Quramy/tsuquyomi'
+Plug 'xolox/vim-easytags'
+Plug 'derekwyatt/vim-scala'
 Plug 'leafgarland/typescript-vim'
 Plug 'utl.vim'
+Plug 'eagletmt/ghcmod-vim'
 Plug 'fatih/vim-go'
+Plug 'Shougo/vimproc.vim'
 Plug 'Blackrush/vim-gocode'
 Plug 'markcornick/vim-vagrant'
 Plug 'bling/vim-airline'
@@ -57,9 +69,15 @@ Plug 'Slava/vim-spacebars'
 Plug 'tpope/vim-speeddating'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'wakatime/vim-wakatime'
+Plug 'fsharp/vim-fsharp', {
+      \ 'for': 'fsharp',
+      \ 'do':  'make fsautocomplete',
+      \}
 Plug 'Valloric/YouCompleteMe'
 call plug#end()
 autocmd vimenter * NERDTree
+let base16colorspace=256
+let $PATH = $PATH . ':' . expand("~/.cabal/bin")
 set background=dark
 let g:airline_theme="base16"
 let g:calendar_google_calendar = 1
@@ -88,13 +106,27 @@ let g:ycm_semantic_triggers =  {
   \   'ocaml' : ['.', '#'],
   \   'cpp,objcpp' : ['->', '.', '::'],
   \   'perl' : ['->'],
-  \   'php' : ['->', '::'],
-  \   'cs,java,javascript,d,python,typescript,perl6,scala,vb,elixir,go' : ['.'],
+  \   'haskell,cs,java,javascript,d,python,typescript,perl6,scala,vb,elixir,go' : ['.'],
   \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
   \   'ruby' : ['.', '::'],
   \   'lua' : ['.', ':'],
   \   'erlang' : [':'],
+  \   'php': ['->', '::']
   \ }
+let g:easytags_languages = {
+              \   'javascript': {
+              \       'cmd': 'jsctags',
+              \       'args': [],
+              \       'fileoutput_opt': '-f',
+              \       'stdout_opt': '-f-',
+              \       'recurse_flag': '-R'
+              \   }
+             \}
+let g:EclimCompletionMethod = 'omnifunc'
+let g:haskellmode_completion_ghc = 0
+autocmd Filetype haskell setlocal omnifunc=necoghc#omnifunc
+autocmd Filetype php set omnifunc=phpcomplete#CompletePHP
+autocmd Filetype php set completefunc=phpcomplete#CompletePHP
 set tabstop=4
 set shiftwidth=4    " Indents will have a width of 4
 let g:lua_check_syntax = 0
@@ -106,6 +138,7 @@ set completeopt-=preview
 set expandtab       " Expand TABs to spaces
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
+set softtabstop=4
 set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
 set incsearch		" Incremental search
@@ -114,6 +147,8 @@ set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 set number
 set wildmenu
+let g:padawan#timeout = 0.1
+let g:hybrid_use_Xresources = 1
 set laststatus=2
 colorscheme base16-default
 syntax enable
