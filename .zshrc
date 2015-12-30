@@ -19,9 +19,11 @@ antigen bundle sindresorhus/pure
 antigen apply
 # Alias
 alias cls=clear
-alias buck="/home/sowderca/Tools/buck/bin/buck"
-alias infer="/home/sowderca/Tools/infer/infer/bin/infer"
-alias composer="php composer.phar"
+#alias buck="/home/sowderca/Tools/buck/bin/buck"
+alias activator="/home/sowderca/Tools/activator/activator"
+alias nuget="mono /home/sowderca/Tools/Nuget/nuget.exe"
+alias composer="php /home/sowderca/composer.phar"
+alias eclim="/home/sowderca/.eclipse/org.eclipse.platform_4.5.0_479262390_linux_gtk_x86_64/eclimd"
 alias vc3-cae-lnx-02="64.28.197.163"
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
@@ -30,7 +32,11 @@ export NVM_DIR="/home/sowderca/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -s "/home/sowderca/.dnx/dnvm/dnvm.sh" ] && . "/home/sowderca/.dnx/dnvm/dnvm.sh" # Load dnvm
+export PATH="$PATH:/home/sowderca/.local/share/umake/dart/dart-sdk/bin/"
+export PATH="$PATH:/home/sowderca/.local/share/umake/"
+export PATH="$PATH:/home/sowderca/Tools/infer-linux64-v0.5.0/infer/bin"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/home/sowderca/.composer/vendor/bin"
 export GOROOT="/usr/local/go"
 export GOPATH=$HOME/go
 export SCALA_HOME="/usr/local/share/scala"
@@ -42,3 +48,9 @@ eval "$(pyenv virtualenv-init -)"
 eval "$(jenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# OPAM configuration
+. /home/sowderca/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
