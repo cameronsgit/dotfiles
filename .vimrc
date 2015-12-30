@@ -30,6 +30,7 @@ Plug 'tpope/vim-bundler'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Slava/tern-meteor'
 Plug 'marijnh/tern_for_vim'
+Plug 'shawncplus/phpcomplete.vim'
 " Languages
 " -- Coffee
 Plug 'kchmck/vim-coffee-script'
@@ -99,6 +100,8 @@ let g:ycm_semantic_triggers =  {
   \   'erlang' : [':'],
   \   'php': ['->', '::']
   \ }
+
+so /home/sowderca/.vim/plugged/vim-flow/autoload/flowcomplete.vim
 set completeopt-=preview
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -108,15 +111,23 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_javascript_checkers = ['flow']
+let g:syntastic_javascript_checkers = ['jcsc']
+let g:syntastic_typescript_checkers = ['tslint']
 " Styles
 let base16colorspace=256
 set background=dark
 let airline_theme="base16"
 colorscheme base16-default
+let g:flow#enable = 1
+let g:flow#autoclose = 1
+let g:flow#flowpath = "/bin/flow"
+let g:flow#omnifunc = 1
 au BufRead,BufNewFile *.js set syntax=typescript
 au BufRead,BufNewFile *.jsx set syntax=typescript
+au BufRead,BufNewFile *.java set syntax=typescript
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=flowcomplete#Complete
+let g:EclimCompletionMethod = 'omnifunc'
 " Options
 if has("autocmd")
   filetype plugin indent on
