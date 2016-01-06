@@ -6,6 +6,7 @@ call plug#begin()
 Plug 'Shougo/unite.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
+Plug 'mhinz/vim-startify'
 " Code Display
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'chriskempson/base16-vim'
@@ -93,7 +94,7 @@ let g:ycm_semantic_triggers =  {
   \   'ocaml' : ['.', '#'],
   \   'cpp,objcpp' : ['->', '.', '::'],
   \   'perl' : ['->'],
-  \   'haskell,cs,java,javascript,d,python,typescript,perl6,scala,vb,elixir,go' : ['.'],
+  \   'coffee,haskell,cs,java,javascript,d,python,typescript,perl6,scala,vb,elixir,go' : ['.'],
   \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
   \   'ruby' : ['.', '::'],
   \   'lua' : ['.', ':'],
@@ -126,7 +127,6 @@ au BufRead,BufNewFile *.js set syntax=typescript
 au BufRead,BufNewFile *.jsx set syntax=typescript
 au BufRead,BufNewFile *.java set syntax=typescript
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript set omnifunc=flowcomplete#Complete
 let g:EclimCompletionMethod = 'omnifunc'
 " Options
 if has("autocmd")
