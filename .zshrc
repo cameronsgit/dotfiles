@@ -26,6 +26,8 @@ alias composer="php /home/sowderca/composer.phar"
 alias eclim="/home/sowderca/.eclipse/org.eclipse.platform_4.5.0_479262390_linux_gtk_x86_64/eclimd"
 alias vc3-cae-lnx-02="64.28.197.163"
 alias parse=parse-cli
+alias code="/home/sowderca/.local/share/umake/web/visual-studio-code/Code"
+alias vdir="ls -l"
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
@@ -33,18 +35,28 @@ export NVM_DIR="/home/sowderca/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -s "/home/sowderca/.dnx/dnvm/dnvm.sh" ] && . "/home/sowderca/.dnx/dnvm/dnvm.sh" # Load dnvm
+export VAGRANT_DEFAULT_PROVIDER="vmware_workstation"
+export DEBFULLNAME="Cameron Sowder" 
+export DEBEMAIL="cameron@sowder.io"
 export PATH="$PATH:/home/sowderca/.local/share/umake/dart/dart-sdk/bin/"
-export PATH="$PATH:/home/sowderca/.local/share/umake/"
+export PATH="$PATH:/home/sowderca/.local/share/umake/swift/usr/bin"
+export PATH="$PATH:/home/sowderca/.local/share/umake/rust/rust-lang/cargo/bin"
 export PATH="$PATH:/home/sowderca/Tools/infer-linux64-v0.5.0/infer/bin"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/home/sowderca/.pub-cache/bin"
+export PATH="$PATH:/home/sowderca/Tools/genymotion"
+export PATH="$PATH:/home/sowderca/Tools/buck/bin"
 export PATH="$PATH:/home/sowderca/go/bin"
+export PATH="$PATH:/usr/bin"
 export PATH="$PATH:/home/sowderca/.composer/vendor/bin"
 export GOROOT="/usr/local/go"
-export GOPATH=$HOME/go
+export GOPATH=$HOME/Devwork/Workspace
+export PATH="$PATH:$GOPATH/bin"
 export SCALA_HOME="/usr/local/share/scala"
 export PATH="$PATH:$SCALA_HOME/bin" 
 export PATH="$HOME/.jenv/bin:$PATH"
 export PATH="/home/sowderca/.pyenv/bin:$PATH"
+export NODE_PATH=$NODE_PATH:/home/sowderca/.nvm/versions/node/v5.2.0/lib/node_modules
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(jenv init -)"
@@ -66,3 +78,5 @@ source '/home/sowderca/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/home/sowderca/google-cloud-sdk/completion.zsh.inc'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
