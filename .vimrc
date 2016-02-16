@@ -6,7 +6,6 @@ call plug#begin()
 Plug 'Shougo/unite.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
-Plug 'mhinz/vim-startify'
 " Code Display
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'chriskempson/base16-vim'
@@ -23,6 +22,8 @@ Plug 'tpope/vim-dispatch'
 Plug 'ramitos/jsctags'
 Plug 'tpope/gem-ctags'
 Plug 'jakedouglas/exuberant-ctags'
+Plug 'jscs-dev/node-jscs'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Commands
 Plug 'godlygeek/tabular'
 Plug 'Shougo/vimproc.vim'
@@ -33,12 +34,19 @@ Plug 'Slava/tern-meteor'
 Plug 'marijnh/tern_for_vim'
 Plug 'shawncplus/phpcomplete.vim'
 " Languages
+" -- Dart
+Plug 'dart-lang/dart-vim-plugin'
+" -- Scala
+Plug 'derekwyatt/vim-scala'
+Plug 'ktvoelker/sbt-vim'
 " -- Coffee
 Plug 'kchmck/vim-coffee-script'
 " -- Ruby 
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'muz/vim-gemfile'
+" -- Rust
+Plug 'wting/rust.vim'
 " -- Javascript ( and Typescript )
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
@@ -56,6 +64,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'keith/swift.vim'
 " -- Go
 Plug 'fatih/vim-go'
+" -- Powershell
+Plug 'PProvost/vim-ps1'
 " -- CSV
 Plug 'chrisbra/csv.vim'
 " -- Markdown
@@ -83,11 +93,13 @@ Plug 'fsharp/vim-fsharp', {
 Plug 'markcornick/vim-vagrant'
 Plug 'xolox/vim-misc'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'b4b4r07/vim-hcl'
 Plug 'crontab.vim'
 call plug#end()
 " Settings
 " -------------------------------------------------
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.5.0/src'
 let g:ycm_semantic_triggers =  {
   \   'c' : ['->', '.'],
   \   'objc' : ['->', '.'],
@@ -107,13 +119,17 @@ set completeopt-=preview
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_javascript_checkers = ['jcsc']
+let g:syntastic_javascript_eslint_generic = 1
+let g:syntastic_javascript_eslint_exec = 'xo'
+let g:syntastic_javascript_eslint_args = '--compact'
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_typescript_checkers = ['tslint']
+let g:syntastic_ruby_checkers = ['mri']
 " Styles
 let base16colorspace=256
 set background=dark
@@ -126,8 +142,10 @@ let g:flow#omnifunc = 1
 au BufRead,BufNewFile *.js set syntax=typescript
 au BufRead,BufNewFile *.jsx set syntax=typescript
 au BufRead,BufNewFile *.java set syntax=typescript
+au BufRead,BufNewFile *.cs set syntax=cpp
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 let g:EclimCompletionMethod = 'omnifunc'
+let g:EclimRubyValidate = 0
 " Options
 if has("autocmd")
   filetype plugin indent on
@@ -139,7 +157,6 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
-set smarttab
 set cindent
 set showcmd
 set showmatch
