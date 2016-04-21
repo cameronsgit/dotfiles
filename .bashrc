@@ -7,9 +7,7 @@ case $- in
     *i*) ;;
       *) return;;
 esac
-if [ "$TERM" == "xterm" ]; then
-    export TERM=xterm-256color
-fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -117,12 +115,16 @@ fi
 
 export NVM_DIR="/home/sowderca/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-export PATH=~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:/home/sowderca/.cabal/bin:/home/sowderca/.gvm/pkgsets/go1.4/global/bin:/home/sowderca/.gvm/gos/go1.4/bin:/home/sowderca/.gvm/pkgsets/go1.4/global/overlay/bin:/home/sowderca/.gvm/bin:/home/sowderca/.gvm/bin:/home/sowderca/.nvm/versions/node/v0.12.7/bin:/usr/local/heroku/bin:/home/sowderca/.rbenv/shims:/home/sowderca/.pyenv/shims:/home/sowderca/.pyenv/bin:/home/sowderca/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-export NODE_PATH=/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript:/home/sowderca/.nvm/versions/node/v0.12.7/lib/node_modules
 
 [ -s "/home/sowderca/.dnx/dnvm/dnvm.sh" ] && . "/home/sowderca/.dnx/dnvm/dnvm.sh" # Load dnvm
-export NODE_PATH=/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript:/home/sowderca/.nvm/versions/node/v0.12.7/lib/node_modules
 
 # added by travis gem
 [ -f /home/sowderca/.travis/travis.sh ] && source /home/sowderca/.travis/travis.sh
-export PATH="$PATH:~/.composer/vendor/bin"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/sowderca/.sdkman"
+[[ -s "/home/sowderca/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sowderca/.sdkman/bin/sdkman-init.sh"

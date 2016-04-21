@@ -20,3 +20,7 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/sowderca/.sdkman"
+[[ -s "/home/sowderca/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sowderca/.sdkman/bin/sdkman-init.sh"
