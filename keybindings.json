@@ -1,0 +1,20 @@
+[
+    {
+    "key": "enter",
+    "command": "acceptSelectedSuggestion",
+    "when": "editorTextFocus && quickFixWidgetVisible"
+},
+
+{
+    "key": "tab",
+    "command": "selectNextSuggestion",
+    "when": "editorTextFocus && suggestWidgetVisible"
+},
+
+
+{
+    "key": "shift+tab",
+    "command": "selectPrevSuggestion",
+    "when": "editorTextFocus && suggestWidgetVisible"
+}
+]
