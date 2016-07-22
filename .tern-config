@@ -6,9 +6,9 @@
         "ecma6"
     ],
     "plugins": {
+        "meteor": {},
         "node": {},
         "complete_strings": {},
         "es_modules": {}
     }
-    
 }

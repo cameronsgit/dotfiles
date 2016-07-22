@@ -1,7 +1,25 @@
 // Place your settings in this file to overwrite the default settings
 {
+    "explorer.openEditors.visible": 0,
     "editor.wrappingColumn": 0,
     "editor.autoClosingBrackets": false,
     "editor.fontFamily": "Hack",
-    "editor.fontSize": 13
+    "editor.fontSize": 13,
+    "editor.renderWhitespace": true,
+    "vscode-mssql.connections":
+    [
+        {
+            // connection 1
+            // All required inputs are present. No prompts when you choose this connection from the picklist.
+            "server": "vc3-cw-sql-01",
+            "user": "sa"
+        },
+        {
+            // connection 2
+            // Password is not present. You are prompted for a password when you choose this connection.
+            // Database is not present. Default depends on server configuration, typically 'master'.
+            "server": "connecttest.vc3.com",
+            "user": "sa"
+        }
+    ]
 }

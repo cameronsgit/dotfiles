@@ -29,15 +29,17 @@ compctl -K _pip_completion pip
 # pip zsh completion end
 # Alias
 alias cls=clear
-alias nuget="mono /home/sowderca/Tools/Nuget/nuget.exe"
 alias composer="php /home/sowderca/composer.phar"
 alias eclim="/home/sowderca/.eclipse/org.eclipse.platform_4.5.2_479262390_linux_gtk_x86_64/eclimd"
+alias powershell="cli /home/sowderca/Tools/Pash/Source/PashConsole/bin/Debug/Pash.exe"
 alias vc3-cae-lnx-02="64.28.197.163"
+alias dns1.vc3.com="64.28.196.6"
 alias vdi-2012r2="10.51.16.106"
 alias git=hub
+alias open=xdg-open
 alias parse=parse-cli
-alias tslint='tslint -s ~/.nvm/versions/node/v5.3.0/lib/node_modules/tslint-stylish -t stylish'
-alias vdir="ls -l"
+alias vdir="ls -lha"
+alias del="rm -rf"
 alias vim=nvim
 alias weather="weather -a 'Columbia, SC'"
 alias datagrip="/home/sowderca/Tools/DataGrip-1.0.2/bin/datagrip.sh"
@@ -71,13 +73,14 @@ export PATH="$PATH:/home/sowderca/.composer/vendor/bin"
 export GOPATH=$HOME/Devwork/Workspace
 export GO15VENDOREXPERIMENT=1
 export HOMEBREW_EDITOR=vim
+export PATH="/opt/swift/swift-3.0/usr/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 export GOROOT="/usr/lib/go"
 export PATH="$PATH:$GOPATH/bin"
-export NODE_PATH=$NODE_PATH:/home/sowderca/.nvm/versions/node/v5.3.0/lib/node_modules
+export NODE_PATH=$NODE_PATH:/home/sowderca/.nvm/versions/node/v6.0.0/lib/node_modules
 export GEMNASIUM_TOKEN=dc2b4be478e429652e1b93f40eae5aa3
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -98,4 +101,61 @@ eval "$(pyenv init -)"
 
 # tabtab source for yo package
 # uninstall by removing these lines or running `tabtab uninstall yo`
-[[ -f /home/sowderca/.nvm/versions/node/v5.3.0/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh ]] && . /home/sowderca/.nvm/versions/node/v5.3.0/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh
+[[ -f /home/sowderca/.nvm/versions/node/v6.0.0/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh ]] && . /home/sowderca/.nvm/versions/node/v6.0.0/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh
+###-begin-npm-completion-###
+#
+# npm command completion script
+#
+# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
+# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
+#
+
+if type complete &>/dev/null; then
+  _npm_completion () {
+    local words cword
+    if type _get_comp_words_by_ref &>/dev/null; then
+      _get_comp_words_by_ref -n = -n @ -w words -i cword
+    else
+      cword="$COMP_CWORD"
+      words=("${COMP_WORDS[@]}")
+    fi
+
+    local si="$IFS"
+    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
+                           COMP_LINE="$COMP_LINE" \
+                           COMP_POINT="$COMP_POINT" \
+                           npm completion -- "${words[@]}" \
+                           2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  complete -o default -F _npm_completion npm
+elif type compdef &>/dev/null; then
+  _npm_completion() {
+    local si=$IFS
+    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+                 COMP_LINE=$BUFFER \
+                 COMP_POINT=0 \
+                 npm completion -- "${words[@]}" \
+                 2>/dev/null)
+    IFS=$si
+  }
+  compdef _npm_completion npm
+elif type compctl &>/dev/null; then
+  _npm_completion () {
+    local cword line point words si
+    read -Ac words
+    read -cn cword
+    let cword-=1
+    read -l line
+    read -ln point
+    si="$IFS"
+    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                       COMP_LINE="$line" \
+                       COMP_POINT="$point" \
+                       npm completion -- "${words[@]}" \
+                       2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  compctl -K _npm_completion npm
+fi
+###-end-npm-completion-###

@@ -1,5 +1,12 @@
 runtime! debian.vim
-" Plugins 
+" Automatic installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !mkdir -p ~/.vim/autoload
+    silent !curl -fLo ~/.vim/autoload/plug.vim
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    au VimEnter * PlugInstall
+endif
+" Plugins
 " -------------------------------------------------
 call plug#begin()
 " Interface
@@ -46,6 +53,7 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'the-lambda-church/merlin'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'jdonaldson/vaxe'
+Plug 'dbext.vim'
 "" Languages
 "" -- Dart
 Plug 'dart-lang/dart-vim-plugin'
@@ -71,6 +79,7 @@ Plug 'leafgarland/typescript-vim'
 "" -- CSS ( and preprocessors )
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'wavded/vim-stylus'
+Plug 'stephenway/postcss.vim'
 Plug 'groenewege/vim-less'
 "" -- Elixir
 Plug 'elixir-lang/vim-elixir'
@@ -257,6 +266,7 @@ let g:syntastic_javascript_eslint_args = '--compact'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_css_checkers = ['stylelint']
 let g:syntastic_typescript_checkers = ['tslint']
+let g:syntastic_typescript_tsc_args = '--target es6 --jsx preserve'
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_error_symbol = '✖'
 let g:syntastic_style_error_symbol = '✗'
@@ -276,6 +286,9 @@ au BufRead,BufNewFile *.js set syntax=typescript
 au BufRead,BufNewFile *.jsx set syntax=typescript
 au BufRead,BufNewFile *.java set syntax=typescript
 au BufRead,BufNewFile *.mjml set syntax=html
+au BufRead,BufNewFile web.config set syntax=xml
+au BufRead,BufNewFile *.nuspec set syntax=xml
+au BufRead,BufNewFile *.babelrc set syntax=json
 au BufRead,BufNewFile *.re set ft=reason
 au BufRead,BufNewFile *.rei set ft=reason
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -289,6 +302,7 @@ autocmd FileType coffee setlocal ts=2 sts=2 sw=2
 let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimRubyValidate = 0
 let g:EclimPythonValidate = 0
+let g:dbtext_default_profile_cw='type=SQLSRV:user=sa:passwd=sillyhamster57itchyRo@d24:dbname=cwwebapp_vc3:host=vc3-cw-sql-01'
 " Options
 if has("autocmd")
   filetype plugin indent on

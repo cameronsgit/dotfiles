@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -84,6 +84,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -113,18 +116,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export NVM_DIR="/home/sowderca/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 [ -s "/home/sowderca/.dnx/dnvm/dnvm.sh" ] && . "/home/sowderca/.dnx/dnvm/dnvm.sh" # Load dnvm
 
-# added by travis gem
-[ -f /home/sowderca/.travis/travis.sh ] && source /home/sowderca/.travis/travis.sh
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/sowderca/.sdkman"
-[[ -s "/home/sowderca/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sowderca/.sdkman/bin/sdkman-init.sh"
+# added by travis gem
+[ -f /home/sowderca/.travis/travis.sh ] && source /home/sowderca/.travis/travis.sh
+PATH="/home/sowderca/.conscript/bin:$PATH"
