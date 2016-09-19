@@ -1,5 +1,4 @@
-runtime! debian.vim
-" Automatic installation
+" Automatic Vim-Plug installation
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !mkdir -p ~/.vim/autoload
     silent !curl -fLo ~/.vim/autoload/plug.vim
@@ -19,14 +18,12 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'chriskempson/base16-vim'
 Plug 'Align'
 Plug 'yggdroot/indentline'
-Plug 'flazz/vim-colorschemes'
 "" Integrations
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'facebook/vim-flow'
 Plug 'tpope/vim-dispatch'
 Plug 'ramitos/jsctags'
 Plug 'keith/travis.vim'
@@ -35,7 +32,6 @@ Plug 'tpope/gem-ctags'
 Plug 'TaskList.vim'
 Plug 'jakedouglas/exuberant-ctags'
 Plug 'sjl/gundo.vim'
-Plug 'jscs-dev/node-jscs'
 if has('mac')
     Plug 'keith/investigate.vim'
 elseif has('unix') || has('win32')
@@ -47,19 +43,13 @@ Plug 'godlygeek/tabular'
 Plug 'Shougo/vimproc.vim'
 Plug 'tpope/vim-bundler'
 "" Completion
-Plug 'Valloric/YouCompleteMe'
-Plug 'Slava/tern-meteor'
+Plug 'valloric/youcompleteme'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'the-lambda-church/merlin'
-Plug 'shawncplus/phpcomplete.vim'
-Plug 'jdonaldson/vaxe'
-Plug 'dbext.vim'
+"Plug 'shawncplus/phpcomplete.vim'
+"Plug 'jdonaldson/vaxe'
+Plug 'slashmili/alchemist.vim'
 "" Languages
-"" -- Dart
-Plug 'dart-lang/dart-vim-plugin'
-"" -- Scala
-Plug 'derekwyatt/vim-scala'
-Plug 'ktvoelker/sbt-vim'
 "" -- Coffee
 Plug 'kchmck/vim-coffee-script'
 "" -- Ruby 
@@ -108,10 +98,6 @@ Plug 'rhysd/vim-crystal'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'OrangeT/vim-csharp'
 "" -- F# 
-Plug 'fsharp/vim-fsharp', {
-      \ 'for': 'fsharp',
-      \ 'do':  'make fsautocomplete',
-      \}
 "" -- Mis
 Plug 'markcornick/vim-vagrant'
 Plug 'xolox/vim-misc'
@@ -121,22 +107,11 @@ Plug 'crontab.vim'
 call plug#end()
 " Settings
 " -------------------------------------------------
-let g:ycm_global_ycm_extra_conf = "~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-let g:ycm_dart_bin_folder_path = '/home/sowderca/.local/share/umake/dart/dart-sdk/bin'
-let g:ycm_rust_src_path ="/home/sowderca/.multirust/toolchains/1.8.0/src/"
-if !empty(system('which opam'))
-  " Merlin plugin
-  let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','') . "/merlin"
-  execute "set rtp+=".s:ocamlmerlin."/vim"
-  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
-  let g:syntastic_ocaml_checkers=['merlin']
 
-  " Reason plugin which uses Merlin
-  let s:reasondir=substitute(system('opam config var share'),'\n$','','') . "/reason"
-  execute "set rtp+=".s:reasondir."/editorSupport/VimReason"
-  let g:syntastic_reason_checkers=['merlin']
-else
-endif
+" YouCompleteMe Settings
+let g:ycm_global_ycm_extra_conf = "~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+let g:ycm_rust_src_path ="/home/sowderca/.multirust/toolchains/1.8.0/src/"
+let g:ycm_user_utilsnips_completer = 0
 let g:ycm_semantic_triggers =  {
   \   'c' : ['->', '.'],
   \   'objc' : ['->', '.'],
@@ -150,6 +125,23 @@ let g:ycm_semantic_triggers =  {
   \   'erlang' : [':'],
   \   'php': ['->', '::']
   \ }
+
+" Reason Settings
+if !empty(system('which opam'))
+  " Merlin plugin
+  let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','') . "/merlin"
+  execute "set rtp+=".s:ocamlmerlin."/vim"
+  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+  let g:syntastic_ocaml_checkers=['merlin']
+
+ " Reason plugin which uses Merlin
+  let s:reasondir=substitute(system('opam config var share'),'\n$','','') . "/reason"
+  execute "set rtp+=".s:reasondir."/editorSupport/VimReason"
+  let g:syntastic_reason_checkers=['merlin']
+else
+endif
+
+" Tagbar Settings
 let g:tagbar_type_ruby = {
     \ 'kinds' : [
         \ 'm:modules',
@@ -232,6 +224,98 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+" Syntastic
+set completeopt-=preview
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_enabled=0
+let g:indentLine_leadingSpaceEnabled=1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_ballons = 1
+let g:syntastic_javascript_eslint_generic = 1
+let g:syntastic_javascript_eslint_exec = 'xo'
+let g:syntastic_javascript_eslint_args = '--compact'
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_css_checkers = ['stylelint']
+let g:syntastic_typescript_checkers = ['tslint']
+let g:syntastic_typescript_tsc_args = '--target es6 --jsx preserve'
+let g:syntastic_ruby_checkers = ['mri']
+let g:syntastic_error_symbol = '✖'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_warning_symbol = 'ℹ'
+
+" Styles
+let base16colorspace=256
+set background=dark
+let airline_theme="base16_eighties"
+let g:airline_powerline_fonts = 1
+colorscheme base16-eighties
+
+" File Settings
+au BufRead,BufNewFile *.js set syntax=typescript
+au BufRead,BufNewFile *.jsx set syntax=typescript
+au BufRead,BufNewFile *.java set syntax=typescript
+au BufRead,BufNewFile *.mjml set syntax=html
+au BufRead,BufNewFile web.config set syntax=xml
+au BufRead,BufNewFile *.nuspec set syntax=xml
+au BufRead,BufNewFile *.babelrc set syntax=json
+au BufRead,BufNewFile *.re set ft=reason
+au BufRead,BufNewFile *.rei set ft=reason
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType csharp set omnifunc=OmniSharp#Complete
+autocmd FileType ruby setlocal ts=2 sts=2 sw=2
+autocmd FileType coffee setlocal ts=2 sts=2 sw=2
+let g:vim_json_syntax_conceal = 0
+
+" Keybindings
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" Options
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set expandtab
+set cindent
+set nolist
+set showcmd
+set ignorecase
+set smartcase
+set incsearch
+set autowrite
+set hidden
+set mouse=a
+set number
+set wildmenu
+set laststatus=2
+set titlestring=VIM
+
+if has("autocmd")
+  filetype plugin indent on
+endif
+
+if has("syntax")
+  syntax on
+endif
+
+if has('win32')
+    let g:vim_home_path = '~/vimfiles'
+elseif has('nvim')
+    set clipboard+=unnamedplus
+    let g:vim_home_path = '~/.vim'
+else
+    let g:vim_home_path = '~/.vim'
+endif
+
+" GUI Settings
 if has("gui_running")
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -245,97 +329,10 @@ set guioptions-=L  "remove left-hand scroll bar
     set guifont=Consolas:h11:cANSI
   endif
 endif
+
 let g:tlWindowPosition = 1
-so /home/sowderca/.vim/plugged/vim-flow/autoload/flowcomplete.vim
-set completeopt-=preview
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_enabled=0
-let g:indentLine_leadingSpaceEnabled=1
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_ballons = 1
-let g:syntastic_javascript_eslint_generic = 1
-let g:syntastic_javascript_eslint_exec = 'xo'
-let g:syntastic_javascript_eslint_args = '--compact'
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_css_checkers = ['stylelint']
-let g:syntastic_typescript_checkers = ['tslint']
-let g:syntastic_typescript_tsc_args = '--target es6 --jsx preserve'
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_error_symbol = '✖'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_style_warning_symbol = 'ℹ'
-" Styles
-let base16colorspace=256
-set background=dark
-let airline_theme="base16_eighties"
-let g:airline_powerline_fonts = 1
-colorscheme base16-eighties
-let g:flow#enable = 1
-let g:flow#autoclose = 1
-let g:flow#flowpath = "/bin/flow"
-let g:flow#omnifunc = 1
-au BufRead,BufNewFile *.js set syntax=typescript
-au BufRead,BufNewFile *.jsx set syntax=typescript
-au BufRead,BufNewFile *.java set syntax=typescript
-au BufRead,BufNewFile *.mjml set syntax=html
-au BufRead,BufNewFile web.config set syntax=xml
-au BufRead,BufNewFile *.nuspec set syntax=xml
-au BufRead,BufNewFile *.babelrc set syntax=json
-au BufRead,BufNewFile *.re set ft=reason
-au BufRead,BufNewFile *.rei set ft=reason
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby setlocal ts=2 sts=2 sw=2
-autocmd FileType coffee setlocal ts=2 sts=2 sw=2
-let g:EclimCompletionMethod = 'omnifunc'
-let g:EclimRubyValidate = 0
-let g:EclimPythonValidate = 0
-let g:dbtext_default_profile_cw='type=SQLSRV:user=sa:passwd=sillyhamster57itchyRo@d24:dbname=cwwebapp_vc3:host=vc3-cw-sql-01'
-" Options
-if has("autocmd")
-  filetype plugin indent on
-endif
-if has("syntax")
-  syntax on
-endif
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-set expandtab
-set cindent
-set list
-set showcmd
-set showmatch
-set ignorecase
-set smartcase
-set incsearch
-set autowrite
-set hidden
-set mouse=a
-set number
-set wildmenu
-if has('nvim')
-    set clipboard+=unnamedplus
-endif
-if has('mac')
-   let g:investigate_use_dash=1
-endif
-set laststatus=2
-set titlestring=VIM
-syntax enable
+
+" Defaults
 if filereadable("/etc/vim/vimrc.local")
     source /etc/vim/vimrc.local
 endif
