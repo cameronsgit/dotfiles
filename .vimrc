@@ -1,11 +1,12 @@
 " Automatic Vim-Plug installation
 if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !mkdir -p ~/.vim/autoload
-	silent !curl -fLo ~/.vim/autoload/plug.vim
-		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	au VimEnter * PlugInstall
+    silent !mkdir -p ~/.vim/autoload
+    silent !curl -fLo ~/.vim/autoload/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    au VimEnter * PlugInstall
 endif
 
+" Plugins
 call plug#begin()
     Plug 'tpope/vim-fugitive'
     Plug 'chriskempson/base16-vim'
@@ -18,11 +19,16 @@ call plug#begin()
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'leafgarland/typescript-vim'
+    Plug 'keith/swift.vim'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'yggdroot/indentline'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'w0rp/ale'
+    Plug 'rust-lang/rust.vim'
+    Plug 'cespare/vim-toml'
+    Plug 'elzr/vim-json'
     Plug 'pprovost/vim-ps1'
+    Plug 'oranget/vim-csharp'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 call plug#end()
 
@@ -46,16 +52,32 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " Custom Keybindings
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <silent> <F6> :set noet|retab!
+" use tab to forward cycle
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" use tab to backward cycle
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
-" Options
+" Settings
+let g:ycm_src_path = '/home/sowderca/Tools/rustc-1.10.0/src'
 let g:used_javascript_libs = 'underscore, react, jquery'
+let g:vim_json_syntax_conceal = 0
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_enabled = 0
 let g:indentLine_leadingSpaceEnabled = 1
+let $NVIM_TUI_ENABLE_TRUE_COLOR = 1 " Enable true color for neovim
+
+
+" FileType Options
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd BufRead,BufNewFile *.rs set ft=rust
+" Options
+set termguicolors
 set fileformats=unix,dos,mac
+set completeopt-=preview
 set hlsearch
 set magic
-set lazyredraw
+" set lazyredraw
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
@@ -68,7 +90,9 @@ set ignorecase
 set smartcase
 set incsearch
 set autowrite
+set noshowmode
 set hidden
+set synmaxcol=1000
 set mouse=a
 set number
 set wildmenu
@@ -79,11 +103,11 @@ set noerrorbells
 set novisualbell
 
 if has("autocmd")
-	filetype plugin indent on
+    filetype plugin indent on
 endif
 
 if has("syntax")
-	syntax on
+    syntax on
 endif
 
 if has('win32')
@@ -109,3 +133,8 @@ set guioptions-=L  "remove left-hand scroll bar
     set guifont=Consolas:h11:cANSI
   endif
 endif
+
+highlight htmlArg cterm=italic
+highlight Comment cterm=italic
+highlight htmlArg gui=italic
+highlight Comment gui=italic
