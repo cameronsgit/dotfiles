@@ -8,7 +8,7 @@ endif
 
 " Plugins
 call plug#begin()
-    Plug 'tpope/vim-fugitive'
+    "Plug 'tpope/vim-fugitive'
     Plug 'chriskempson/base16-vim'
     Plug 'scrooloose/nerdtree'
     Plug 'airblade/vim-gitgutter'
@@ -71,19 +71,22 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR = 1 " Enable true color for neovim
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd BufRead,BufNewFile *.rs set ft=rust
+
 " Options
 set termguicolors
 set fileformats=unix,dos,mac
 set completeopt-=preview
 set hlsearch
 set magic
-" set lazyredraw
+set lazyredraw
+set ttyfast
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
 set cindent
 set list
+set regexpengine=1 " speed up vim
 set listchars=tab:→\  
 set showcmd
 set ignorecase
@@ -92,7 +95,7 @@ set incsearch
 set autowrite
 set noshowmode
 set hidden
-set synmaxcol=1000
+set synmaxcol=1000 " Limit the syntax on lengthy files
 set mouse=a
 set number
 set wildmenu
