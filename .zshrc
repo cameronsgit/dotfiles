@@ -30,26 +30,29 @@ export TOOLCHAINS=swift
 export HOMEBREW_GITHUB_API_TOKEN="1ccd433ff39398142d5162f4d4fc0ca13b6fa74d"
 export HAXE_STD_PATH="/usr/local/lib/haxe/std"
 export TERMINFO="$HOME/.terminfo"
+export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/Cellar/kotlin/1.0.2/bin:$PATH"
 export PATH="/usr/local/share/dotnet/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/Users/sowderca/.cargo/bin:$PATH"
 export PATH="$PATH:/Users/sowderca/Devwork/Workspace/bin"
 export PATH="$PATH:/Users/sowderca/.multirust/toolchains/stable-x86_64-apple-darwin/bin"
 export PATH="$PATH:/Users/sowderca/.pub-cache/bin"
-export IlcPath="/Users/sowderca/Tools/corert/bin/Product/OSX.x64.Debug/packaging/publish1"
 export GOPATH='/Users/sowderca/Devwork/Workspace'
 export RUST_SRC_PATH="/Users/sowderca/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 export JDK_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home"
 export NVM_DIR='/Users/sowderca/.nvm'
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-# Misc
+ #Misc
 eval `opam config env`
+eval "$(rbenv init -)"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.light.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# Theme
+source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 # added by travis gem
 [ -f /Users/sowderca/.travis/travis.sh ] && source /Users/sowderca/.travis/travis.sh
 # if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
