@@ -1,53 +1,54 @@
 " Automatic Vim-Plug installation unless on Windows
 if !has('win32')
-    if empty(glob('~/.vim/autoload/plug.vim'))
-        silent !mkdir -p ~/.vim/autoload
-        silent !curl -fLo ~/.vim/autoload/plug.vim
-            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        au VimEnter * PlugInstall
-    endif
+	if empty(glob('~/.vim/autoload/plug.vim'))
+		silent !mkdir -p ~/.vim/autoload
+		silent !curl -fLo ~/.vim/autoload/plug.vim
+			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		au VimEnter * PlugInstall
+	endif
 endif
 
 " Plugins
 call plug#begin()
-    Plug 'tpope/vim-fugitive'
-    Plug 'chriskempson/base16-vim'
-    Plug 'scrooloose/nerdtree'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'wakatime/vim-wakatime'
-    Plug 'othree/javascript-libraries-syntax.vim'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'leafgarland/typescript-vim'
-    Plug 'keith/swift.vim'
-    Plug 'editorconfig/editorconfig-vim'
-    Plug 'the-lambda-church/merlin'
-    Plug 'yggdroot/indentline'
-    Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'w0rp/ale'
-    Plug 'rust-lang/rust.vim'
-    Plug 'cespare/vim-toml'
-    Plug 'elzr/vim-json'
-    Plug 'pprovost/vim-ps1'
-    Plug 'oranget/vim-csharp'
-    Plug 'reasonml/vim-reason-loader'
-    Plug 'idanarye/vim-dutyl'
-    Plug 'octol/vim-cpp-enhanced-highlight'
-    Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all' }
-    if has('win32')
-        Plug 'cd01/poshcomplete-vim'
-    endif
+	Plug 'tpope/vim-fugitive'
+	Plug 'chriskempson/base16-vim'
+	Plug 'morhetz/gruvbox'
+	Plug 'scrooloose/nerdtree'
+	Plug 'airblade/vim-gitgutter'
+	Plug 'wakatime/vim-wakatime'
+	Plug 'othree/javascript-libraries-syntax.vim'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'christoomey/vim-tmux-navigator'
+	Plug 'leafgarland/typescript-vim'
+	Plug 'keith/swift.vim'
+	Plug 'editorconfig/editorconfig-vim'
+	Plug 'the-lambda-church/merlin'
+	Plug 'yggdroot/indentline'
+	Plug 'nathanaelkane/vim-indent-guides'
+	Plug 'w0rp/ale'
+	Plug 'rust-lang/rust.vim'
+	Plug 'cespare/vim-toml'
+	Plug 'elzr/vim-json'
+	Plug 'pprovost/vim-ps1'
+	Plug 'oranget/vim-csharp'
+	Plug 'reasonml/vim-reason-loader'
+	Plug 'idanarye/vim-dutyl'
+	Plug 'octol/vim-cpp-enhanced-highlight'
+	Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all' }
+	if has('win32')
+		Plug 'cd01/poshcomplete-vim'
+	endif
 call plug#end()
 
 " Styles
 let t_Co=256
 let base16colorspace=256
-let airline_theme="base16_ocean"
+let airline_theme="gruvbox"
 let g:airline_powerline_fonts = 1
 let g:airline_section_y = '%{ALEGetStatusLine()}'
-colorscheme base16-ocean
+colorscheme gruvbox
 
 " Lint
 let g:ale_linters = {'typescript': ['tslint']} 
@@ -72,13 +73,13 @@ inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " Settings
-"let g:ycm_src_path = '/home/sowderca/Tools/rustc-1.10.0/src'
+let g:ycm_src_path = '/home/sowderca/Tools/rustc-1.10.0/src'
 let g:dutyl_stdImportPaths = ['/usr/local/include/dlang/dmd']
 let g:used_javascript_libs = 'underscore, react, jquery'
 let g:vim_json_syntax_conceal = 0
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_enabled = 0
-let g:indentLine_leadingSpaceEnabled =1
+let g:indentLine_leadingSpaceEnabled = 1
 let g:ycm_semantic_triggers =  {
   \   'c' : ['->', '.'],
   \   'objc' : ['->', '.'],
@@ -111,10 +112,11 @@ set magic
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-set expandtab
+set noexpandtab
 set cindent
 set listchars=tab:→\  
 set regexpengine=1
+set ttyfast
 set showcmd
 set ignorecase
 set smartcase
@@ -129,26 +131,26 @@ set laststatus=2
 set titlestring=VIM
 set noerrorbells
 set novisualbell
+set background=dark
 
 if has("autocmd")
-    filetype plugin indent on
+	filetype plugin indent on
 endif
 
 if has("syntax")
-    syntax on
+	syntax on
 endif
 
 if has('win32')
-    let g:vim_home_path = '~/vimfiles'
-    set nolist
+	let g:vim_home_path = '~/vimfiles'
+	set nolist
 elseif has('nvim')
-    set clipboard+=unnamedplus
-    set list
-    let $NVIM_TUI_ENABLE_TRUE_COLOR = 1 " Enable true color for neovim
-    let g:vim_home_path = '~/.vim'
+	set clipboard+=unnamedplus
+	set list
+	let g:vim_home_path = '~/.vim'
 else
-    set list
-    let g:vim_home_path = '~/.vim'
+	set list
+	let g:vim_home_path = '~/.vim'
 endif
 
 " GUI Settings
@@ -158,11 +160,11 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
   if has("gui_gtk2")
-    set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
+	set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
   elseif has("gui_macvim")
-    set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
+	set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
   elseif has("gui_win32")
-    set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
+	set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
   endif
 endif
 
