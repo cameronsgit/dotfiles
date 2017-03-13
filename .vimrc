@@ -34,7 +34,9 @@ call plug#begin()
 	Plug 'pprovost/vim-ps1'
 	Plug 'oranget/vim-csharp'
 	Plug 'reasonml/vim-reason-loader'
+	Plug 'fatih/vim-go'
 	Plug 'idanarye/vim-dutyl'
+	Plug 'shawncplus/phpcomplete.vim'
 	Plug 'octol/vim-cpp-enhanced-highlight'
 	Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all' }
 	if has('win32')
@@ -52,9 +54,9 @@ colorscheme gruvbox
 
 " Lint
 let g:ale_linters = {'typescript': ['tslint']} 
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_statusline_format = ['⌦ %d', '⚠︎ %d', '✓ ok']
 let g:ale_echo_msg_error_str = 'Error'
-let g:ale_sign_error = '⨉'
+let g:ale_sign_error = '⌦ '
 let g:ale_sign_warning = '⚠'
 let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -77,6 +79,12 @@ let g:ycm_src_path = '/home/sowderca/Tools/rustc-1.10.0/src'
 let g:dutyl_stdImportPaths = ['/usr/local/include/dlang/dmd']
 let g:used_javascript_libs = 'underscore, react, jquery'
 let g:vim_json_syntax_conceal = 0
+let g:go_highlight_functions = 0
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_enabled = 0
 let g:indentLine_leadingSpaceEnabled = 1
@@ -93,6 +101,7 @@ let g:ycm_semantic_triggers =  {
   \   'erlang' : [':'],
   \   'php': ['->', '::']
   \ }
+
 
 " FileType Options
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
