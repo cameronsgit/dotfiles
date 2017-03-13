@@ -20,9 +20,8 @@ antigen apply
 # Alias
 alias cls=clear
 alias vim=nvim
-alias vdir="ls -l"
+alias dir="ls -l"
 alias git=hub
-alias gb="/Users/sowderca/Devwork/Workspace/bin/gb"
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 
 # ENV mods
@@ -32,13 +31,15 @@ export HAXE_STD_PATH="/usr/local/lib/haxe/std"
 export TERMINFO="$HOME/.terminfo"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/Cellar/kotlin/1.0.2/bin:$PATH"
+export PATH="$HOME/.fastlane/bin:$PATH"
 export PATH="/usr/local/share/dotnet/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/Users/sowderca/.cargo/bin:$PATH"
 export PATH="$PATH:/Users/sowderca/Devwork/Workspace/bin"
 export PATH="$PATH:/Users/sowderca/.multirust/toolchains/stable-x86_64-apple-darwin/bin"
 export PATH="$PATH:/Users/sowderca/.pub-cache/bin"
+export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
+export IlcPath="/Users/sowderca/Tools/corert/bin/Product/OSX.x64.Debug/packaging/publish1"
 export GOPATH='/Users/sowderca/Devwork/Workspace'
 export RUST_SRC_PATH="/Users/sowderca/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 export JDK_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home"
@@ -63,3 +64,4 @@ PERL_LOCAL_LIB_ROOT="/Users/sowderca/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_L
 PERL_MB_OPT="--install_base \"/Users/sowderca/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/sowderca/perl5"; export PERL_MM_OPT;
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+. <(azure --completion)
