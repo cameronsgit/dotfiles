@@ -1,18 +1,40 @@
-[user]
-    email = cameron@sowder.io
-    name = Cameron Sowder
-[core]
-    editor = nvim
-[color]
-    ui = auto
-[diff]
-    tool = meld
-[credential]
-    helper = !/home/sowderca/.linuxbrew/Cellar/jdk/1.8.0-102/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /home/sowderca/.linuxbrew/Cellar/git-credential-manager/2.0.0/libexec/git-credential-manager-2.0.0.jar
-[merge]
-	tool = meld
 [color "diff"]
 	old = red strike
 	new = green italic
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[user]
+	name = Cameron Sowder
+	email = cameron@sowder.io
+	signingkey = A04327E6
+[credential]
+	helper = osxkeychain
+[core]
+	editor = nvim
+	excludesfile = /Users/sowderca/.gitignore_global
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+[merge]
+	tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
+[gui]
+	fontdiff = -family \"Operator Mono for Powerline\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	tabsize = 4
+[commit]
+	template = /Users/sowderca/.stCommitMsg
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
