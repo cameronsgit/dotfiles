@@ -11,9 +11,8 @@ endif
 " Plugins
 call plug#begin()
 	Plug 'tpope/vim-fugitive'
-	Plug 'chriskempson/base16-vim'
-	Plug 'morhetz/gruvbox'
 	Plug 'scrooloose/nerdtree'
+	Plug 'chriskempson/base16-vim'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'wakatime/vim-wakatime'
 	Plug 'othree/javascript-libraries-syntax.vim'
@@ -24,8 +23,7 @@ call plug#begin()
 	Plug 'leafgarland/typescript-vim'
 	Plug 'keith/swift.vim'
 	Plug 'editorconfig/editorconfig-vim'
-	Plug 'the-lambda-church/merlin'
-	Plug 'yggdroot/indentline'
+	Plug 'majutsushi/tagbar'
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'w0rp/ale'
 	Plug 'rust-lang/rust.vim'
@@ -33,24 +31,30 @@ call plug#begin()
 	Plug 'elzr/vim-json'
 	Plug 'pprovost/vim-ps1'
 	Plug 'oranget/vim-csharp'
-	Plug 'reasonml/vim-reason-loader'
 	Plug 'fatih/vim-go'
 	Plug 'idanarye/vim-dutyl'
-	Plug 'shawncplus/phpcomplete.vim'
 	Plug 'octol/vim-cpp-enhanced-highlight'
-	Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all' }
-	if has('win32')
-		Plug 'cd01/poshcomplete-vim'
+	Plug 'reasonml/vim-reason-loader'
+	Plug 'uarun/vim-protobuf'
+	Plug 'dart-lang/dart-vim-plugin'
+	Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'roxma/nvim-completion-manager'
+	Plug 'roxma/nvim-cm-tern',	{'do': 'npm install'}
+	Plug 'dafufer/nvim-cm-swift-completer'
+	Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+	Plug 'roxma/clang_complete'
+	if !has('nvim')
+		Plug 'roxma/vim-hug-neovim-rpc'
 	endif
 call plug#end()
 
 " Styles
 let t_Co=256
 let base16colorspace=256
-let airline_theme="gruvbox"
+let airline_theme="base16"
 let g:airline_powerline_fonts = 1
 let g:airline_section_y = '%{ALEGetStatusLine()}'
-colorscheme gruvbox
+colorscheme base16-gruvbox-dark-medium
 
 " Lint
 let g:ale_linters = {'typescript': ['tslint']} 
@@ -69,14 +73,20 @@ let g:typescript_compiler_binary = 'tsc'
 " Custom Keybindings
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <silent> <F6> :set noet|retab!
-" use tab to forward cycle
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" use tab to backward cycle
-inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+\ "\<lt>C-n>" :
+\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+autocmd FileType swift nmap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeholder)
+autocmd FileType swift imap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeholder)
 
 " Settings
-let g:ycm_src_path = '/home/sowderca/Tools/rustc-1.10.0/src'
 let g:dutyl_stdImportPaths = ['/usr/local/include/dlang/dmd']
+let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 let g:used_javascript_libs = 'underscore, react, jquery'
 let g:vim_json_syntax_conceal = 0
 let g:go_highlight_functions = 0
@@ -88,30 +98,32 @@ let g:go_highlight_build_constraints = 1
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_enabled = 0
 let g:indentLine_leadingSpaceEnabled = 1
-let g:ycm_semantic_triggers =  {
-  \   'c' : ['->', '.'],
-  \   'objc' : ['->', '.'],
-  \   'ocaml,reason' : ['.', '#'],
-  \   'cpp,objcpp' : ['->', '.', '::'],
-  \   'perl' : ['->'],
-  \   'coffee,haskell,cs,java,javascript,d,python,typescript,perl6,scala,vb,elixir,go,dart' : ['.'],
-  \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
-  \   'ruby' : ['.', '::'],
-  \   'lua' : ['.', ':'],
-  \   'erlang' : [':'],
-  \   'php': ['->', '::']
-  \ }
 
+let g:LanguageClient_serverCommands = {
+	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+	\ 'dart': ['dart_language_server']
+	\ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
 
 " FileType Options
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+filetype plugin indent on
+autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd BufRead,BufNewFile *.js set syntax=typescript
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+set omnifunc=syntaxcomplete#Complete
 autocmd BufRead,BufNewFile *.rs set ft=rust
+autocmd BufRead,BufNewFile *.fsx set filetype=fsharp
 
 " Options
 set noshowmode
+set shortmess+=c
 set complete+=k
 set termguicolors
 set fileformats=unix,dos,mac
@@ -136,15 +148,13 @@ set synmaxcol=1000
 set mouse=a
 set number
 set wildmenu
+set splitbelow
+set splitright
 set laststatus=2
 set titlestring=VIM
 set noerrorbells
 set novisualbell
 set background=dark
-
-if has("autocmd")
-	filetype plugin indent on
-endif
 
 if has("syntax")
 	syntax on
@@ -164,17 +174,26 @@ endif
 
 " GUI Settings
 if has("gui_running")
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
-  if has("gui_gtk2")
-	set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
-  elseif has("gui_macvim")
-	set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
-  elseif has("gui_win32")
-	set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
-  endif
+	set guioptions-=m  "remove menu bar
+	set guioptions-=T  "remove toolbar
+	set guioptions-=r  "remove right-hand scroll bar
+	set guioptions-=L  "remove left-hand scroll bar
+	if has("gui_gtk2")
+		set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
+	elseif has("gui_macvim")
+		set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
+	elseif has("gui_win32")
+		set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
+	endif
+endif
+
+if ! has('gui_running')
+	set ttimeoutlen=10
+	augroup FastEscape
+		autocmd!
+		au InsertEnter * set timeoutlen=0
+		au InsertLeave * set timeoutlen=1000
+	augroup END
 endif
 
 highlight htmlArg cterm=italic
