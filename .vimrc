@@ -36,16 +36,11 @@ call plug#begin()
 	Plug 'octol/vim-cpp-enhanced-highlight'
 	Plug 'reasonml/vim-reason-loader'
 	Plug 'uarun/vim-protobuf'
-	Plug 'dart-lang/dart-vim-plugin'
+	Plug 'jparise/vim-graphql'
 	Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'roxma/nvim-completion-manager'
-	Plug 'roxma/nvim-cm-tern',	{'do': 'npm install'}
+	Plug 'roxma/ncm-rct-complete'
 	Plug 'dafufer/nvim-cm-swift-completer'
-	Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
-	Plug 'roxma/clang_complete'
-	if !has('nvim')
-		Plug 'roxma/vim-hug-neovim-rpc'
-	endif
 call plug#end()
 
 " Styles
@@ -57,7 +52,10 @@ let g:airline_section_y = '%{ALEGetStatusLine()}'
 colorscheme base16-gruvbox-dark-medium
 
 " Lint
-let g:ale_linters = {'typescript': ['tslint']} 
+let g:ale_linters = {
+\	'typescript': ['tslint'],
+\	'cpp': ['clang']
+\} 
 let g:ale_statusline_format = ['⌦ %d', '⚠︎ %d', '✓ ok']
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_sign_error = '⌦ '
@@ -77,16 +75,17 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-\ "\<lt>C-n>" :
-\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-autocmd FileType swift nmap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeholder)
-autocmd FileType swift imap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeholder)
+	\ "\<lt>C-n>" :
+	\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+	\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+	\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " Settings
 let g:dutyl_stdImportPaths = ['/usr/local/include/dlang/dmd']
-let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 let g:used_javascript_libs = 'underscore, react, jquery'
 let g:vim_json_syntax_conceal = 0
 let g:go_highlight_functions = 0
@@ -117,11 +116,11 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-set omnifunc=syntaxcomplete#Complete
 autocmd BufRead,BufNewFile *.rs set ft=rust
 autocmd BufRead,BufNewFile *.fsx set filetype=fsharp
 
 " Options
+set omnifunc=syntaxcomplete#Complete
 set noshowmode
 set shortmess+=c
 set complete+=k

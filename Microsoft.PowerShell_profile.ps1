@@ -1,16 +1,20 @@
-Set-PSReadlineOption -EditMode Vi
-Set-PSReadlineOption -BellStyle None
-Set-PSReadlineOption -ViModeIndicator Prompt
+Set-PSReadlineOption -EditMode Vi;
+Set-PSReadlineOption -BellStyle None;
+Set-PSReadlineOption -ViModeIndicator Prompt;
+
+function Invoke-VimOnNT {
+	wsl vim $args
+};
 
 if ($IsLinux -Or $IsOSX) {
-	Set-Alias vim nvim
+	Set-Alias -Name "vim" -Value "nvim" -Description "Use Neovim instead of vim on non-windows platforms";
 } else {
-	Set-Alias less more
+	Import-PackageProvider -Name "ChocolateyGet" | Out-Null
+	Set-Alias -Name "vim" -Value Invoke-VimOnNT -Description "Use WSL for vim";
 }
 
-# this char is not supported with default fonts for most platforms
-[char]$prompt = 0x276F
+[char] $prompt = 0x276F
 
 function prompt {
 	$prompt + " "
-}
+};
