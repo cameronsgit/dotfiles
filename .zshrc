@@ -22,7 +22,6 @@ alias cls=clear
 alias vim=nvim
 alias dir="ls -l"
 alias git=hub
-alias iCloud="/Users/sowderca/Library/Mobile\ Documents/com~apple~CloudDocs/Projects/"
 
 # Evaluate environmental changes
 eval `opam config env`
@@ -61,12 +60,12 @@ export JDK_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
 export NVM_DIR='/Users/sowderca/.nvm'
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
- #Misc
-eval `opam config env`
-eval "$(rbenv init -)"
-
 function system-update() {
 	bash /Users/sowderca/Scripts/Shell/system-update.sh
+}
+
+function sync-devwork() {
+	bash /Users/sowderca/Scripts/Shell/syncDevwork.sh
 }
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -38,3 +38,19 @@
 	gpgsign = true
 [gpg]
 	program = /usr/local/bin/gpg
+[help]
+	autoCorrect = -1
+[pull]
+	ff = only
+[push]
+	default = current
+[log]
+	abbrevCommit = true
+	decorate = short
+[apply]
+	ignoreWhitespace = change
+[rerere]
+	enabled = true
+	autoUpdate = true
+[am]
+	threeWay = true
