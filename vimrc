@@ -27,6 +27,7 @@ call plug#begin()
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'w0rp/ale'
 	Plug 'rust-lang/rust.vim'
+	Plug 'hackerpilot/dcd'
 	Plug 'cespare/vim-toml'
 	Plug 'elzr/vim-json'
 	Plug 'pprovost/vim-ps1'
@@ -40,7 +41,10 @@ call plug#begin()
 	Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'roxma/nvim-completion-manager'
 	Plug 'roxma/ncm-rct-complete'
+	Plug 'roxma/clang_complete'
 	Plug 'dafufer/nvim-cm-swift-completer'
+	Plug 'slashmili/alchemist.vim'
+	Plug 'elixir-lang/vim-elixir'
 call plug#end()
 
 " Styles
@@ -83,9 +87,11 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+autocmd FileType swift nmap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeholder)
+autocmd FileType swift imap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeholder)
 
 " Settings
-let g:dutyl_stdImportPaths = ['/usr/local/include/dlang/dmd']
+let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 let g:used_javascript_libs = 'underscore, react, jquery'
 let g:vim_json_syntax_conceal = 0
 let g:go_highlight_functions = 0
