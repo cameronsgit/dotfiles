@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Update Homebrew
+printf "Updating Homebrew..."
+brew update
+printf "Done!\n"
+
+# Upgrade Homebrew
+printf "Upgrading Homebrew...\n"
+brew upgrade
+printf "Skipping upgrade while on beta...\n"
+printf "Done!\n"
+
+# Cleanup Homebrew
+printf "Cleaning up Homebrew..\n"
+brew cleanup
+printf "Done!\n"
+
+printf "Cleaning up installed Casks\n"
+brew cask cleanup
+printf "Done!\n"
+
+printf "Outdated Casks:\n"
+brew cask outdated
+
+printf "Outdated App Store Apps:\n"
+mas outdated
+
+# vim: set syntax=shell
