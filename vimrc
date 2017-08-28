@@ -27,7 +27,6 @@ call plug#begin()
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'w0rp/ale'
 	Plug 'rust-lang/rust.vim'
-	Plug 'hackerpilot/dcd'
 	Plug 'cespare/vim-toml'
 	Plug 'elzr/vim-json'
 	Plug 'pprovost/vim-ps1'
