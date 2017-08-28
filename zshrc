@@ -57,11 +57,11 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 export RUST_SRC_PATH="/Users/sowderca/.multirust/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 # Sync script
 function sync-devwork() {
-	bash /Users/sowderca/Dev/dotfiles/scripts/syncDevwork.sh
+	sh $HOME/.dotfiles/local/bin/sync-devwork
 }
 
 function system-update() {
-	bash /Users/sowderca/Dev/dotfiles/scripts/system-update.sh
+	sh $HOME/.dotfiles/local/bin/system-update
 }
 
 
