@@ -34,7 +34,7 @@ call plug#begin()
 	Plug 'fatih/vim-go'
 	Plug 'idanarye/vim-dutyl'
 	Plug 'octol/vim-cpp-enhanced-highlight'
-	Plug 'reasonml/vim-reason-loader'
+	Plug 'reasonml-editor/vim-reason'
 	Plug 'uarun/vim-protobuf'
 	Plug 'jparise/vim-graphql'
 	Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
