@@ -30,6 +30,7 @@ call plug#begin()
 	Plug 'cespare/vim-toml'
 	Plug 'elzr/vim-json'
 	Plug 'pprovost/vim-ps1'
+	Plug 'b4b4r07/vim-hcl'
 	Plug 'oranget/vim-csharp'
 	Plug 'fatih/vim-go'
 	Plug 'idanarye/vim-dutyl'
@@ -59,6 +60,7 @@ let g:ale_linters = {
 \	'typescript': ['tslint'],
 \	'cpp': ['clang']
 \} 
+
 let g:ale_statusline_format = ['⌦ %d', '⚠︎ %d', '✓ ok']
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_sign_error = '⌦ '
@@ -204,3 +206,4 @@ highlight htmlArg cterm=italic
 highlight Comment cterm=italic
 highlight htmlArg gui=italic
 highlight Comment gui=italic
+
