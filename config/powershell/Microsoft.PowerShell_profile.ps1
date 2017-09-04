@@ -3,7 +3,8 @@ Set-PSReadlineOption -BellStyle None;
 Set-PSReadlineOption -ViModeIndicator Prompt;
 
 function Invoke-VimOnNT {
-    wsl vim $args
+	$rep = $args -replace "\\","/"
+	bash -c "vim $rep"
 };
 
 if ($IsLinux -or $IsOSX) {
@@ -16,5 +17,10 @@ if ($IsLinux -or $IsOSX) {
 [char] $prompt = 0x276F;
 
 function prompt {
-    $prompt + " "
+	if ($isLinux -or $isOSX) {
+		$prompt + " "
+	} else {
+		Write-Host ($prompt) -NowNewLine -ForegroundColor DarkMagenta
+			return ''
+	}
 };
