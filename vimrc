@@ -56,7 +56,7 @@ colorscheme base16-gruvbox-dark-medium
 let g:ale_linters = {
 \	'typescript': ['tslint'],
 \	'cpp': ['clang']
-\} 
+\}
 
 let g:ale_statusline_format = ['⌦ %d', '⚠︎ %d', '✓ ok']
 let g:ale_echo_msg_error_str = 'Error'
@@ -92,12 +92,12 @@ autocmd FileType swift imap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeh
 let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 let g:used_javascript_libs = 'underscore, react, jquery'
 let g:vim_json_syntax_conceal = 0
-"let g:go_highlight_functions = 0
-"let g:go_highlight_methods = 1
-"let g:go_highlight_fields = 1
-"let g:go_highlight_types = 1
-"let g:go_highlight_operators = 1
-"let g:go_highlight_build_constraints = 1
+let g:go_highlight_functions = 0
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_enabled = 0
 let g:indentLine_leadingSpaceEnabled = 1
@@ -138,7 +138,7 @@ set tabstop=4
 set softtabstop=4
 set noexpandtab
 set cindent
-set listchars=tab:→\  
+set listchars=tab:→\
 set regexpengine=1
 set ttyfast
 set showcmd
