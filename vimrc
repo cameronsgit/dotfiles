@@ -35,7 +35,6 @@ call plug#begin()
 	Plug 'fatih/vim-go'
 	Plug 'idanarye/vim-dutyl'
 	Plug 'octol/vim-cpp-enhanced-highlight'
-	Plug 'reasonml-editor/vim-reason'
 	Plug 'uarun/vim-protobuf'
 	Plug 'jparise/vim-graphql'
 	Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
@@ -43,8 +42,6 @@ call plug#begin()
 	Plug 'roxma/ncm-rct-complete'
 	Plug 'roxma/clang_complete'
 	Plug 'dafufer/nvim-cm-swift-completer'
-	Plug 'slashmili/alchemist.vim'
-	Plug 'elixir-lang/vim-elixir'
 call plug#end()
 
 " Styles
@@ -95,12 +92,12 @@ autocmd FileType swift imap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeh
 let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 let g:used_javascript_libs = 'underscore, react, jquery'
 let g:vim_json_syntax_conceal = 0
-let g:go_highlight_functions = 0
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
+"let g:go_highlight_functions = 0
+"let g:go_highlight_methods = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_types = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_build_constraints = 1
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_enabled = 0
 let g:indentLine_leadingSpaceEnabled = 1

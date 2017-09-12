@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Cleanup
+printf "Cleaning...\n"
+brew cleanup
+printf "Done!\n"
+
 # Update Homebrew
 printf "Updating Homebrew..."
 brew update
@@ -8,7 +13,6 @@ printf "Done!\n"
 # Upgrade Homebrew
 printf "Upgrading Homebrew...\n"
 brew upgrade
-printf "Skipping upgrade while on beta...\n"
 printf "Done!\n"
 
 # Cleanup Homebrew
