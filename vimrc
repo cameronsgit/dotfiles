@@ -138,7 +138,7 @@ set tabstop=4
 set softtabstop=4
 set noexpandtab
 set cindent
-set listchars=tab:→\
+set listchars=tab:→\ 
 set regexpengine=1
 set ttyfast
 set showcmd

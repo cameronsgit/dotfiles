@@ -7,7 +7,7 @@ function Invoke-VimOnNT {
 	bash -c "vim $rep"
 };
 
-if ($IsLinux -or $IsOSX) {
+if ($IsLinux -or $IsMacOS) {
     Set-Alias -Name "vim" -Value "nvim" -Description "Use Neovim instead of vim on non-Windows platforms";
 } else {
     Import-PackageProvider -Name "ChocolateyGet" | Out-Null
@@ -17,7 +17,7 @@ if ($IsLinux -or $IsOSX) {
 [char] $prompt = 0x276F;
 
 function prompt {
-	if ($isLinux -or $isOSX) {
+	if ($isLinux -or $isMacOS) {
 		$prompt + " "
 	} else {
 		Write-Host ($prompt) -NowNewLine -ForegroundColor DarkMagenta
