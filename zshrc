@@ -49,6 +49,8 @@ alias cls=clear
 alias vim=nvim
 alias dir="ls -l"
 alias git=hub
+alias pip=pip3
+alias powershell=pwsh
 
 # Env setup
 export NVM_DIR="$HOME/.nvm"
@@ -88,6 +90,3 @@ if [ -f '/Users/sowderca/Workspace/google-cloud-sdk/path.zsh.inc' ]; then source
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/sowderca/Workspace/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/sowderca/Workspace/google-cloud-sdk/completion.zsh.inc'; fi
-
-# OPAM configuration
-. /Users/sowderca/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

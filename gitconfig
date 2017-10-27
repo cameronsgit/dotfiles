@@ -54,3 +54,7 @@
 	autoUpdate = true
 [am]
 	threeWay = true
+[color "dif"]
+	old = red strike
+[color]
+	ui = true

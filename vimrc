@@ -40,7 +40,7 @@ call plug#begin()
 	Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'roxma/nvim-completion-manager'
 	Plug 'roxma/ncm-rct-complete'
-	Plug 'roxma/clang_complete'
+	Plug 'roxma/ncm-clang'
 	Plug 'dafufer/nvim-cm-swift-completer'
 call plug#end()
 
@@ -122,6 +122,7 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd BufRead,BufNewFile *.rs set ft=rust
 autocmd BufRead,BufNewFile *.fsx set filetype=fsharp
+autocmd BufEnter *.cpp,*.h,*.hpp,*.hxx let g:ale_cpp_clang_options = join(ncm_clang#compilation_info()['args'], ' ')
 
 " Options
 set omnifunc=syntaxcomplete#Complete
@@ -138,7 +139,9 @@ set tabstop=4
 set softtabstop=4
 set noexpandtab
 set cindent
-set listchars=tab:→\ 
+set nobackup
+set noswapfile
+set list listchars=tab:→\ ,trail:·
 set regexpengine=1
 set ttyfast
 set showcmd
