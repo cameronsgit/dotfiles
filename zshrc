@@ -2,7 +2,7 @@
 bindkey -v
 
 # zstyle
-zstyle :compinstall filename '/Users/sowderca/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 # options
 setopt interactivecomments
@@ -49,7 +49,7 @@ alias cls=clear
 alias vim=nvim
 alias dir="ls -l"
 alias git=hub
-alias pip=pip3
+alias pip=pip2
 alias powershell=pwsh
 
 # Env setup
@@ -59,7 +59,7 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export CLICOLOR=1
 export PATH=$PATH:$GOPATH/bin
 export PATH="$HOME/.fastlane/bin:$PATH"
-export RUST_SRC_PATH="/Users/sowderca/.multirust/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+export RUST_SRC_PATH="$HOME/.multirust/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 
 # Sync script
 function sync-devwork() {
@@ -70,9 +70,8 @@ function system-update() {
 	sh $HOME/.dotfiles/local/bin/system-update
 }
 
-
 # Settings for base16
-BASE16_SHELL=$HOME/.config/base16-shell
+BASE16_SHELL="$HOME/.config/base16-shell"
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # iTerm2 shell integration
@@ -86,7 +85,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/sowderca/Workspace/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/sowderca/Workspace/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/Workspace/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/Workspace/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/sowderca/Workspace/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/sowderca/Workspace/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/Workspace/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/Workspace/google-cloud-sdk/completion.zsh.inc"; fi
