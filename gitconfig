@@ -1,60 +1,60 @@
 [color "diff"]
-	old = red strike
-	new = green italic
+    old = red strike
+    new = green italic
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
 [user]
-	name = Cameron Sowder
-	email = cameron@sowder.io
-	signingkey = 8F43F6DD
+    name = Cameron Sowder
+    email = cameron@sowder.io
+    signingkey = 8F43F6DD
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [core]
-	editor = nvim
-	excludesfile = /Users/sowderca/.gitignore_global
+    editor = nvim
+    excludesfile = /Users/sowderca/.gitignore_global
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustexitcode = true
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustexitcode = true
 [merge]
-	tool = Kaleidoscope
+    tool = Kaleidoscope
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
-	prompt = false
+    prompt = false
 [mergetool]
-	prompt = false
+    prompt = false
 [diff]
-	tool = Kaleidoscope
+    tool = Kaleidoscope
 [gui]
-	fontdiff = -family \"Operator Mono for Powerline\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
-	tabsize = 4
+    fontdiff = -family \"Operator Mono for Powerline\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+    tabsize = 4
 [commit]
-	template = /Users/sowderca/.stCommitMsg
-	gpgsign = true
+    template = /Users/sowderca/.stCommitMsg
+    gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+    program = /usr/local/bin/gpg
 [help]
-	autoCorrect = -1
+    autoCorrect = -1
 [pull]
-	ff = only
+    ff = only
 [push]
-	default = current
+    default = current
 [log]
-	abbrevCommit = true
-	decorate = short
+    abbrevCommit = true
+    decorate = short
 [apply]
-	ignoreWhitespace = change
+    ignoreWhitespace = change
 [rerere]
-	enabled = true
-	autoUpdate = true
+    enabled = true
+    autoUpdate = true
 [am]
-	threeWay = true
+    threeWay = true
 [color "dif"]
-	old = red strike
+    old = red strike
 [color]
-	ui = true
+    ui = true

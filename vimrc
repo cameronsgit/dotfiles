@@ -1,47 +1,50 @@
 " Automatic Vim-Plug installation unless on Windows
 if !has('win32')
-	if empty(glob('~/.vim/autoload/plug.vim'))
-		silent !mkdir -p ~/.vim/autoload
-		silent !curl -fLo ~/.vim/autoload/plug.vim
-			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		au VimEnter * PlugInstall
-	endif
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        silent !mkdir -p ~/.vim/autoload
+        silent !curl -fLo ~/.vim/autoload/plug.vim
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        au VimEnter * PlugInstall
+    endif
 endif
 
 " Plugins
 call plug#begin()
-	Plug 'tpope/vim-fugitive'
-	Plug 'scrooloose/nerdtree'
-	Plug 'chriskempson/base16-vim'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'wakatime/vim-wakatime'
-	Plug 'othree/javascript-libraries-syntax.vim'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'christoomey/vim-tmux-navigator'
-	Plug 'leafgarland/typescript-vim'
-	Plug 'keith/swift.vim'
-	Plug 'editorconfig/editorconfig-vim'
-	Plug 'majutsushi/tagbar'
-	Plug 'nathanaelkane/vim-indent-guides'
-	Plug 'w0rp/ale'
-	Plug 'rust-lang/rust.vim'
-	Plug 'cespare/vim-toml'
-	Plug 'elzr/vim-json'
-	Plug 'pprovost/vim-ps1'
-	Plug 'b4b4r07/vim-hcl'
-	Plug 'oranget/vim-csharp'
-	Plug 'fatih/vim-go'
-	Plug 'idanarye/vim-dutyl'
-	Plug 'octol/vim-cpp-enhanced-highlight'
-	Plug 'uarun/vim-protobuf'
-	Plug 'jparise/vim-graphql'
-	Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-	Plug 'roxma/nvim-completion-manager'
-	Plug 'roxma/ncm-rct-complete'
-	Plug 'roxma/ncm-clang'
-	Plug 'dafufer/nvim-cm-swift-completer'
+    Plug 'tpope/vim-fugitive'
+    Plug 'scrooloose/nerdtree'
+    Plug 'chriskempson/base16-vim'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'wakatime/vim-wakatime'
+    Plug 'othree/javascript-libraries-syntax.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'keith/swift.vim'
+    Plug 'editorconfig/editorconfig-vim'
+    Plug 'davidoc/taskpaper.vim'
+    Plug 'majutsushi/tagbar'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'w0rp/ale'
+    Plug 'rust-lang/rust.vim'
+    Plug 'cespare/vim-toml'
+    Plug 'elzr/vim-json'
+    Plug 'pprovost/vim-ps1'
+    Plug 'b4b4r07/vim-hcl'
+    Plug 'oranget/vim-csharp'
+    Plug 'fatih/vim-go'
+    Plug 'kchmck/vim-coffee-script'
+    Plug 'idanarye/vim-dutyl'
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'uarun/vim-protobuf'
+    Plug 'jparise/vim-graphql'
+    Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'mhartington/nvim-typescript'
+    Plug 'roxma/nvim-completion-manager'
+    Plug 'roxma/ncm-rct-complete'
+    Plug 'roxma/ncm-clang'
+    Plug 'dafufer/nvim-cm-swift-completer'
 call plug#end()
 
 " Styles
@@ -54,8 +57,8 @@ colorscheme base16-gruvbox-dark-medium
 
 " Lint
 let g:ale_linters = {
-\	'typescript': ['tslint'],
-\	'cpp': ['clang']
+\   'typescript': ['tslint'],
+\   'cpp': ['clang']
 \}
 
 let g:ale_statusline_format = ['⌦ %d', '⚠︎ %d', '✓ ok']
@@ -77,10 +80,10 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-	\ "\<lt>C-n>" :
-	\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-	\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-	\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+    \ "\<lt>C-n>" :
+    \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+    \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+    \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -103,9 +106,9 @@ let g:indentLine_enabled = 0
 let g:indentLine_leadingSpaceEnabled = 1
 
 let g:LanguageClient_serverCommands = {
-	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-	\ 'dart': ['dart_language_server']
-	\ }
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'dart': ['dart_language_server']
+    \ }
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
@@ -137,11 +140,13 @@ set magic
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-set noexpandtab
+set expandtab
+set smarttab
 set cindent
 set nobackup
 set noswapfile
-set list listchars=tab:→\ ,trail:·
+set list
+set listchars=tab:→\ ,trail:·,nbsp:•
 set regexpengine=1
 set ttyfast
 set showcmd
@@ -163,43 +168,43 @@ set novisualbell
 set background=dark
 
 if has("syntax")
-	syntax on
+    syntax on
 endif
 
 if has('win32')
-	let g:vim_home_path = '~/vimfiles'
-	set nolist
+    let g:vim_home_path = '~/vimfiles'
+    set nolist
 elseif has('nvim')
-	set clipboard+=unnamedplus
-	set list
-	let g:vim_home_path = '~/.vim'
+    set clipboard+=unnamedplus
+    set list
+    let g:vim_home_path = '~/.vim'
 else
-	set list
-	let g:vim_home_path = '~/.vim'
+    set list
+    let g:vim_home_path = '~/.vim'
 endif
 
 " GUI Settings
 if has("gui_running")
-	set guioptions-=m  "remove menu bar
-	set guioptions-=T  "remove toolbar
-	set guioptions-=r  "remove right-hand scroll bar
-	set guioptions-=L  "remove left-hand scroll bar
-	if has("gui_gtk2")
-		set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
-	elseif has("gui_macvim")
-		set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
-	elseif has("gui_win32")
-		set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
-	endif
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
+    if has("gui_gtk2")
+        set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
+    elseif has("gui_macvim")
+        set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
+    elseif has("gui_win32")
+        set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
+    endif
 endif
 
 if ! has('gui_running')
-	set ttimeoutlen=10
-	augroup FastEscape
-		autocmd!
-		au InsertEnter * set timeoutlen=0
-		au InsertLeave * set timeoutlen=1000
-	augroup END
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
 endif
 
 highlight htmlArg cterm=italic

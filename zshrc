@@ -10,6 +10,7 @@ setopt interactivecomments
 # compinit
 autoload -Uz compinit
 autoload -U colors
+autoload -U add-zsh-hook
 colors
 compinit
 
@@ -80,6 +81,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # NVM / Node.js
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# RBENV
+eval "$(rbenv init -)"
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
