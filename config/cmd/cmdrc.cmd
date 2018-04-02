@@ -1,3 +1,4 @@
+:: vim: set ft=dosbatch: ::
 @echo off
 
 :: I'm using alias.bat located in %USERPROFILE%\bin\aliases.bat

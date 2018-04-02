@@ -1,3 +1,5 @@
+# vim: set ft=gitconfig: #
+
 [color "diff"]
     old = red strike
     new = green italic
@@ -15,6 +17,10 @@
 [core]
     editor = nvim
     excludesfile = /Users/sowderca/.gitignore_global
+[instaweb]
+    local = true
+    httpd = webrick
+    browser = open
 [alias]
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [mergetool "Kaleidoscope"]

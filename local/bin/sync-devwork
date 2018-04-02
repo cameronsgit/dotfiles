@@ -1,4 +1,6 @@
 #!bin/sh
+# vim: set ft=sh: #
+
 printf "\e[32m Switching directories...\e[0m \n"
 pushd /Users/sowderca/Dev
 printf "\e[32m Updating git repos...\e[0m \n"

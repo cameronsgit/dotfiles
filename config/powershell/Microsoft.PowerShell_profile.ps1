@@ -1,6 +1,24 @@
-Set-PSReadlineOption -EditMode Vi;
-Set-PSReadlineOption -BellStyle None;
-Set-PSReadlineOption -ViModeIndicator Prompt;
+$PSReadLineOptions = @{
+    EditMode = 'Vi'
+    ViModeIndicator = 'Prompt'
+    BellStyle = 'None'
+    Colors = @{
+        Command = "`e[37m"
+        Comment = '#383838'
+        Number = '#BA8BAF'
+        Member = "`e[93m"
+        String = "`e[32m"
+        Variable = '#7CAFC2'
+        Selection = '#B8B8B8'
+        DefaultToken = '#AB4642'
+        Operator = "`e[96m"
+        Type = '#DC9656'
+        Parameter = "`e[37m"
+    }
+};
+
+Set-PSReadlineOption @PSReadLineOptions;
+Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete;
 
 function Invoke-VimOnNT {
     $rep = $args -replace "\\","/";
@@ -21,10 +39,7 @@ if ($IsLinux -or $IsMacOS) {
 [char] $prompt = 0x276F;
 
 function prompt {
-    if ($isLinux -or $isMacOS) {
-        $prompt + " ";
-    } else {
-        Write-Host -Object $prompt -NoNewline -ForegroundColor DarkMagenta;
-        return " ";
-    }
+    Write-Host -Object $prompt -NoNewline -ForegroundColor DarkMagenta;
+    return " ";
 };
+

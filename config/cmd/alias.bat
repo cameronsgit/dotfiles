@@ -1,5 +1,5 @@
+rem vim: set ft=dosbatch:
 @echo off
-
 
 if "%aliases%" == "" (
   set ALIASES=%USERPROFILE%\.dotfiles\cmd\user-aliases.cmd
@@ -110,11 +110,11 @@ exit /b
 
 :p_help
 echo.Usage:
-echo. 
+echo.
 echo.	alias [options] [alias=full command]
-echo. 
+echo.
 echo.Options:
-echo. 
+echo.
 echo.     /d [alias]     Delete an [alias].
 echo.     /f [macrofile] Path to the [macrofile] you want to store the new alias in.
 echo.                    Default: %cmder_root%\config\user-aliases.cmd

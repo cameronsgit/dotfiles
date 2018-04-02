@@ -45,6 +45,7 @@ call plug#begin()
     Plug 'roxma/ncm-rct-complete'
     Plug 'roxma/ncm-clang'
     Plug 'dafufer/nvim-cm-swift-completer'
+    Plug 'rhysd/vim-crystal'
 call plug#end()
 
 " Styles
@@ -52,12 +53,11 @@ let t_Co=256
 let base16colorspace=256
 let airline_theme="base16"
 let g:airline_powerline_fonts = 1
-let g:airline_section_y = '%{ALEGetStatusLine()}'
+let g:airline#extensions#ale#enabled = 1
 colorscheme base16-gruvbox-dark-medium
 
 " Lint
 let g:ale_linters = {
-\   'typescript': ['tslint'],
 \   'cpp': ['clang']
 \}
 
@@ -72,6 +72,8 @@ let g:ale_lint_on_text_changed = 0
 
 " Make
 let g:typescript_compiler_binary = 'tsc'
+call dutyl#register#tool('dcd-client','/usr/local/Cellar/dcd/0.9.2/bin/dcd-client')
+call dutyl#register#tool('dcd-server','/usr/local/Cellar/dcd/0.9.2/bin/dcd-server')
 
 " Custom Keybindings
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -93,6 +95,7 @@ autocmd FileType swift imap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeh
 
 " Settings
 let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+let g:dutyl_stdImportPaths=['/usr/local/Cellar/dmd/2.079.0/include/dlang/dmd/']
 let g:used_javascript_libs = 'underscore, react, jquery'
 let g:vim_json_syntax_conceal = 0
 let g:go_highlight_functions = 0
@@ -101,17 +104,33 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_enabled = 0
-let g:indentLine_leadingSpaceEnabled = 1
+
+
+ let g:tagbar_type_rust = {
+    \ 'ctagstype' : 'rust',
+    \ 'kinds' : [
+        \'T:types,type definitions',
+        \'f:functions,function definitions',
+        \'g:enum,enumeration names',
+        \'s:structure names',
+        \'m:modules,module names',
+        \'c:consts,static constants',
+        \'t:traits',
+        \'i:impls,trait implementations',
+    \]
+    \}
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'dart': ['dart_language_server']
+    \ 'rust': ['rls'],
+    \ 'dart': ['dart_language_server'],
+    \ 'html': ['html-languageserver', '--stdio'],
+    \ 'json': ['json-languageserver', '--stdio'],
+    \ 'css': ['css-languageserver', '--stdio']
     \ }
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
+let g:nvim_typescript#javascript_support = 1
 
 " FileType Options
 filetype plugin indent on
@@ -133,6 +152,7 @@ set noshowmode
 set shortmess+=c
 set complete+=k
 set termguicolors
+"set cursorline
 set fileformats=unix,dos,mac
 set completeopt-=preview
 set hlsearch
@@ -211,4 +231,3 @@ highlight htmlArg cterm=italic
 highlight Comment cterm=italic
 highlight htmlArg gui=italic
 highlight Comment gui=italic
-

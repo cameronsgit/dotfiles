@@ -49,8 +49,8 @@ zplug load
 alias cls=clear
 alias vim=nvim
 alias dir="ls -l"
+alias del=rm
 alias git=hub
-alias pip=pip2
 alias powershell=pwsh
 
 # Env setup
@@ -87,9 +87,3 @@ eval "$(rbenv init -)"
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/Workspace/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/Workspace/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/Workspace/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/Workspace/google-cloud-sdk/completion.zsh.inc"; fi

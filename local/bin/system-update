@@ -1,4 +1,5 @@
 #!/bin/bash
+# vim: set ft=sh: #
 
 # Cleanup
 printf "Cleaning...\n"
@@ -20,14 +21,12 @@ printf "Cleaning up Homebrew..\n"
 brew cleanup
 printf "Done!\n"
 
+printf "Outdated Casks:\n"
+brew cask upgrade
+
 printf "Cleaning up installed Casks\n"
 brew cask cleanup
 printf "Done!\n"
 
-printf "Outdated Casks:\n"
-brew cask outdated
-
 printf "Outdated App Store Apps:\n"
 mas outdated
-
-# vim: set syntax=shell
