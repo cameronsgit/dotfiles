@@ -27,8 +27,7 @@ source ~/.zplug/init.zsh
 zplug "plugins/git", from:oh-my-zsh, as:plugin
 zplug "plugins/vi-mode", from:oh-my-zsh, as:plugin
 zplug "mafredri/zsh-async", from:github
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
 
