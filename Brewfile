@@ -1,0 +1,152 @@
+# vim: set ft=ruby:
+tap 'homebrew/bundle'
+tap 'homebrew/cask'
+tap 'homebrew/cask-drivers'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+tap 'homebrew/core'
+tap 'homebrew/livecheck'
+tap 'thoughtbot/formulae'
+
+cask 'dotnet-sdk'
+cask 'powershell'
+cask 'qlcolorcode'
+cask 'qlimagesize'
+cask 'qlmarkdown'
+cask 'qlstephen'
+cask 'qlvideo'
+cask 'quicklook-json'
+cask 'quicklookase'
+cask 'vagrant'
+cask 'webpquicklook'
+cask 'visual-studio'
+cask 'visual-studio-code'
+cask 'citrix-receiver'
+cask 'microsoft-office'
+cask 'microsoft-teams'
+cask 'vmware-fusion'
+cask 'docker'
+cask 'sketch'
+cask 'origami-studio'
+cask 'dungeon-crawl-stone-soup-tiles'
+cask 'paw'
+cask 'iterm2-nightly'
+cask 'robo-3t'
+cask 'gpg-suite'
+
+brew 'aspell'
+brew 'autoconf'
+brew 'cairo'
+brew 'cmake'
+brew 'composer'
+brew 'consul'
+brew 'editorconfig'
+brew 'ffmpeg'
+brew 'fontconfig'
+brew 'fpp'
+brew 'freetds'
+brew 'freetype'
+brew 'fribidi'
+brew 'fzf'
+brew 'gdbm'
+brew 'gettext'
+brew 'git-lfs'
+brew 'glib'
+brew 'gmp'
+brew 'gnutls'
+brew 'graphite2'
+brew 'harfbuzz'
+brew 'highlight'
+brew 'hub'
+brew 'icu4c'
+brew 'jemalloc'
+brew 'jpeg'
+brew 'kubernetes-cli'
+brew 'kubernetes-helm'
+brew 'lame'
+brew 'libass'
+brew 'libevent'
+brew 'libffi'
+brew 'libgcrypt'
+brew 'libgpg-error'
+brew 'libidn2'
+brew 'libpng'
+brew 'libtasn1'
+brew 'libtermkey'
+brew 'libtiff'
+brew 'libunistring'
+brew 'libuv'
+brew 'libvterm'
+brew 'little-cms2'
+brew 'lua'
+brew 'lua@5.1'
+brew 'luajit'
+brew 'mas'
+brew 'maven'
+brew 'mpv'
+brew 'msgpack'
+brew 'mujs'
+brew 'neovim'
+brew 'nettle'
+brew 'nomad'
+brew 'openssl'
+brew 'p11-kit'
+brew 'p7zip'
+brew 'packer'
+brew 'pcre'
+brew 'perl'
+brew 'pixman'
+brew 'pkg-config'
+brew 'pyenv'
+brew 'pyenv-virtualenv'
+brew 'python@2'
+brew 'ranger'
+brew 'rbenv'
+brew 'rcm'
+brew 'readline'
+brew 'reattach-to-user-namespace'
+brew 'ruby-build'
+brew 'serf'
+brew 'sourcekitten'
+brew 'sqlite'
+brew 'swagger-codegen'
+brew 'terraform'
+brew 'tmux'
+brew 'tree'
+brew 'unibilium'
+brew 'unrar'
+brew 'vault'
+brew 'watchman'
+brew 'weechat'
+brew 'wget'
+brew 'x264'
+brew 'xctool'
+brew 'xvid'
+brew 'xz'
+brew 'youtube-dl'
+
+
+mas 'OmniOutliner', id: 1142578772
+mas 'Kaleidoscope', id: 587512244
+mas 'TaskPaper', id: 1090940630
+mas 'Remote Desktop', id: 409907375
+mas 'Microsoft OneNote', id: 784801555
+mas 'OneDrive', id: 823766827
+mas 'OmniGraffle', id: 1142578753
+mas 'GarageBand', id: 682658836
+mas 'OmniPlan', id: 1040002810
+mas 'iBooks Author', id: 490152466
+mas 'Server', id: 883878097
+mas 'MindNode', id: 1289197285
+mas 'Reeder', id: 880001334
+mas 'Xcode', id: 497799835
+mas 'Affinity Photo', id: 824183456
+mas 'Medis', id: 1063631769
+mas 'OmniFocus', id: 867299399
+mas 'iMovie', id: 408981434
+mas 'Apple Configurator 2', id: 1037126344
+mas 'Microsoft Remote Desktop', id: 1295203466
+mas 'Slack', id: 803453959
+mas 'SQLPro Studio', id: 985614903
+mas 'Affinity Designer', id: 824171161
+mas 'Tyme2', id: 1063996724

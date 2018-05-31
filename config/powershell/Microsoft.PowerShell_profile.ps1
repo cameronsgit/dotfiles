@@ -1,25 +1,22 @@
-$PSReadLineOptions = @{
-    EditMode = 'Vi'
-    ViModeIndicator = 'Prompt'
-    BellStyle = 'None'
-    Colors = @{
-        Command = "`e[37m"
-        Comment = '#383838'
-        Number = '#BA8BAF'
-        Member = "`e[93m"
-        String = "`e[32m"
-        Variable = '#7CAFC2'
-        Selection = '#B8B8B8'
-        DefaultToken = '#AB4642'
-        Operator = "`e[96m"
-        Type = '#DC9656'
-        Parameter = "`e[37m"
-    }
-};
-
-Set-PSReadlineOption @PSReadLineOptions;
+Set-PSReadlineOption -EditMode Vi;
+Set-PSReadlineOption -BellStyle None;
+Set-PSReadlineOption -ViModeIndicator Prompt;
+Set-PSReadlineOption -ShowToolTips;
 Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete;
-
+<#
+Set-PSReadlineOption -TypeForegroundColor '#DC9656';
+Set-PSReadlineOption -CommandForegroundColor "`e[37m";
+Set-PSReadlineOption -CommentForegroundColor '#383838';
+Set-PSReadlineOption -NumberForegroundColor '#BA8BAF';
+Set-PSReadlineOption -MemberForegroundColor "`e[93m";
+Set-PSReadlineOption -StringForegroundColor "`e[32m";
+Set-PSReadlineOption -VariableForegroundColor '#7CAFC2';
+Set-PSReadlineOption -SelectionForegroundColor '#B8B8B8';
+Set-PSReadlineOption -DefaultTokenForegroundColor '#AB4642';
+Set-PSReadlineOption -OperatorForegroundColor "`e[96m";
+Set-PSReadlineOption -TypeForegroundColor '#DC9656';
+Set-PSReadlineOption -ParameterForegroundColor "`e[37m";
+#>
 function Invoke-VimOnNT {
     $rep = $args -replace "\\","/";
     bash -c "vim $rep";
@@ -37,9 +34,13 @@ if ($IsLinux -or $IsMacOS) {
 }
 
 [char] $prompt = 0x276F;
+#Set-PSReadLineOption -PromptText ($prompt + " ")
 
 function prompt {
-    Write-Host -Object $prompt -NoNewline -ForegroundColor DarkMagenta;
-    return " ";
+    if ($isLinux -or $isMacOS) {
+        $prompt + " ";
+    } else {
+        Write-Host -Object $prompt -NoNewline -ForegroundColor DarkMagenta;
+        return " ";
+    }
 };
-

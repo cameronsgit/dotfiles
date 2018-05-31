@@ -6,12 +6,12 @@
 [filter "lfs"]
     required = true
     clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [user]
     name = Cameron Sowder
     email = cameron@sowder.io
-    signingkey = 8F43F6DD
+    signingkey = ED697EDCF9995B71
 [credential]
     helper = osxkeychain
 [core]

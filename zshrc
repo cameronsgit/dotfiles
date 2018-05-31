@@ -59,15 +59,21 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export CLICOLOR=1
 export PATH=$PATH:$GOPATH/bin
 export PATH="$HOME/.fastlane/bin:$PATH"
-export RUST_SRC_PATH="$HOME/.multirust/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export RUST_SRC_PATH="$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/"
+export PYENV_ROOT="$HOME/.pyenv"
+
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 
 # Sync script
 function sync-devwork() {
-	sh $HOME/.dotfiles/local/bin/sync-devwork
+    sh $HOME/.dotfiles/local/bin/sync-devwork
 }
 
 function system-update() {
-	sh $HOME/.dotfiles/local/bin/system-update
+    sh $HOME/.dotfiles/local/bin/system-update
 }
 
 # Settings for base16
@@ -83,6 +89,10 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # RBENV
 eval "$(rbenv init -)"
+
+# PYENV
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

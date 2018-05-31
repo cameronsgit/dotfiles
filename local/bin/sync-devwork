@@ -2,7 +2,7 @@
 # vim: set ft=sh: #
 
 printf "\e[32m Switching directories...\e[0m \n"
-pushd /Users/sowderca/Dev
+pushd /Users/sowderca/Development
 printf "\e[32m Updating git repos...\e[0m \n"
 ls | xargs -P10 -I{} git -C {} pull origin master
 printf "\e[32m Switching back...\e[0m \n"

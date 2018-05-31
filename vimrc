@@ -1,4 +1,4 @@
-" Automatic Vim-Plug installation unless on Windows
+"Automatic Vim-Plug installation unless on Windows
 if !has('win32')
     if empty(glob('~/.vim/autoload/plug.vim'))
         silent !mkdir -p ~/.vim/autoload
@@ -24,6 +24,7 @@ call plug#begin()
     Plug 'keith/swift.vim'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'davidoc/taskpaper.vim'
+    Plug 'vim-scripts/applescript.vim'
     Plug 'majutsushi/tagbar'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'w0rp/ale'
@@ -40,12 +41,11 @@ call plug#begin()
     Plug 'uarun/vim-protobuf'
     Plug 'jparise/vim-graphql'
     Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'mhartington/nvim-typescript'
     Plug 'roxma/nvim-completion-manager'
     Plug 'roxma/ncm-rct-complete'
     Plug 'roxma/ncm-clang'
+    Plug 'mhartington/nvim-typescript'
     Plug 'dafufer/nvim-cm-swift-completer'
-    Plug 'rhysd/vim-crystal'
 call plug#end()
 
 " Styles
@@ -54,7 +54,7 @@ let base16colorspace=256
 let airline_theme="base16"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
-colorscheme base16-gruvbox-dark-medium
+colorscheme base16-gruvbox-dark-hard
 
 " Lint
 let g:ale_linters = {
@@ -72,8 +72,6 @@ let g:ale_lint_on_text_changed = 0
 
 " Make
 let g:typescript_compiler_binary = 'tsc'
-call dutyl#register#tool('dcd-client','/usr/local/Cellar/dcd/0.9.2/bin/dcd-client')
-call dutyl#register#tool('dcd-server','/usr/local/Cellar/dcd/0.9.2/bin/dcd-server')
 
 " Custom Keybindings
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -95,7 +93,6 @@ autocmd FileType swift imap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeh
 
 " Settings
 let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-let g:dutyl_stdImportPaths=['/usr/local/Cellar/dmd/2.079.0/include/dlang/dmd/']
 let g:used_javascript_libs = 'underscore, react, jquery'
 let g:vim_json_syntax_conceal = 0
 let g:go_highlight_functions = 0
@@ -104,7 +101,8 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-
+" let g:python_host_prog = '/Users/sowderca/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/sowderca/.pyenv/versions/neovim3/bin/python'
 
  let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
@@ -121,8 +119,7 @@ let g:go_highlight_build_constraints = 1
     \}
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rls'],
-    \ 'dart': ['dart_language_server'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'html': ['html-languageserver', '--stdio'],
     \ 'json': ['json-languageserver', '--stdio'],
     \ 'css': ['css-languageserver', '--stdio']
@@ -137,14 +134,11 @@ filetype plugin indent on
 autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd BufRead,BufNewFile *.rs set ft=rust
+autocmd BufRead,BufNewFile *.applescript set filetype=applescript
 autocmd BufRead,BufNewFile *.fsx set filetype=fsharp
-autocmd BufEnter *.cpp,*.h,*.hpp,*.hxx let g:ale_cpp_clang_options = join(ncm_clang#compilation_info()['args'], ' ')
 
 " Options
 set omnifunc=syntaxcomplete#Complete
@@ -152,7 +146,7 @@ set noshowmode
 set shortmess+=c
 set complete+=k
 set termguicolors
-"set cursorline
+set cursorline
 set fileformats=unix,dos,mac
 set completeopt-=preview
 set hlsearch

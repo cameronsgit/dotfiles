@@ -8,3 +8,5 @@ set number
 set noerrorbells
 set novisualbell
 set guioptions-=r
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
