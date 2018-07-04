@@ -20,6 +20,7 @@ call plug#begin()
     Plug 'vim-airline/vim-airline-themes'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'christoomey/vim-tmux-navigator'
+    Plug 'mhartington/nvim-typescript'
     Plug 'leafgarland/typescript-vim'
     Plug 'keith/swift.vim'
     Plug 'editorconfig/editorconfig-vim'
@@ -44,8 +45,8 @@ call plug#begin()
     Plug 'roxma/nvim-completion-manager'
     Plug 'roxma/ncm-rct-complete'
     Plug 'roxma/ncm-clang'
-    Plug 'mhartington/nvim-typescript'
     Plug 'dafufer/nvim-cm-swift-completer'
+    Plug 'cyansprite/deoplete-omnisharp' , {'do': './install.sh'}
 call plug#end()
 
 " Styles
@@ -93,6 +94,7 @@ autocmd FileType swift imap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeh
 
 " Settings
 let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+let g:deoplete_omnisharp_exe_path = '~/.vim/plugged/deoplete-omnisharp/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe'
 let g:used_javascript_libs = 'underscore, react, jquery'
 let g:vim_json_syntax_conceal = 0
 let g:go_highlight_functions = 0
@@ -101,8 +103,8 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-" let g:python_host_prog = '/Users/sowderca/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/sowderca/.pyenv/versions/neovim3/bin/python'
+""let g:python3_host_prog = '/Users/sowderca/.pyenv/versions/neovim2/bin/python'
+"let g:python3_host_prog = '/Users/sowderca/.pyenv/versions/neovim3/bin/python'
 
  let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
@@ -122,12 +124,13 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'html': ['html-languageserver', '--stdio'],
     \ 'json': ['json-languageserver', '--stdio'],
-    \ 'css': ['css-languageserver', '--stdio']
+    \ 'css': ['css-languageserver', '--stdio'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ 'javascript': ['typescript-language-server', '--stdio']
     \ }
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
-let g:nvim_typescript#javascript_support = 1
 
 " FileType Options
 filetype plugin indent on

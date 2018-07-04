@@ -61,7 +61,6 @@ export PATH=$PATH:$GOPATH/bin
 export PATH="$HOME/.fastlane/bin:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export RUST_SRC_PATH="$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/"
-export PYENV_ROOT="$HOME/.pyenv"
 
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
@@ -89,10 +88,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # RBENV
 eval "$(rbenv init -)"
-
-# PYENV
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
