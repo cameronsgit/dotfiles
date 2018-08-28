@@ -1,4 +1,3 @@
-# -*- mode: ruby -*-
 # vi: set ft=ruby :
 
 # Taps
@@ -10,7 +9,7 @@ tap 'homebrew/cask-fonts'
 tap 'homebrew/core'
 tap 'homebrew/livecheck'
 tap 'homebrew/services'
-tap 'sowdeca/formula'
+tap 'sowderca/formula'
 tap 'thoughtbot/formulae'
 tap 'universal-ctags/universal-ctags'
 tap 'wata727/tflint'
