@@ -1,22 +1,22 @@
-Set-PSReadlineOption -EditMode Vi;
-Set-PSReadlineOption -BellStyle None;
-Set-PSReadlineOption -ViModeIndicator Prompt;
-Set-PSReadlineOption -ShowToolTips;
+$PSReadLineOptions = @{
+    EditMode = 'Vi'
+    ViModeIndicator = 'Prompt'
+    BellStyle = 'None'
+};
+
+Set-PSReadlineOption @PSReadLineOptions;
+Set-PSReadlineOption -TokenKind Command -ForegroundColor White;
+Set-PSReadlineOption -TokenKind Parameter -ForegroundColor Gray;
+Set-PSReadlineOption -TokenKind Comment -ForegroundColor DarkGray;
+Set-PSReadlineOption -TokenKind String -ForegroundColor Green;
+Set-PSReadlineOption -TokenKind Variable -ForegroundColor Blue;
+Set-PSReadlineOption -TokenKind Type -ForegroundColor Yellow;
+Set-PSReadlineOption -TokenKind Keyword -ForegroundColor Red;
+Set-PSReadlineOption -TokenKind Operator -ForegroundColor Cyan;
+Set-PSReadlineOption -TokenKind Number -ForegroundColor Magenta;
+Set-PSReadlineOption -TokenKind Member -ForegroundColor DarkYellow;
 Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete;
-<#
-Set-PSReadlineOption -TypeForegroundColor '#DC9656';
-Set-PSReadlineOption -CommandForegroundColor "`e[37m";
-Set-PSReadlineOption -CommentForegroundColor '#383838';
-Set-PSReadlineOption -NumberForegroundColor '#BA8BAF';
-Set-PSReadlineOption -MemberForegroundColor "`e[93m";
-Set-PSReadlineOption -StringForegroundColor "`e[32m";
-Set-PSReadlineOption -VariableForegroundColor '#7CAFC2';
-Set-PSReadlineOption -SelectionForegroundColor '#B8B8B8';
-Set-PSReadlineOption -DefaultTokenForegroundColor '#AB4642';
-Set-PSReadlineOption -OperatorForegroundColor "`e[96m";
-Set-PSReadlineOption -TypeForegroundColor '#DC9656';
-Set-PSReadlineOption -ParameterForegroundColor "`e[37m";
-#>
+
 function Invoke-VimOnNT {
     $rep = $args -replace "\\","/";
     bash -c "vim $rep";
@@ -34,13 +34,12 @@ if ($IsLinux -or $IsMacOS) {
 }
 
 [char] $prompt = 0x276F;
-#Set-PSReadLineOption -PromptText ($prompt + " ")
 
 function prompt {
     if ($isLinux -or $isMacOS) {
         $prompt + " ";
     } else {
-        Write-Host -Object $prompt -NoNewline -ForegroundColor DarkMagenta;
+        Write-Host -Object $prompt -NoNewLine -ForegroundColor DarkMagenta;
         return " ";
     }
 };

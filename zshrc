@@ -51,15 +51,16 @@ alias dir="ls -l"
 alias del=rm
 alias git=hub
 alias powershell=pwsh
+alias start=open
+alias tmux="env TERM=screen-256color tmux"
 
 # Env setup
-export NVM_DIR="$HOME/.nvm"
-export GOPATH="$HOME/Workspace/go"
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export CLICOLOR=1
-export PATH=$PATH:$GOPATH/bin
-export PATH="$HOME/.fastlane/bin:$PATH"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export GOPATH="$HOME/.go"
+export GO111MODULE="auto"
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+export NVM_DIR="$HOME/.nvm"
+export PATH="$HOME/.fastlane/bin:$PATH:$(go env GOPATH)/bin"
 export RUST_SRC_PATH="$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/"
 
 if which ruby >/dev/null && which gem >/dev/null; then
@@ -68,11 +69,11 @@ fi
 
 # Sync script
 function sync-devwork() {
-    sh $HOME/.dotfiles/local/bin/sync-devwork
+    sh $HOME/.local/bin/sync-devwork.sh
 }
 
 function system-update() {
-    sh $HOME/.dotfiles/local/bin/system-update
+    sh $HOME/.local/bin/system-update.sh
 }
 
 # Settings for base16
