@@ -1,22 +1,27 @@
-"Automatic Vim-Plug installation unless on Windows
-if !has('win32')
-    if empty(glob('~/.vim/autoload/plug.vim'))
-        silent !mkdir -p ~/.vim/autoload
-        silent !curl -fLo ~/.vim/autoload/plug.vim
-            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        au VimEnter * PlugInstall
-    endif
+" On Windows, also use '.vim' instead of 'vimfiles'.
+if has('win32') || has('win64') || has('win16')
+    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+endif
+
+" Auto-install Vim-Plug.
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -flo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Plugins
 call plug#begin()
+    Plug 'airblade/vim-gitgutter'
     Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
     Plug 'cespare/vim-toml'
     Plug 'chriskempson/base16-vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'editorconfig/editorconfig-vim'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'hashivim/vim-terraform'
-    Plug 'hhvm/vim-hack'
+    Plug 'keith/sourcekittendaemon.vim'
+    Plug 'keith/swift.vim'
     Plug 'leafgarland/typescript-vim'
     Plug 'majutsushi/tagbar'
     Plug 'ncm2/ncm2'
@@ -37,34 +42,73 @@ call plug#begin()
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vim-scripts/applescript.vim'
+    Plug 'w0rp/ale'
 call plug#end()
 
-" Styles
+" Filetype commands
+augroup SetFileType
+    autocmd!
+    autocmd BufRead,BufNewFile *.applescript set filetype=applescript
+    autocmd BufRead,BufNewFile *.fsx set filetype=fsharp
+    autocmd BufRead,BufNewFile *.m   set filetype=objc
+    autocmd BufRead,BufNewFile *.mm  set filetype=objcpp
+    autocmd BufRead,BufNewFile *.rs  set filetype=rust
+augroup END
 
-let base16colorspace=256
-let airline_theme="base16"
+" UI settings
+let base16colorspace = 256
+let airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
 colorscheme base16-gruvbox-dark-hard
-"
-"" Lint
-"let g:ale_linters = {
-"\   'cpp': ['clang']
-"\}
-"
-"let g:ale_statusline_format = ['⌦ %d', '⚠︎ %d', '✓ ok']
-""let g:ale_echo_msg_error_str = 'Error'
-"let g:ale_sign_error = '⌦ '
-"let g:ale_sign_warning = '⚠'
-"let g:ale_echo_msg_warning_str = 'Warning'
-"let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-"let g:ale_lint_on_save = 1
-"let g:ale_lint_on_text_changed = 0
-"
-"" Make
-"let g:typescript_compiler_binary = 'tsc'
-"
-"" Custom Keybindings
+
+" Linting
+let g:ale_statusline_format = ['⌦ %d', '⚠︎ %d', '✓ ok']
+let g:ale_echo_msg_error_str = 'Error'
+let g:ale_sign_error = '⌦ '
+let g:ale_sign_warning = '⚠'
+let g:ale_echo_msg_warning_str = 'Warning'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_set_highlights = 0
+
+" Plugin Settings
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_hightlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+let g:ale_completion_enabled = 0
+let g:LanguageClient_autoStart = 1
+if has('macunix')
+    let g:ncm2_pyclang#library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+endif
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" Language server settings
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'html': ['html-languageserver', '--stdio'],
+    \ 'json': ['json-languageserver', '--stdio'],
+    \ 'css': ['css-languageserver', '--stdio'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ 'javascript': ['typescript-language-server', '--stdio'],
+    \ 'python': ['pyls'],
+    \ 'obc': ['clangd'],
+    \ 'objcpp': ['clangd'],
+    \ 'swift': ['swift-nest']
+\ }
+
+let g:tagbar_type_ansible = { 'ctagstype': 'ansible', 'kinds': [ 't:tasks' ], 'sort': 0 }
+let g:tagbar_type_css = { 'ctagstype': 'Css', 'kinds': ['c:classes', 's:selectors', 'i:identities'] }
+let g:tagbar_type_make = { 'kinds':['m:macros', 't:targets'] }
+let g:tagbar_type_ps1 = { 'ctagstype': 'powershell', 'kinds': ['f:function','i:filter','a:alias'] }
+let g:tagbar_type_ruby = { 'kinds': ['m:modules','c:classes','d:describes','C:contexts','f:methods','F:singleton methods'] }
+let g:tagbar_type_rust = {'ctagstype': 'rust','kinds' : ['T:types,type definitions','f:functions,function definitions','g:enum,enumeration names','s:structure names','m:modules,module names','c:consts,static constants','t:traits','i:impls,trait implementations'] }
+let g:tagbar_type_typescript = {'ctagstype': 'typescript','kinds': ['c:classes','n:modules','f:functions','v:variables','v:varlambdas','m:members','i:interfaces','e:enums']}
+let g:tagbar_type_go = {'ctagstype': 'go','kinds' : ['p:package','f:function','v:variables','t:type','c:const'] }
+
+" Custom keybindings
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <silent> <F6> :set noet|retab!
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -76,152 +120,85 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
     \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
     \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-"autocmd FileType swift nmap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeholder)
-"autocmd FileType swift imap <buffer> <C-k> <Plug>(swift_completer_jump_to_placeholder)
-"
-"" Settings
-let g:ncm2_pyclang#library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_hightlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_template_highlight = 1
-let g:cpp_concepts_highlight = 1
-"let g:deoplete_omnisharp_exe_path = '~/.vim/plugged/deoplete-omnisharp/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe'
-"let g:used_javascript_libs = 'underscore, react, jquery'
-"let g:vim_json_syntax_conceal = 0
-"let g:go_highlight_functions = 0
-"let g:go_highlight_methods = 1
-"let g:go_highlight_fields = 1
-"let g:go_highlight_types = 1
-"let g:go_highlight_operators = 1
-"let g:go_highlight_build_constraints = 1
-"""let g:python3_host_prog = '/Users/sowderca/.pyenv/versions/neovim2/bin/python'
-""let g:python3_host_prog = '/Users/sowderca/.pyenv/versions/neovim3/bin/python'
-"
-let g:tagbar_type_rust = {
-   \ 'ctagstype' : 'rust',
-   \ 'kinds' : [
-       \'T:types,type definitions',
-       \'f:functions,function definitions',
-       \'g:enum,enumeration names',
-       \'s:structure names',
-       \'m:modules,module names',
-       \'c:consts,static constants',
-       \'t:traits',
-       \'i:impls,trait implementations',
-   \]
-\}
-
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'html': ['html-languageserver', '--stdio'],
-    \ 'json': ['json-languageserver', '--stdio'],
-    \ 'css': ['css-languageserver', '--stdio'],
-    \ 'typescript': ['typescript-language-server', '--stdio'],
-    \ 'javascript': ['typescript-language-server', '--stdio'],
-    \ 'python': ['pyls']
-\ }
-
-"" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-"
-"" FileType Options
-filetype plugin indent on
-autocmd BufEnter * call ncm2#enable_for_buffer()
-autocmd BufRead,BufNewFile *.applescript set filetype=applescript
-autocmd BufRead,BufNewFile *.fsx set filetype=fsharp
-autocmd BufRead,BufNewFile *.m   set filetype=objc
-autocmd BufRead,BufNewFile *.mm  set filetype=objcpp
-autocmd BufRead,BufNewFile *.rs  set filetype=rust
-"
-"" Options
-set omnifunc=syntaxcomplete#Complete
-set completeopt=noinsert,menuone,noselect
-set noshowmode
-set shortmess+=c
-set complete+=k
-set signcolumn=yes
-set termguicolors
+" Minimal desired settings.
+set autowrite
+set background=dark
+set clipboard+=unnamedplus
 set cursorline
 set fileformats=unix,dos,mac
-set completeopt-=preview
-set hlsearch
-set magic
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-set expandtab
-set smarttab
-set cindent
-set nobackup
-set noswapfile
-set list
-set listchars=tab:→\ ,trail:·,nbsp:•
-set regexpengine=1
-set ttyfast
-set showcmd
-set ignorecase
-set smartcase
-set incsearch
-set autowrite
+set guioptions-=L
+set guioptions-=T
+set guioptions-=m
+set guioptions-=r
 set hidden
-set synmaxcol=1000
-set mouse=a
+set list
+set shiftwidth=4
 set number
-set wildmenu
-set splitbelow
-set splitright
-set laststatus=2
+set shortmess+=c
 set titlestring=VIM
-set noerrorbells
-set novisualbell
-set background=dark
 
-if has("syntax")
-    syntax on
+" GUI check
+let s:is_gui = has('nvim') ? (exists('g:nyaovim_version') || exists('g:GtkGuiLoaded')) : has('gui_running')
+
+" Feature checks
+if has('cmdline_hist') | set history=500 | endif
+if has('mouse') || s:is_gui | set mouse=a | endif
+if has('vertsplit') | set splitright | endif
+if has('windows') | set splitbelow | endif
+
+if has('insert_expand')
+  set complete-=i completeopt=noinsert,menuone,preview
+  if v:version >= 800
+    set completeopt+=noinsert,noselect
+  endif
 endif
 
-if has('win32')
-    let g:vim_home_path = '~/vimfiles'
-    set nolist
-elseif has('nvim')
-    set clipboard+=unnamedplus
-    set list
-    let g:vim_home_path = '~/.vim'
-else
-    set list
-    let g:vim_home_path = '~/.vim'
-endif
+" Version checks
+if v:version >= 704 | set expandtab | endif
+if v:version >= 800 || has('nvim-0.1.6') | set listchars=tab:→\ ,trail:·,nbsp:• | endif
 
-"" GUI Settings
-if has("gui_running")
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
-    set guioptions-=L  "remove left-hand scroll bar
-    if has("gui_gtk2")
-        set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
-    elseif has("gui_macvim")
-        set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
-    elseif has("gui_win32")
-        set guifont=Operator\ Mono\ Book\ for\ Powerline:h13
+" Try to mimic nvim-defaults.
+if !has('nvim')
+    " Copied from :help nvim-defaults
+    set autoindent
+    set autoread
+    set backspace=indent,eol,start
+    set belloff=all
+    set cscopeverbose
+    set display=lastline
+    set formatoptions=tcqj
+    set langnoremap
+    set laststatus=2
+    set nrformats=bin,hex
+    set sidescroll=1
+    set smarttab
+    set tabpagemax=50
+    set ttyfast
+    " See :help nvim-from-vim
+    set ttymouse=xterm2
+    set viminfo+=!
+    " Feature checks
+    if exists('+fsync') | set nofsync | endif
+    if has('autocmd') | filetype plugin indent on | endif
+    if has('cmdline_info') | set showcmd ruler | endif
+    if has('extra_search') && has('reltime') | set hlsearch incsearch | endif
+    if has('mksession') | set sessionoptions-=options | endif
+    if has('syntax') && !exists('g:syntax_on') | syntax enable | endif
+    if has('wildmenu') |  set wildmenu | endif
+    if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &runtimepath) ==# ''
+        runtime! macros/matchit.vim
+    endif
+    if has('multi_byte') && !has('nvim')
+        if has('win32') || (has('gui_running') && &encoding ==# 'latin1')
+            set encoding=utf-8
+        endif
     endif
 endif
 
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
-endif
+" Italicize comments
+highlight Comment cterm=italic gui=italic
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 
-highlight htmlArg cterm=italic
-highlight Comment cterm=italic
-highlight htmlArg gui=italic
-highlight Comment gui=italic
+scriptencoding utf-8
+
