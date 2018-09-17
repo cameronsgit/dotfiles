@@ -1,4 +1,4 @@
-#!bin/bash
+#!/usr/bin/env bash
 printf "\\e[32m Switching directories...\\e[0m \\n"
 pushd ~/Development || exit
 printf "\\e[32m Updating git repos...\\e[0m \\n"

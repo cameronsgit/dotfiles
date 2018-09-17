@@ -1,8 +1,4 @@
-#!/bin/bash
-
-# -*- mode: sh -*-
-# vi: set ft=sh :
-
+#!/bin/sh
 softwareupdate --install -all
 brew cleanup
 brew update
