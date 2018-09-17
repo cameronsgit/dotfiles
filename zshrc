@@ -25,6 +25,8 @@ source ~/.zplug/init.zsh
 
 # Load plugins
 zplug "plugins/git", from:oh-my-zsh, as:plugin
+zplug "plugins/docker", from:oh-my-zsh, as:plugin
+zplug "plugins/minikube", from:oh-my-zsh, as:plugin
 zplug "plugins/vi-mode", from:oh-my-zsh, as:plugin
 zplug "mafredri/zsh-async", from:github
 zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
