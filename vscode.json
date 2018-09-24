@@ -1,0 +1,139 @@
+{
+    "explorer.openEditors.visible": 0,
+    "explorer.decorations.colors": false,
+    "workbench.editor.tabCloseButton": "left",
+    "workbench.editor.enablePreview": true,
+    "workbench.statusBar.visible": true,
+    "workbench.sideBar.location": "left",
+    "editor.minimap.enabled": false,
+    "vim.enableNeovim": true,
+    "vim.useCtrlKeys": true,
+    "vim.neovimPath": "nvim",
+    "vim.useSystemClipboard": true,
+    "editor.wordWrap": "on",
+    "editor.fontFamily": "Operator Mono for Powerline",
+    "editor.fontSize": 13,
+    "editor.renderIndentGuides": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.cursorStyle": "line",
+    "editor.snippetSuggestions": "none",
+    "editor.autoClosingBrackets": false,
+    "editor.wordBasedSuggestions": true,
+    "powershell.integratedConsole.showOnStartup": false,
+    "typescript.referencesCodeLens.enabled": true,
+    "team.showWelcomeMessage": false,
+    "msbuildProjectTools": {
+        "logging": {
+            "level": "Information",
+            "seq": {},
+            "file": "",
+            "trace": false
+        },
+        "language": {
+            "disableFeature": {},
+            "useClassicProvider": false,
+            "disable": {
+                "hover": false
+            }
+        },
+        "nuget": {
+            "newestVersionsFirst": true,
+            "includePreRelease": true,
+            "disablePrefetch": false
+        },
+        "schemaVersion": 1
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "mssql.format.keywordCasing": "none",
+    "mssql.format.datatypeCasing": "none",
+    "mssql.intelliSense.lowerCaseSuggestions": true,
+    "mssql.connections": [
+        {
+            "server": "vc3-cw-sql-01",
+            "database": "",
+            "authenticationType": "SqlLogin",
+            "user": "sa",
+            "password": "",
+            "emptyPasswordInput": false,
+            "savePassword": true,
+            "profileName": "ConnectWise"
+        }
+    ],
+    "cSpell.language": "en",
+    "cSpell.dictionaries": [
+       "csharp",
+       "node",
+       "javascript",
+       "javascriptreact",
+       "powershell",
+       "dotnet",
+       "typescript"
+    ],
+    "cSpell.enabledLanguageIds": [
+        "asciidoc",
+        "bat",
+        "c",
+        "cpp",
+        "csharp",
+        "css",
+        "go",
+        "handlebars",
+        "html",
+        "jade",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "latex",
+        "less",
+        "markdown",
+        "php",
+        "plaintext",
+        "powershell",
+        "pub",
+        "python",
+        "restructuredtext",
+        "rust",
+        "scss",
+        "text",
+        "typescript",
+        "typescriptreact",
+        "yml"
+    ],
+    "cSpell.userWords": [
+        "Recurse",
+        "Sowder",
+        "datetime",
+        "kubernetes",
+        "pwsh",
+        "sowderca",
+        "terraform"
+    ],
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "vsicons.associations.folders": [
+        { "icon": "paket", "extensions": ["modules"], "format": "svg" },
+        { "icon": "test", "extensions": ["diagnostics"], "format": "svg" }
+    ],
+    "ruby.useBundler": true,
+    "ruby.lint": {
+        "rubocop": true,
+        "ruby": true
+    },
+    "files.associations": {
+        ".pyre_configuration": "json",
+        "*.sdef": "xml",
+        "*.m": "objective-c",
+        ".clang-format": "yaml"
+    },
+    "python.terminal.activateEnvironment": false,
+    "hdinsight.disableOpenSurveyLink": true,
+    "files.exclude": {
+        "**/.git": false
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "go.useLanguageServer": true,
+    "go.gopath": "~/.go",
+    "d.servedPath": "/Users/sowderca/.vscode/extensions/code-d/bin/serve-d/serve-d",
+    "ai.homepage.openOnStartup": false,
+    "jira-plugin.workingProject": "",
+    "d.dlsPath": "dls"
+}
