@@ -13,7 +13,7 @@ tap 'homebrew/services'
 tap 'thoughtbot/formulae'
 tap 'universal-ctags/universal-ctags'
 tap 'wata727/tflint'
-
+=begin
 # Packages
 brew 'chisel'
 brew 'clang-format'
@@ -42,7 +42,6 @@ brew 'packer'
 brew 'pipenv'
 brew 'protobuf'
 brew 'python'
-brew 'ranger'
 brew 'ranger'
 brew 'rbenv'
 brew 'rcm'
@@ -95,7 +94,7 @@ cask 'visual-studio'
 cask 'visual-studio-code'
 cask 'vmware-fusion'
 cask 'webpquicklook'
-
+=end
 # Store Apps
 mas 'Affinity Designer', id: 824_171_161
 mas 'Affinity Photo', id: 824_183_456
