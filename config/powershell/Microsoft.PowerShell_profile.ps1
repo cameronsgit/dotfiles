@@ -1,20 +1,6 @@
-$PSReadLineOptions = @{
-    EditMode = 'Vi'
-    ViModeIndicator = 'Prompt'
-    BellStyle = 'None'
-};
-
-Set-PSReadlineOption @PSReadLineOptions;
-Set-PSReadlineOption -TokenKind Command -ForegroundColor White;
-Set-PSReadlineOption -TokenKind Parameter -ForegroundColor Gray;
-Set-PSReadlineOption -TokenKind Comment -ForegroundColor DarkGray;
-Set-PSReadlineOption -TokenKind String -ForegroundColor Green;
-Set-PSReadlineOption -TokenKind Variable -ForegroundColor Blue;
-Set-PSReadlineOption -TokenKind Type -ForegroundColor Yellow;
-Set-PSReadlineOption -TokenKind Keyword -ForegroundColor Red;
-Set-PSReadlineOption -TokenKind Operator -ForegroundColor Cyan;
-Set-PSReadlineOption -TokenKind Number -ForegroundColor Magenta;
-Set-PSReadlineOption -TokenKind Member -ForegroundColor DarkYellow;
+Set-PSReadlineOption -EditMode 'Vi';
+Set-PSReadlineOption -ViModeIndicator 'Prompt';
+Set-PSReadlineOption -BellStyle 'None';
 Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete;
 
 function Invoke-VimOnNT {
@@ -37,7 +23,7 @@ if ($IsLinux -or $IsMacOS) {
 
 function prompt {
     if ($isLinux -or $isMacOS) {
-        $prompt + " ";
+        "`e[035m$($prompt) `e[0m";
     } else {
         Write-Host -Object $prompt -NoNewLine -ForegroundColor DarkMagenta;
         return " ";
