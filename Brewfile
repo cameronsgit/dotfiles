@@ -45,7 +45,7 @@ brew "trash"
 brew "tree"
 brew "vault"
 brew "wabt"
-brew "weechat", args: ["with-python@2"]
+brew "weechat", args: ["with-python@2"] # Don't forget to remove this afterwards.
 brew "xctool"
 brew "azure/draft/draft"
 
@@ -57,10 +57,12 @@ cask "discord"
 cask "docker"
 cask "dotnet-sdk"
 cask "flipper"
+cask "google-chrome"
 cask "gpg-suite"
 cask "hazel"
 cask "iterm2"
 cask "java"
+cask "karabiner-elements"
 cask "microsoft-office"
 cask "microsoft-teams"
 cask "minikube"
@@ -74,26 +76,28 @@ cask "vagrant"
 cask "visual-studio"
 cask "visual-studio-code"
 
-# Store Apps
-mas 'Affinity Designer', id: 824_171_161
-mas 'Affinity Photo', id: 824_183_456
-mas 'Apple Configurator 2', id: 1_037_126_344
-mas 'GarageBand', id: 682_658_836
-mas 'iBooks Author', id: 490_152_466
-mas 'iMovie', id: 408_981_434
-mas 'Kaleidoscope', id: 587_512_244
-mas 'Microsoft Remote Desktop', id: 1_295_203_466
-mas 'MindNode', id: 1_289_197_285
-mas 'OmniFocus', id: 867_299_399
-mas 'OmniGraffle', id: 1_142_578_753
-mas 'OmniOutliner', id: 1_142_578_772
-mas 'OmniPlan', id: 1_040_002_810
-mas 'OneDrive', id: 823_766_827
-mas 'Reeder', id: 880_001_334
-mas 'Remote Desktop', id: 409_907_375
-mas 'Server', id: 883_878_097
-mas 'Slack', id: 803_453_959
-mas 'SQLPro Studio', id: 985_614_903
-mas 'TaskPaper', id: 1_090_940_630
-mas 'Tyme2', id: 1_063_996_724
-mas 'Xcode', id: 497_799_835
+# MAS Apps
+mas "Affinity Designer", id: 824_171_161
+mas "Affinity Photo", id: 824_183_456
+mas "Apple Configurator 2", id: 1_037_126_344
+mas "GarageBand", id: 682_658_836
+mas "iBooks Author", id: 490_152_466
+mas "iMovie", id: 408_981_434
+mas "Kaleidoscope", id: 587_512_244
+mas "Microsoft OneNote", id: 784_801_555
+mas "Microsoft Remote Desktop", id: 1_295_203_466
+mas "MindNode", id: 1_289_197_285
+mas "OmniFocus", id: 1_346_203_938
+mas "OmniGraffle", id: 1_142_578_753
+mas "OmniOutliner", id: 1_142_578_772
+mas "OmniPlan", id: 1_040_002_810
+mas "OneDrive", id: 823_766_827
+mas "Reeder", id: 880_001_334
+mas "Remote Desktop", id: 409_907_375
+mas "Server", id: 883_878_097
+mas "Slack", id: 803_453_959
+mas "SQLPro Studio", id: 985_614_903
+mas "TaskPaper", id: 1_090_940_630
+mas "Tyme2", id: 106_399_6724
+mas "Wipr", id: 1_320_666_476
+mas "Xcode", id: 497_799_835
