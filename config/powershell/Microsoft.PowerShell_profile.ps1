@@ -9,26 +9,23 @@ Set-StrictMode -Version 'Latest';
 Import-Module 'PSReadline';
 Import-Module 'posh-git';
 
-Set-PSReadlineOption -EditMode 'Vi';
-Set-PSReadlineOption -ViModeIndicator 'Prompt';
 Set-PSReadlineOption -BellStyle 'None';
+Set-PSReadlineOption -EditMode 'Vi';
 Set-PSReadlineOption -ExtraPromptLineCount 1;
+Set-PSReadlineOption -ViModeIndicator 'Prompt';
 Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete;
 
 [char] $promptIndicator = 0x276F;
-
-$GitPromptSettings.DefaultPromptWriteStatusFirst = $true
+$GitPromptSettings.AfterStatus.Text = $null;
+$GitPromptSettings.BeforeStatus.Text = $null;
+$GitPromptSettings.BranchColor.ForegroundColor = 0x585858;
+$GitPromptSettings.BranchIdenticalStatusSymbol.Text = $null;
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "$([Environment]::NewLine)";
+$GitPromptSettings.DefaultPromptPath.Text = $null;
+$GitPromptSettings.DefaultPromptPrefix.Text = ' ';
 $GitPromptSettings.DefaultPromptSuffix = "$($promptIndicator) ";
 $GitPromptSettings.DefaultPromptSuffix.ForegroundColor = 0xD3869B;
-$GitPromptSettings.DefaultPromptPrefix.Text = ' ';
-$GitPromptSettings.DefaultPromptPath.Text = $null;
-$GitPromptSettings.BranchIdenticalStatusSymbol.Text = $null;
-$GitPromptSettings.BeforeStatus.Text = $null;
-$GitPromptSettings.AfterStatus.Text = $null;
-$GitPromptSettings.BranchColor.ForegroundColor = 0x585858;
-
-[char] $promptIndicator = 0x276F;
+$GitPromptSettings.DefaultPromptWriteStatusFirst = $true
 
 function Invoke-VimOnNT {
     $rep = $args -replace "\\","/";
