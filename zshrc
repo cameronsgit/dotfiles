@@ -1,11 +1,10 @@
 # zstyle
-zstyle :compinstall filename "$HOME/.zshrc"
+zstyle :compinstall filename "${HOME}/.zshrc"
 zmodload zsh/complist
 
 # keybindings
 bindkey -v
 bindkey -M menuselect '^[[Z' reverse-menu-complete
-bindkey -M menuselect '^M' .accept-line
 
 # options
 setopt interactivecomments
@@ -27,10 +26,12 @@ if [[ ! -d ~/.zplug ]]; then
 fi
 
 # Source
-source "${HOME}/.zplug/init.zsh"
+source "${HOME}/.fzf.zsh"
 source "${HOME}/.cargo/env"
+source "${HOME}/.zplug/init.zsh"
 source "${HOME}/.local/bin/sync-devwork.sh"
 source "${HOME}/.local/bin/system-update.sh"
+source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Load plugins
 zplug "plugins/git", from:oh-my-zsh, as:plugin
@@ -81,15 +82,9 @@ export PATH
 BASE16_SHELL="$HOME/.config/base16-shell"
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-# iTerm2 shell integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 # NVM / Node.js
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # RBENV
 eval "$(rbenv init -)"
-
-# FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

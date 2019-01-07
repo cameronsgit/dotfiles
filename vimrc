@@ -18,7 +18,7 @@ call plug#begin()
     Plug 'chriskempson/base16-vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'editorconfig/editorconfig-vim'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'fatih/vim-go'
     Plug 'hashivim/vim-terraform'
     Plug 'keith/sourcekittendaemon.vim'
     Plug 'keith/swift.vim'
@@ -40,10 +40,21 @@ call plug#begin()
     Plug 'scrooloose/nerdtree'
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
+    Plug 'arcticicestudio/nord-vim'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vim-scripts/applescript.vim'
+    Plug 'dylon/vim-antlr'
     Plug 'w0rp/ale'
+    Plug 'vim-scripts/MSIL-Assembly'
 call plug#end()
+
+function! CheckGitCommit()
+    setlocal expandtab shiftwidth=2 tabstop=2 textwidth=72 colorcolumn=+1
+    if has('spell')
+        setlocal spell
+    endif
+    :highlight SpellBad ctermfg=red ctermbg=white
+endfunction
 
 " Filetype commands
 augroup SetFileType
@@ -55,12 +66,18 @@ augroup SetFileType
     autocmd BufRead,BufNewFile *.rs  set filetype=rust
 augroup END
 
+" Filetype settings
+augroup FileSettings
+    autocmd!
+    autocmd FileType gitcommit call CheckGitCommit()
+augroup END
+
 " UI settings
 let base16colorspace = 256
 let airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
-colorscheme base16-gruvbox-dark-hard
+colorscheme base16-gruvbox-dark-medium
 
 " Linting
 let g:ale_statusline_format = ['⌦ %d', '⚠︎ %d', '✓ ok']
@@ -81,6 +98,7 @@ let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:ale_completion_enabled = 0
 let g:LanguageClient_autoStart = 1
+let g:LanguageClient_hoverPreview = 'Never'
 if has('macunix')
     let g:ncm2_pyclang#library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 endif
@@ -94,15 +112,17 @@ let g:LanguageClient_serverCommands = {
     \ 'typescript': ['typescript-language-server', '--stdio'],
     \ 'javascript': ['typescript-language-server', '--stdio'],
     \ 'python': ['pyls'],
+    \ 'ps1': ['pwsh', '-NoProfile', '~/.local/share/powershell/Modules/PowerShellEditorServices/Start-EditorServices.ps1', '-HostName', 'nvim', '-HostProfileId', '0', '-HostVersion', '1.0.0', '-BundledModulesPath', '~/.local/share/powershell/Modules/PowerShellEditorServices/modules/', '-LogPath', '/tmp/pses.log', '-LogLevel', 'Diagnostic', '-Stdio', '-SessionDetailsPath', '~/.pses.json'],
     \ 'obc': ['clangd'],
     \ 'objcpp': ['clangd'],
-    \ 'swift': ['swift-nest']
+    \ 'swift': ['sourcekit-lsp']
 \ }
 
 let g:tagbar_type_ansible = { 'ctagstype': 'ansible', 'kinds': [ 't:tasks' ], 'sort': 0 }
 let g:tagbar_type_css = { 'ctagstype': 'Css', 'kinds': ['c:classes', 's:selectors', 'i:identities'] }
 let g:tagbar_type_make = { 'kinds':['m:macros', 't:targets'] }
-let g:tagbar_type_ps1 = { 'ctagstype': 'powershell', 'kinds': ['f:function','i:filter','a:alias'] }
+let g:tagbar_type_ps1 = { 'ctagstype': 'powershell', 'kinds': ['f:function','i:filter','a:alias', 't:test'] }
+let g:tagbar_type_pester = { 'ctagstype': 'pester', 'kinds': ['f:function','i:filter','a:alias', 'm:method'] }
 let g:tagbar_type_ruby = { 'kinds': ['m:modules','c:classes','d:describes','C:contexts','f:methods','F:singleton methods'] }
 let g:tagbar_type_rust = {'ctagstype': 'rust','kinds' : ['T:types,type definitions','f:functions,function definitions','g:enum,enumeration names','s:structure names','m:modules,module names','c:consts,static constants','t:traits','i:impls,trait implementations'] }
 let g:tagbar_type_typescript = {'ctagstype': 'typescript','kinds': ['c:classes','n:modules','f:functions','v:variables','v:varlambdas','m:members','i:interfaces','e:enums']}
@@ -111,14 +131,17 @@ let g:tagbar_type_go = {'ctagstype': 'go','kinds' : ['p:package','f:function','v
 " Custom keybindings
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <silent> <F6> :set noet|retab!
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-    \ "\<lt>C-n>" :
-    \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-    \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-    \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 
 " Minimal desired settings.
 set autowrite
@@ -201,4 +224,3 @@ highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 
 scriptencoding utf-8
-
