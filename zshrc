@@ -11,11 +11,9 @@ setopt interactivecomments
 setopt no_beep
 
 # compinit
-autoload -Uz compinit
-autoload -U colors
+autoload -Uz compinit && compinit
+autoload -U colors && colors
 autoload -U add-zsh-hook
-colors
-compinit
 
 [[ -f ~/.zplug/init.zsh ]] || return
 
@@ -34,14 +32,22 @@ source "${HOME}/.local/bin/system-update.sh"
 source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Load plugins
-zplug "plugins/git", from:oh-my-zsh, as:plugin
-zplug "plugins/docker", from:oh-my-zsh, as:plugin
-zplug "plugins/minikube", from:oh-my-zsh, as:plugin
-zplug "plugins/vi-mode", from:oh-my-zsh, as:plugin
-zplug "mafredri/zsh-async", from:github
-zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh, as:plugin
+zplug "plugins/git", from:oh-my-zsh, as:plugin
+zplug "plugins/kops", from:oh-my-zsh, as:plugin
+zplug "plugins/minikube", from:oh-my-zsh, as:plugin
+zplug "plugins/nomad", from:oh-my-zsh, as:plugin
+zplug "plugins/npm", from:oh-my-zsh, as:plugin
+zplug "plugins/terraform", from:oh-my-zsh, as:plugin
+zplug "plugins/vagrant", from:oh-my-zsh, as:plugin
+zplug "plugins/vault", from:oh-my-zsh, as:plugin
+zplug "plugins/vi-mode", from:oh-my-zsh, as:plugin
+
+# Theme
+zplug "mafredri/zsh-async", from:github
+zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
 
 # Install packages that have not yet been installed
 if ! zplug check --verbose; then
@@ -65,6 +71,7 @@ alias git=hub
 alias powershell=pwsh
 alias start=open
 alias tmux="env TERM=screen-256color tmux"
+alias ip="curl ifconfig.me"
 
 # PATH setup
 path+=("$(go env GOPATH)/bin")
@@ -82,9 +89,11 @@ export PATH
 BASE16_SHELL="$HOME/.config/base16-shell"
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
+
 # NVM / Node.js
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# RBENV
+# RBENV & JENV
+eval "$(jenv init -)"
 eval "$(rbenv init -)"

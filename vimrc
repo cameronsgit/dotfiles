@@ -28,7 +28,6 @@ call plug#begin()
     Plug 'ncm2/ncm2-bufword'
     Plug 'ncm2/ncm2-go'
     Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-pyclang'
     Plug 'ncm2/ncm2-tmux'
     Plug 'ncm2/ncm2-vim'
     Plug 'octol/vim-cpp-enhanced-highlight'
@@ -49,6 +48,7 @@ call plug#begin()
 call plug#end()
 
 function! CheckGitCommit()
+    :3
     setlocal expandtab shiftwidth=2 tabstop=2 textwidth=72 colorcolumn=+1
     if has('spell')
         setlocal spell
@@ -115,7 +115,8 @@ let g:LanguageClient_serverCommands = {
     \ 'ps1': ['pwsh', '-NoProfile', '~/.local/share/powershell/Modules/PowerShellEditorServices/Start-EditorServices.ps1', '-HostName', 'nvim', '-HostProfileId', '0', '-HostVersion', '1.0.0', '-BundledModulesPath', '~/.local/share/powershell/Modules/PowerShellEditorServices/modules/', '-LogPath', '/tmp/pses.log', '-LogLevel', 'Diagnostic', '-Stdio', '-SessionDetailsPath', '~/.pses.json'],
     \ 'obc': ['clangd'],
     \ 'objcpp': ['clangd'],
-    \ 'swift': ['sourcekit-lsp']
+    \ 'cpp': ['clangd'],
+    \ 'c': ['clangd']
 \ }
 
 let g:tagbar_type_ansible = { 'ctagstype': 'ansible', 'kinds': [ 't:tasks' ], 'sort': 0 }
