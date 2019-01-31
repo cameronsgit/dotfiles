@@ -71,7 +71,8 @@ alias git=hub
 alias powershell=pwsh
 alias start=open
 alias tmux="env TERM=screen-256color tmux"
-alias ip="curl ifconfig.me"
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
 
 # PATH setup
 path+=("$(go env GOPATH)/bin")
@@ -97,3 +98,4 @@ BASE16_SHELL="$HOME/.config/base16-shell"
 # RBENV & JENV
 eval "$(jenv init -)"
 eval "$(rbenv init -)"
+
