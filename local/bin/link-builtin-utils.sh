@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 echo "linking airport..."
 ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
 echo "linking jsc..."

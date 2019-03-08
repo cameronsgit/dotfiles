@@ -3,6 +3,7 @@
 #Requires -Modules PSReadline, posh-git
 
 using namespace System;
+using namespace System.Management.Automation;
 
 Set-StrictMode -Version 'Latest';
 
@@ -16,9 +17,7 @@ Set-PSReadlineOption -ViModeIndicator 'Prompt';
 Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete;
 
 if ($null -eq (Get-Variable -Name 'Is*')) {
-    [bool] $script:IsWindows = (-not (Get-Variable -Name IsWindows -ErrorAction Ignore)) -or $IsWindows;
-    [bool] $script:IsLinux = (Get-Variable -Name IsLinux -ErrorAction Ignore) -and $IsLinux;
-    [bool] $script:IsMacOS = (Get-Variable -Name IsMacOS -ErrorAction Ignore) -and $IsMacOS;
+    [bool] $script:IsWindows = (-not (Get-Variable -Name IsWindows -ErrorAction Ignore)) -or $IsWindows; [bool] $script:IsLinux = (Get-Variable -Name IsLinux -ErrorAction Ignore) -and $IsLinux; [bool] $script:IsMacOS = (Get-Variable -Name IsMacOS -ErrorAction Ignore) -and $IsMacOS;
     [bool] $script:IsCoreCLR = $PSVersionTable.ContainsKey('PSEdition') -and $PSVersionTable.PSEdition -eq 'Core';
 }
 
@@ -34,6 +33,15 @@ $GitPromptSettings.DefaultPromptPrefix.Text = ' ';
 $GitPromptSettings.DefaultPromptSuffix = "$($promptIndicator) ";
 $GitPromptSettings.DefaultPromptSuffix.ForegroundColor = 0xD3869B;
 $GitPromptSettings.DefaultPromptWriteStatusFirst = $true
+
+$global:hubs = Import-PowerShellDataFile -Path "~/.config/powershell/hubs.psd1";
+
+Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+    param($commandName, $wordToComplete, $cursorPosition)
+        dotnet complete --position $cursorPosition "$($wordToComplete)" | ForEach-Object {
+            [CompletionResult]::new($_, $_, 'ParameterValue', $_);
+        }
+};
 
 function Invoke-VimOnNT {
     $rep = $args -replace "\\","/";
@@ -64,3 +72,4 @@ if ($IsLinux -or $IsMacOS) {
 function prompt {
     & $GitPromptScriptBlock;
 }
+

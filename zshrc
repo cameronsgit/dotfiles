@@ -29,6 +29,8 @@ source "${HOME}/.cargo/env"
 source "${HOME}/.zplug/init.zsh"
 source "${HOME}/.local/bin/sync-devwork.sh"
 source "${HOME}/.local/bin/system-update.sh"
+source "${HOME}/.local/bin/register-completions.zsh"
+source "${HOME}/.local/bin/security.sh"
 source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Load plugins
@@ -48,6 +50,10 @@ zplug "plugins/vi-mode", from:oh-my-zsh, as:plugin
 # Theme
 zplug "mafredri/zsh-async", from:github
 zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
+
+
+# Completions
+compctl -K _dotnet_zsh_complete dotnet
 
 # Install packages that have not yet been installed
 if ! zplug check --verbose; then
@@ -69,6 +75,7 @@ alias dir="ls -l"
 alias del=rm
 alias git=hub
 alias powershell=pwsh
+alias pass="read-password"
 alias start=open
 alias tmux="env TERM=screen-256color tmux"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -98,4 +105,3 @@ BASE16_SHELL="$HOME/.config/base16-shell"
 # RBENV & JENV
 eval "$(jenv init -)"
 eval "$(rbenv init -)"
-
