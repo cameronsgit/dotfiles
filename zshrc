@@ -86,6 +86,8 @@ path+=("$(go env GOPATH)/bin")
 path+=("${KREW_ROOT:-$HOME/.krew}/bin")
 path+=("${HOME}/.fastlane/bin")
 path+=("${HOME}/.porter")
+path+=("${HOME}/.dotnet/tools")
+path+=("/usr/local/sbin")
 
 if which ruby >/dev/null && which gem >/dev/null; then
     path+=("$(ruby -rubygems -e 'puts Gem.user_dir')/bin")
@@ -96,7 +98,6 @@ export PATH
 # Settings for base16
 BASE16_SHELL="$HOME/.config/base16-shell"
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
 
 # NVM / Node.js
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
