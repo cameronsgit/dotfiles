@@ -1,0 +1,188 @@
+# Taps
+tap "azure/aks-engine"
+tap "azure/draft"
+tap "azure/functions"
+tap "facebook/fb"
+tap "heroku/brew"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/livecheck"
+tap "homebrew/services"
+tap "kolide/tap"
+tap "ksonnet/tap"
+tap "nektos/tap"
+tap "opencontrol/oscalkit"
+tap "spectralkh/tap"
+tap "universal-ctags/universal-ctags"
+tap "wagoodman/dive"
+tap "wata727/tflint"
+tap "weaveworks/tap"
+
+# Packages
+brew "awscli"
+brew "azure-cli"
+brew "ballerina"
+brew "carthage"
+brew "chisel"
+brew "composer"
+brew "consul"
+brew "consul-template"
+brew "container-diff"
+brew "go"
+brew "docker-compose"
+brew "docker-machine-driver-hyperkit"
+brew "dos2unix"
+brew "drafter"
+brew "fluxctl"
+brew "fpp"
+brew "fzf"
+brew "git-extras"
+brew "git-lfs"
+brew "graphviz"
+brew "lua"
+brew "hub"
+brew "hugo"
+brew "hyperkit"
+brew "infer"
+brew "jenv"
+brew "jq"
+brew "juju"
+brew "kompose"
+brew "kubernetes-cli"
+brew "kops"
+brew "kubernetes-helm"
+brew "kubernetes-service-catalog-client"
+brew "kustomize"
+brew "luajit"
+brew "luarocks"
+brew "mas"
+brew "maven"
+brew "mkcert"
+brew "neovim"
+brew "nmap"
+brew "nomad"
+brew "opa"
+brew "openapi-generator"
+brew "p7zip"
+brew "packer"
+brew "pipenv"
+brew "protobuf"
+brew "prototool"
+brew "ranger"
+brew "ruby-build"
+brew "rbenv"
+brew "reattach-to-user-namespace"
+brew "rustup-init"
+brew "sblim-sfcc"
+brew "serf"
+brew "shellcheck"
+brew "skaffold"
+brew "stern"
+brew "swiftformat"
+brew "swiftlint"
+brew "tag"
+brew "telnet"
+brew "terraform"
+brew "tmux"
+brew "trash"
+brew "tree"
+brew "unrar"
+brew "vault"
+brew "vsts-cli"
+brew "wabt"
+brew "watchman"
+brew "weechat"
+brew "wget"
+brew "xctool"
+brew "yamllint"
+brew "azure/aks-engine/aks-engine"
+brew "azure/draft/draft"
+brew "azure/functions/azure-functions-core-tools"
+brew "facebook/fb/buck"
+brew "kolide/tap/launcher"
+brew "ksonnet/tap/ks"
+brew "nektos/tap/act"
+brew "opencontrol/oscalkit/oscalkit"
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+brew "wagoodman/dive/dive"
+brew "wata727/tflint/tflint"
+brew "weaveworks/tap/eksctl"
+
+# Casks
+cask "android-studio"
+cask "azure-data-studio"
+cask "bartender"
+cask "citrix-workspace"
+cask "dbngin"
+cask "debookee"
+cask "discord"
+cask "docker"
+cask "dotnet-sdk"
+cask "dungeon-crawl-stone-soup-tiles"
+cask "flipper"
+cask "google-chrome"
+cask "google-cloud-sdk"
+cask "gpg-suite"
+cask "hazel"
+cask "impactor"
+cask "iterm2"
+cask "java"
+cask "java8"
+cask "karabiner-elements"
+cask "ksdiff"
+cask "microsoft-azure-storage-explorer"
+cask "microsoft-teams"
+cask "minikube"
+cask "mono-mdk"
+cask "ngrok"
+cask "origami-studio"
+cask "paw"
+cask "steam"
+cask "plex-media-player"
+cask "powershell"
+cask "qlmarkdown"
+cask "qlstephen"
+cask "qlvideo"
+cask "quicklookase"
+cask "royal-tsx"
+cask "sketch"
+cask "softu2f"
+cask "tableplus"
+cask "vagrant"
+cask "visual-studio"
+cask "visual-studio-code"
+cask "webpquicklook"
+
+# App Store
+mas "Affinity Designer", id: 824_171_161
+mas "Affinity Photo", id: 824_183_456
+mas "Apple Configurator 2", id: 1_037_126_344
+mas "GarageBand", id: 682_658_836
+mas "iMovie", id: 408_981_434
+mas "Keyshape", id: 1_223_341_056
+mas "Microsoft Excel", id: 462_058_435
+mas "Microsoft OneNote", id: 784_801_555
+mas "Microsoft PowerPoint", id: 462_062_816
+mas "Microsoft Remote Desktop", id: 1_295_203_466
+mas "Microsoft Word", id: 462_054_704
+mas "MindNode", id: 1_289_197_285
+mas "OmniFocus", id: 1_346_203_938
+mas "OmniGraffle", id: 1_142_578_753
+mas "OmniOutliner", id: 1_142_578_772
+mas "OmniPlan", id: 1_040_002_810
+mas "OneDrive", id: 823_766_827
+mas "Proxie", id: 897_814_548
+mas "Reeder", id: 1_449_412_482
+mas "Remote Desktop", id: 409_907_375
+mas "Server", id: 883_878_097
+mas "Slack", id: 803_453_959
+mas "SQLPro Studio", id: 985_614_903
+mas "TaskPaper", id: 1_090_940_630
+mas "TickTick", id: 966_085_870
+mas "Tyme 2", id: 1_063_996_724
+mas "Wipr", id: 1_320_666_476
+mas "Xcode", id: 497_799_835

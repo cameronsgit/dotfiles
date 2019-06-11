@@ -1,0 +1,60 @@
+# vim: set ft=gitconfig: #
+
+[color "diff"]
+    old = red strike
+    new = green italic
+[filter "lfs"]
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+[user]
+    name = Cameron Sowder
+    email = cameron@sowder.io
+    signingkey = CB719BF40CC6C5AF
+[credential]
+    helper = osxkeychain
+[core]
+    editor = nvim
+[instaweb]
+    local = true
+    httpd = webrick
+    browser = open
+[alias]
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[merge]
+    tool = opendiff
+[difftool]
+    prompt = false
+[mergetool]
+    prompt = false
+[diff]
+    tool = opendiff
+[gui]
+    fontdiff = -family \"Operator Mono for Powerline\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+    tabsize = 4
+[commit]
+    template = /Users/sowderca/.commit.template
+    gpgsign = true
+[gpg]
+    program = /usr/local/bin/gpg
+[help]
+    autoCorrect = -1
+[pull]
+    ff = only
+[push]
+    default = current
+[log]
+    abbrevCommit = true
+    decorate = short
+[apply]
+    ignoreWhitespace = change
+[rerere]
+    enabled = true
+    autoUpdate = true
+[am]
+    threeWay = true
+[color "dif"]
+    old = red strike
+[color]
+    ui = true
