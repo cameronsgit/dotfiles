@@ -1,0 +1,31 @@
+{
+    "atlascode.jira.workingSite": {
+        "baseUrlSuffix": "atlassian.net"
+    },
+    "breadcrumbs.enabled": false,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoSurround": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.fontFamily": "Operator Mono for Powerline",
+    "editor.fontSize": 13,
+    "editor.minimap.enabled": false,
+    "editor.renderIndentGuides": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.snippetSuggestions": "none",
+    "editor.wordWrap": "on",
+    "explorer.decorations.colors": false,
+    "explorer.openEditors.visible": 0,
+    "powershell.integratedConsole.showOnStartup": false,
+    "projectManager.git.baseFolders": [
+        "$home/Development"
+    ],
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "workbench.editor.tabCloseButton": "left",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.sideBar.location": "left",
+    "workbench.statusBar.visible": true,
+    "yaml.schemas": {
+        "file:///Users/sowderca/.vscode/extensions/atlassian.atlascode-1.4.2/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "team.showWelcomeMessage": false
+}

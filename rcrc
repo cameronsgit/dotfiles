@@ -1,4 +1,4 @@
 EXCLUDES="README.md LICENSE Brewfile .gitignore .gitattributes core.weechat.weechatlog weechat.log"
 COPY_ALWAYS="weechat/*"
 DOTFILES_DIRS="${HOME}/.dotfiles"
-UNDOTTED="init.vim settings.json Microsoft.PowerShell_profile.ps1 powershell.config.json rc.conf alias.bat cmdrc.cmd user-aliases.cmd system-update.sh sync-devwork.sh register-completions.zsh security.sh fetch-work-repos.ps1"
+UNDOTTED="Library init.vim settings.json Microsoft.PowerShell_profile.ps1 powershell.config.json rc.conf alias.bat cmdrc.cmd user-aliases.cmd system-update.sh sync-devwork.sh register-completions.zsh security.sh fetch-work-repos.ps1 settings.json keybindings.json filter.awk formula.sh"
