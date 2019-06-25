@@ -15,6 +15,9 @@
     "editor.wordWrap": "on",
     "explorer.decorations.colors": false,
     "explorer.openEditors.visible": 0,
+    "files.exclude": {
+        "**/.git": false
+    },
     "powershell.integratedConsole.showOnStartup": false,
     "projectManager.git.baseFolders": [
         "$home/Development"
@@ -27,5 +30,37 @@
     "yaml.schemas": {
         "file:///Users/sowderca/.vscode/extensions/atlassian.atlascode-1.4.2/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
-    "team.showWelcomeMessage": false
+    "team.showWelcomeMessage": false,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.useSystemClipboard": true,
+    "FSharp.fsacRuntime": "netcore",
+    "FSharp.lineLens.enabled": "never",
+    "powershell.powerShellExePath": "/usr/local/bin/pwsh-preview",
+    "team.pinnedQueries": [
+        {
+            "account": "dev.azure.com/blackbaud",
+            "queryText": "select * from WorkItems where [System.AssignedTo] = @me and [System.State] not in ('Closed')"
+        },
+        {
+            "account": "dev.azure.com/blackbaud",
+            "queryPath": "My Queries/WIP"
+        }
+    ],
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "todohighlight.defaultStyle": {
+        "backgroundColor": "#282828"
+    },
+    "todohighlight.keywords": [
+        {
+            "text": "FIXME",
+            "color": "pink"
+        }
+    ],
+    "files.associations": {
+        "*.tf": "terraform"
+    }
 }

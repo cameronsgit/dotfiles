@@ -106,3 +106,5 @@ BASE16_SHELL="$HOME/.config/base16-shell"
 # RBENV & JENV
 eval "$(jenv init -)"
 eval "$(rbenv init -)"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

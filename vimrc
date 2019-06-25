@@ -20,6 +20,7 @@ call plug#begin()
     Plug 'editorconfig/editorconfig-vim'
     Plug 'fatih/vim-go'
     Plug 'hashivim/vim-terraform'
+    Plug 'jvirtanen/vim-hcl'
     Plug 'keith/sourcekittendaemon.vim'
     Plug 'keith/swift.vim'
     Plug 'leafgarland/typescript-vim'
