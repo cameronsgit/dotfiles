@@ -2,6 +2,7 @@
     "atlascode.jira.workingSite": {
         "baseUrlSuffix": "atlassian.net"
     },
+    "window.nativeTabs": true,
     "breadcrumbs.enabled": false,
     "editor.autoClosingBrackets": "never",
     "editor.autoSurround": "never",
@@ -34,8 +35,6 @@
     "vim.enableNeovim": true,
     "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.useSystemClipboard": true,
-    "FSharp.fsacRuntime": "netcore",
-    "FSharp.lineLens.enabled": "never",
     "powershell.powerShellExePath": "/usr/local/bin/pwsh-preview",
     "team.pinnedQueries": [
         {
@@ -48,7 +47,6 @@
         }
     ],
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "typescript.updateImportsOnFileMove.enabled": "always",
     "java.configuration.checkProjectSettingsExclusions": false,
     "todohighlight.defaultStyle": {
@@ -62,5 +60,8 @@
     ],
     "files.associations": {
         "*.tf": "terraform"
-    }
+    },
+    "mssql.intelliSense.lowerCaseSuggestions": true,
+    "python.jediEnabled": false,
+    "go.useLanguageServer": true
 }

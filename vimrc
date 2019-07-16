@@ -65,6 +65,7 @@ augroup SetFileType
     autocmd BufRead,BufNewFile *.m   set filetype=objc
     autocmd BufRead,BufNewFile *.mm  set filetype=objcpp
     autocmd BufRead,BufNewFile *.rs  set filetype=rust
+    autocmd BufRead,BufNewFile *.tf  set filetype=terraform
 augroup END
 
 " Filetype settings

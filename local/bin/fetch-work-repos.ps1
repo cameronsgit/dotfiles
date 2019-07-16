@@ -5,11 +5,16 @@
 using namespace System;
 using namespace System.Runtime.InteropServices;
 
+Set-StrictMode -Version 'Latest';
+
 Import-Module 'Microsoft.PowerShell.Utility';
+
 
 Push-Location -Path '~/Development/Blackbaud' | Out-Null;
 
 [bool] $vstsCli = (Get-Command -CommandType Application -Name '*vsts*' -All) -as [bool];
+
+
 
 if (!($vstsCli)) {
     try {
@@ -32,3 +37,11 @@ foreach ($repo in $repositories) {
 }
 
 Pop-Location;
+<#
+ 2895  az devops configure --defaults organization=https://dev.azure.com/blackbaud --detect true
+ 2896  az devops configure --defaults organization=https://dev.azure.com/blackbaud
+ 2897  az repos list --output table
+ 2898  az devops configure --defaults project=Products
+ 2899  az repos list --output table
+ 2900  az repos list --output json
+ #>

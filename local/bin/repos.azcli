@@ -1,0 +1,9 @@
+
+organization="blackbaud"
+project="Products"
+
+# Authenticate with Azure
+az login
+
+# Install the Azure DevOps extension
+az extension add --name azure-devops

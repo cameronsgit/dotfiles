@@ -108,3 +108,7 @@ eval "$(jenv init -)"
 eval "$(rbenv init -)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Wasmer
+export WASMER_DIR="/Users/sowderca/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
