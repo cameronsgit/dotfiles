@@ -82,12 +82,14 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 
 # PATH setup
-path+=("$(go env GOPATH)/bin")
-path+=("${KREW_ROOT:-$HOME/.krew}/bin")
-path+=("${HOME}/.fastlane/bin")
-path+=("${HOME}/.porter")
-path+=("${HOME}/.dotnet/tools")
 path+=("/usr/local/sbin")
+path+=("${HOME}/.porter")
+path+=("${HOME}/.yarn/bin")
+path+=("$(go env GOPATH)/bin")
+path+=("${HOME}/.fastlane/bin")
+path+=("${HOME}/.dotnet/tools")
+path+=("${KREW_ROOT:-$HOME/.krew}/bin")
+path+=("${HOME}/.config/yarn/global/node_modules/.bin")
 
 if which ruby >/dev/null && which gem >/dev/null; then
     path+=("$(ruby -rubygems -e 'puts Gem.user_dir')/bin")
@@ -107,8 +109,5 @@ BASE16_SHELL="$HOME/.config/base16-shell"
 eval "$(jenv init -)"
 eval "$(rbenv init -)"
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 # Wasmer
-export WASMER_DIR="/Users/sowderca/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
