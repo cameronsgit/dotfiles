@@ -1,7 +1,8 @@
-# Taps
 tap "azure/aks-engine"
 tap "azure/draft"
 tap "azure/functions"
+tap "bazelbuild/tap"
+tap "dart-lang/dart"
 tap "facebook/fb"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -12,20 +13,21 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/livecheck"
 tap "homebrew/services"
+tap "jamitlabs/accio", "https://github.com/JamitLabs/Accio.git"
 tap "kolide/tap"
 tap "ksonnet/tap"
+tap "miderwong/flutter"
 tap "nektos/tap"
 tap "opencontrol/oscalkit"
 tap "spectralkh/tap"
+tap "thoughtbot/formulae"
 tap "universal-ctags/universal-ctags"
 tap "wagoodman/dive"
 tap "wata727/tflint"
 tap "weaveworks/tap"
-
-# Packages
 brew "awscli"
 brew "azure-cli"
-brew "ballerina"
+brew "buildifier"
 brew "carthage"
 brew "chisel"
 brew "composer"
@@ -43,7 +45,6 @@ brew "fzf"
 brew "git-extras"
 brew "git-lfs"
 brew "graphviz"
-brew "lua"
 brew "hub"
 brew "hugo"
 brew "hyperkit"
@@ -57,6 +58,7 @@ brew "kops"
 brew "kubernetes-helm"
 brew "kubernetes-service-catalog-client"
 brew "kustomize"
+brew "lua"
 brew "luajit"
 brew "luarocks"
 brew "mas"
@@ -87,11 +89,13 @@ brew "swiftlint"
 brew "tag"
 brew "telnet"
 brew "terraform"
+brew "terraformer"
 brew "tmux"
 brew "trash"
 brew "tree"
 brew "unrar"
 brew "vault"
+brew "velero"
 brew "vsts-cli"
 brew "wabt"
 brew "watchman"
@@ -102,21 +106,22 @@ brew "yamllint"
 brew "azure/aks-engine/aks-engine"
 brew "azure/draft/draft"
 brew "azure/functions/azure-functions-core-tools"
+brew "bazelbuild/tap/bazel"
+brew "dart-lang/dart/dart"
 brew "facebook/fb/buck"
+brew "jamitlabs/accio/accio"
 brew "kolide/tap/launcher"
 brew "ksonnet/tap/ks"
 brew "nektos/tap/act"
 brew "opencontrol/oscalkit/oscalkit"
+brew "thoughtbot/formulae/rcm"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "wagoodman/dive/dive"
 brew "wata727/tflint/tflint"
 brew "weaveworks/tap/eksctl"
-
-# Casks
 cask "android-studio"
 cask "azure-data-studio"
 cask "bartender"
-cask "citrix-workspace"
 cask "dbngin"
 cask "debookee"
 cask "discord"
@@ -124,26 +129,26 @@ cask "docker"
 cask "dotnet-sdk"
 cask "dungeon-crawl-stone-soup-tiles"
 cask "flipper"
-cask "google-chrome"
+cask "font-lato"
 cask "google-cloud-sdk"
 cask "gpg-suite"
 cask "hazel"
 cask "impactor"
 cask "iterm2"
 cask "java"
-cask "java8"
 cask "karabiner-elements"
 cask "ksdiff"
 cask "microsoft-azure-storage-explorer"
+cask "microsoft-edge-dev"
 cask "microsoft-teams"
 cask "minikube"
 cask "mono-mdk"
 cask "ngrok"
 cask "origami-studio"
 cask "paw"
-cask "steam"
 cask "plex-media-player"
 cask "powershell"
+cask "powershell-preview"
 cask "qlmarkdown"
 cask "qlstephen"
 cask "qlvideo"
@@ -151,38 +156,38 @@ cask "quicklookase"
 cask "royal-tsx"
 cask "sketch"
 cask "softu2f"
+cask "steam"
 cask "tableplus"
 cask "vagrant"
 cask "visual-studio"
 cask "visual-studio-code"
 cask "webpquicklook"
-
-# App Store
-mas "Affinity Designer", id: 824_171_161
-mas "Affinity Photo", id: 824_183_456
-mas "Apple Configurator 2", id: 1_037_126_344
-mas "GarageBand", id: 682_658_836
-mas "iMovie", id: 408_981_434
-mas "Keyshape", id: 1_223_341_056
-mas "Microsoft Excel", id: 462_058_435
-mas "Microsoft OneNote", id: 784_801_555
-mas "Microsoft PowerPoint", id: 462_062_816
-mas "Microsoft Remote Desktop", id: 1_295_203_466
-mas "Microsoft Word", id: 462_054_704
-mas "MindNode", id: 1_289_197_285
-mas "OmniFocus", id: 1_346_203_938
-mas "OmniGraffle", id: 1_142_578_753
-mas "OmniOutliner", id: 1_142_578_772
-mas "OmniPlan", id: 1_040_002_810
-mas "OneDrive", id: 823_766_827
-mas "Proxie", id: 897_814_548
-mas "Reeder", id: 1_449_412_482
-mas "Remote Desktop", id: 409_907_375
-mas "Server", id: 883_878_097
-mas "Slack", id: 803_453_959
-mas "SQLPro Studio", id: 985_614_903
-mas "TaskPaper", id: 1_090_940_630
-mas "TickTick", id: 966_085_870
-mas "Tyme 2", id: 1_063_996_724
-mas "Wipr", id: 1_320_666_476
-mas "Xcode", id: 497_799_835
+mas "Affinity Designer", id: 824171161
+mas "Affinity Photo", id: 824183456
+mas "Affinity Publisher", id: 881418622
+mas "Apple Configurator 2", id: 1037126344
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keyshape", id: 1223341056
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft OneNote", id: 784801555
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Microsoft Word", id: 462054704
+mas "MindNode", id: 1289197285
+mas "OmniFocus", id: 1346203938
+mas "OmniGraffle", id: 1142578753
+mas "OmniOutliner", id: 1142578772
+mas "OmniPlan", id: 1040002810
+mas "OneDrive", id: 823766827
+mas "Proxie", id: 897814548
+mas "Reeder", id: 1449412482
+mas "Remote Desktop", id: 409907375
+mas "Server", id: 883878097
+mas "Slack", id: 803453959
+mas "SQLPro Studio", id: 985614903
+mas "TaskPaper", id: 1090940630
+mas "TickTick", id: 966085870
+mas "Tyme 2", id: 1063996724
+mas "Wipr", id: 1320666476
+mas "Xcode", id: 497799835
