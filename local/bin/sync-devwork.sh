@@ -8,3 +8,4 @@ function sync-devwork() {
     popd || exit
     printf "\\e[32m Done! \\e[0m \\n"
 }
+

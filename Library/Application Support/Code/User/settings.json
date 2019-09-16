@@ -1,4 +1,7 @@
 {
+    "emmet.excludeLanguages": [
+        "*"
+    ],
     "atlascode.jira.workingSite": {
         "baseUrlSuffix": "atlassian.net"
     },
@@ -23,7 +26,6 @@
     "projectManager.git.baseFolders": [
         "$home/Development"
     ],
-    "workbench.colorTheme": "Gruvbox Dark Medium",
     "workbench.editor.tabCloseButton": "left",
     "workbench.iconTheme": "vscode-icons",
     "workbench.sideBar.location": "left",
@@ -33,17 +35,16 @@
     },
     "team.showWelcomeMessage": false,
     "vim.enableNeovim": true,
+    "vsicons.associations.folders": [
+        { "icon": "temp", "extensions": ["obj"], "format": "svg" }
+    ],
     "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.useSystemClipboard": true,
     "powershell.powerShellExePath": "/usr/local/bin/pwsh-preview",
     "team.pinnedQueries": [
         {
-            "account": "dev.azure.com/blackbaud",
+            "account": "global",
             "queryText": "select * from WorkItems where [System.AssignedTo] = @me and [System.State] not in ('Closed')"
-        },
-        {
-            "account": "dev.azure.com/blackbaud",
-            "queryPath": "My Queries/WIP"
         }
     ],
     "editor.suggestSelection": "first",
@@ -59,48 +60,45 @@
         }
     ],
     "files.associations": {
-        "*.tf": "terraform"
+        "*.tf": "terraform",
+        "*.command": "shellscript",
+        "*.plist": "xml",
+        "Vagrantfile": "ruby"
     },
     "mssql.intelliSense.lowerCaseSuggestions": true,
+    "pgsql.intelliSense.lowerCaseSuggestions": true,
+    "pgsql.format.keywordCasing": "lowercase",
     "python.jediEnabled": false,
-    "go.useLanguageServer": true,
-    "cSpell.enabledLanguageIds": [
-        "applescript",
-        "asciidoc",
-        "azcli",
-        "azure-pipelines",
-        "c",
-        "cpp",
-        "csharp",
-        "css",
-        "dockerfile",
-        "git-commit",
-        "go",
-        "handlebars",
-        "html",
-        "jade",
-        "java",
-        "javascript",
-        "javascriptreact",
-        "json",
-        "jsonc",
-        "latex",
-        "less",
-        "markdown",
-        "php",
-        "plaintext",
-        "powershell",
-        "pug",
-        "python",
-        "restructuredtext",
-        "rust",
-        "scala",
-        "scss",
-        "text",
-        "typescript",
-        "typescriptreact",
-        "yaml",
-        "yml"
-    ],
-    "atlascode.jira.statusbar.showLogin": false
+    "atlascode.jira.statusbar.showLogin": false,
+    "pgsql.format.datatypeCasing": "lowercase",
+    "mssql.format.keywordCasing": "lowercase",
+    "mssql.format.datatypeCasing": "lowercase",
+    "window.zoomLevel": 0,
+    "go.vetOnSave": "off",
+    "go.testOnSave": false,
+    "go.coverOnSave": false,
+    "go.lintOnSave": "off",
+    "go.formatTool": "gofmt",
+    "[go]": {
+        "editor.formatOnSave": false
+    },
+    "go.buildOnSave": "off",
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "emmet.showExpandedAbbreviation": "never",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "javascript.suggest.autoImports": false,
+    "python.terminal.activateEnvironment": false,
+    "terraform.indexing": {
+        "enabled": false,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.languageServer": {
+        "enabled": true,
+        "args": []
+    }
 }

@@ -1,3 +1,10 @@
 {
-    "PSModulePath": "%PWD%/modules"
+    "PSModulePath": "%PWD%/modules",
+    "Microsoft.PowerShell.ExecutionPolicy": "Unrestricted",
+    "ExperimentalFeatures": [
+        "PSCommandNotFoundSuggestion",
+        "PSForEachObjectParallel",
+        "PSImplicitRemotingBatching",
+        "Microsoft.PowerShell.Utility.PSDebugRunspaceWithBreakpoints"
+    ]
 }

@@ -88,6 +88,7 @@ path+=("${HOME}/.yarn/bin")
 path+=("$(go env GOPATH)/bin")
 path+=("${HOME}/.fastlane/bin")
 path+=("${HOME}/.dotnet/tools")
+path+=("${HOME}/.pub-cache/bin")
 path+=("${KREW_ROOT:-$HOME/.krew}/bin")
 path+=("${HOME}/.config/yarn/global/node_modules/.bin")
 
