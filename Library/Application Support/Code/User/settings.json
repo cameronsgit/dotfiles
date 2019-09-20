@@ -89,7 +89,7 @@
     "javascript.suggest.autoImports": false,
     "python.terminal.activateEnvironment": false,
     "terraform.indexing": {
-        "enabled": false,
+        "enabled": true,
         "liveIndexing": false,
         "delay": 500,
         "exclude": [
@@ -98,7 +98,7 @@
         ]
     },
     "terraform.languageServer": {
-        "enabled": true,
+        "enabled": false,
         "args": []
     }
 }
