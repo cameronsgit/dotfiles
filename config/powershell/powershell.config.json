@@ -2,12 +2,17 @@
     "PSModulePath": "%PWD%/modules",
     "Microsoft.PowerShell.ExecutionPolicy": "Unrestricted",
     "ExperimentalFeatures": [
+        "PSErrorView",
         "PSTernaryOperator",
+        "PSUpdatesNotification",
+        "PSCoalescingOperators",
         "PSForEachObjectParallel",
-        "PSImplicitRemotingBatching",
+        "PSPipelineChainOperators",
         "PSImplicitRemotingBatching",
         "PSCommandNotFoundSuggestion",
+        "Microsoft.PowerShell.Utility.PSGetError",
         "PSDesiredStateConfiguration.InvokeDscResource",
+        "Microsoft.PowerShell.PSManageBreakpointsInRunspace",
         "Microsoft.PowerShell.Utility.PSDebugRunspaceWithBreakpoints"
     ]
 }

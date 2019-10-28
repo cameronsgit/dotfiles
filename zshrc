@@ -74,7 +74,7 @@ alias vim=nvim
 alias dir="ls -l"
 alias del=rm
 alias git=hub
-alias powershell=pwsh
+alias powershell=pwsh-preview
 alias pass="read-password"
 alias start=open
 alias tmux="env TERM=screen-256color tmux"

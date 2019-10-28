@@ -31,7 +31,7 @@
     "workbench.sideBar.location": "left",
     "workbench.statusBar.visible": true,
     "yaml.schemas": {
-        "file:///Users/sowderca/.vscode/extensions/atlassian.atlascode-1.4.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+        "file:///Users/sowderca/.vscode/extensions/atlassian.atlascode-2.1.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "team.showWelcomeMessage": false,
     "vim.enableNeovim": true,
@@ -54,10 +54,10 @@
         "backgroundColor": "#282828"
     },
     "todohighlight.keywords": [
-        {
-            "text": "FIXME",
-            "color": "pink"
-        }
+        { "text": "FIXME", "color": "lightpink", },
+        { "text": "NOTE", "color": "lightblue" },
+        { "text": "TODO", "color": "khaki" },
+        { "text": "BUG", "color": "lightcoral" }
     ],
     "files.associations": {
         "*.tf": "terraform",
@@ -69,7 +69,6 @@
     "pgsql.intelliSense.lowerCaseSuggestions": true,
     "pgsql.format.keywordCasing": "lowercase",
     "python.jediEnabled": false,
-    "atlascode.jira.statusbar.showLogin": false,
     "pgsql.format.datatypeCasing": "lowercase",
     "mssql.format.keywordCasing": "lowercase",
     "mssql.format.datatypeCasing": "lowercase",
@@ -85,7 +84,6 @@
     "go.buildOnSave": "off",
     "powershell.codeFormatting.useCorrectCasing": true,
     "emmet.showExpandedAbbreviation": "never",
-    "workbench.colorTheme": "Gruvbox Dark Medium",
     "javascript.suggest.autoImports": false,
     "python.terminal.activateEnvironment": false,
     "terraform.indexing": {
@@ -100,5 +98,17 @@
     "terraform.languageServer": {
         "enabled": false,
         "args": []
-    }
+    },
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "atlascode.jira.jqlList": [
+        {
+            "id": "a1037b9f-5d95-4596-9012-9698dae881df",
+            "enabled": true,
+            "name": "My jira.blackbaud.com Issues",
+            "query": "assignee = currentUser() ORDER BY lastViewed DESC ",
+            "siteId": "jira.blackbaud.com",
+            "monitor": true
+        }
+    ],
+    "linkerd-path": "/usr/local/bin/linkerd"
 }

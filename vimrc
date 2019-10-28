@@ -162,6 +162,7 @@ set shiftwidth=4
 set number
 set shortmess+=c
 set titlestring=VIM
+set wildoptions-=pum
 
 " GUI check
 let s:is_gui = has('nvim') ? (exists('g:nyaovim_version') || exists('g:GtkGuiLoaded')) : has('gui_running')
