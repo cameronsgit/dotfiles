@@ -31,12 +31,13 @@
     "workbench.sideBar.location": "left",
     "workbench.statusBar.visible": true,
     "yaml.schemas": {
-        "file:///Users/sowderca/.vscode/extensions/atlassian.atlascode-2.1.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+        "file:///Users/sowderca/.vscode/extensions/atlassian.atlascode-2.1.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "team.showWelcomeMessage": false,
     "vim.enableNeovim": true,
     "vsicons.associations.folders": [
-        { "icon": "temp", "extensions": ["obj"], "format": "svg" }
+        { "icon": "temp", "extensions": ["obj"], "format": "svg" },
+        { "icon": "vs", "extensions": ["vs"], "format": "svg" }
     ],
     "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.useSystemClipboard": true,
@@ -99,7 +100,6 @@
         "enabled": false,
         "args": []
     },
-    "workbench.colorTheme": "Gruvbox Dark Medium",
     "atlascode.jira.jqlList": [
         {
             "id": "a1037b9f-5d95-4596-9012-9698dae881df",
@@ -110,5 +110,9 @@
             "monitor": true
         }
     ],
-    "linkerd-path": "/usr/local/bin/linkerd"
+    "linkerd-path": "/usr/local/bin/linkerd",
+    "workbench.fontAliasing": "auto",
+    "window.titleBarStyle": "native",
+    "ballerina.codeLens.services.enabled": true,
+    "workbench.colorTheme": "Gruvbox Dark Medium"
 }

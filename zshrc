@@ -92,10 +92,6 @@ path+=("${HOME}/.pub-cache/bin")
 path+=("${KREW_ROOT:-$HOME/.krew}/bin")
 path+=("${HOME}/.config/yarn/global/node_modules/.bin")
 
-if which ruby >/dev/null && which gem >/dev/null; then
-    path+=("$(ruby -rubygems -e 'puts Gem.user_dir')/bin")
-fi
-
 export PATH
 
 # Settings for base16

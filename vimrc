@@ -13,7 +13,7 @@ endif
 " Plugins
 call plug#begin()
     Plug 'airblade/vim-gitgutter'
-    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'cespare/vim-toml'
     Plug 'chriskempson/base16-vim'
     Plug 'christoomey/vim-tmux-navigator'
@@ -25,17 +25,10 @@ call plug#begin()
     Plug 'keith/swift.vim'
     Plug 'leafgarland/typescript-vim'
     Plug 'majutsushi/tagbar'
-    Plug 'ncm2/ncm2'
-    Plug 'ncm2/ncm2-bufword'
-    Plug 'ncm2/ncm2-go'
-    Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-tmux'
-    Plug 'ncm2/ncm2-vim'
+    Plug 'dart-lang/dart-vim-plugin'
     Plug 'octol/vim-cpp-enhanced-highlight'
-    Plug 'phpactor/ncm2-phpactor'
     Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
     Plug 'pprovost/vim-ps1'
-    Plug 'roxma/nvim-yarp'
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree'
     Plug 'tpope/vim-fugitive'
@@ -66,6 +59,7 @@ augroup SetFileType
     autocmd BufRead,BufNewFile *.mm  set filetype=objcpp
     autocmd BufRead,BufNewFile *.rs  set filetype=rust
     autocmd BufRead,BufNewFile *.tf  set filetype=terraform
+    autocmd FileType json syntax match Comment +\/\/.\+$+
 augroup END
 
 " Filetype settings
@@ -99,27 +93,9 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:ale_completion_enabled = 0
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_hoverPreview = 'Never'
+
 if has('macunix')
-    let g:ncm2_pyclang#library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 endif
-autocmd BufEnter * call ncm2#enable_for_buffer()
-" Language server settings
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'html': ['html-languageserver', '--stdio'],
-    \ 'json': ['json-languageserver', '--stdio'],
-    \ 'css': ['css-languageserver', '--stdio'],
-    \ 'typescript': ['typescript-language-server', '--stdio'],
-    \ 'javascript': ['typescript-language-server', '--stdio'],
-    \ 'python': ['pyls'],
-    \ 'ps1': ['pwsh', '-NoProfile', '~/.local/share/powershell/Modules/PowerShellEditorServices/Start-EditorServices.ps1', '-HostName', 'nvim', '-HostProfileId', '0', '-HostVersion', '1.0.0', '-BundledModulesPath', '~/.local/share/powershell/Modules/PowerShellEditorServices/modules/', '-LogPath', '/tmp/pses.log', '-LogLevel', 'Diagnostic', '-Stdio', '-SessionDetailsPath', '~/.pses.json'],
-    \ 'obc': ['clangd'],
-    \ 'objcpp': ['clangd'],
-    \ 'cpp': ['clangd'],
-    \ 'c': ['clangd']
-\ }
 
 let g:tagbar_type_ansible = { 'ctagstype': 'ansible', 'kinds': [ 't:tasks' ], 'sort': 0 }
 let g:tagbar_type_css = { 'ctagstype': 'Css', 'kinds': ['c:classes', 's:selectors', 'i:identities'] }
@@ -131,20 +107,6 @@ let g:tagbar_type_rust = {'ctagstype': 'rust','kinds' : ['T:types,type definitio
 let g:tagbar_type_typescript = {'ctagstype': 'typescript','kinds': ['c:classes','n:modules','f:functions','v:variables','v:varlambdas','m:members','i:interfaces','e:enums']}
 let g:tagbar_type_go = {'ctagstype': 'go','kinds' : ['p:package','f:function','v:variables','t:type','c:const'] }
 
-" Custom keybindings
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-nnoremap <silent> <F6> :set noet|retab!
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
-
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Minimal desired settings.
 set autowrite
@@ -163,6 +125,123 @@ set number
 set shortmess+=c
 set titlestring=VIM
 set wildoptions-=pum
+set updatetime=300
+set cmdheight=2
+set nobackup
+set nowritebackup
+set signcolumn=yes
+
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
 
 " GUI check
 let s:is_gui = has('nvim') ? (exists('g:nyaovim_version') || exists('g:GtkGuiLoaded')) : has('gui_running')
