@@ -71,15 +71,16 @@ zplug load
 # Alias
 alias cls=clear
 alias vim=nvim
-alias dir="ls -l"
+alias dir="ls -lh"
 alias del=rm
 alias git=hub
-alias powershell=pwsh-preview
+alias powershell=pwsh
 alias pass="read-password"
 alias start=open
 alias tmux="env TERM=screen-256color tmux"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
+alias help=tldr
 
 # PATH setup
 path+=("/usr/local/sbin")
@@ -91,8 +92,10 @@ path+=("${HOME}/.dotnet/tools")
 path+=("${HOME}/.pub-cache/bin")
 path+=("${KREW_ROOT:-$HOME/.krew}/bin")
 path+=("${HOME}/.config/yarn/global/node_modules/.bin")
+path+=("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/")
 
 export PATH
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Settings for base16
 BASE16_SHELL="$HOME/.config/base16-shell"
@@ -108,3 +111,6 @@ eval "$(rbenv init -)"
 
 # Wasmer
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
+
+# opam configuration
+test -r /Users/sowderca/.opam/opam-init/init.zsh && . /Users/sowderca/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

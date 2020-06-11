@@ -4,6 +4,7 @@
 
 using namespace System;
 using namespace System.Management.Automation;
+using namespace System.Runtime.InteropServices;
 
 Set-StrictMode -Version 'Latest';
 
@@ -16,10 +17,14 @@ Set-PSReadlineOption -ExtraPromptLineCount 1;
 Set-PSReadlineOption -ViModeIndicator 'Prompt';
 Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete;
 
-if ($null -eq (Get-Variable -Name 'Is*')) {
-    [bool] $script:IsWindows = (-not (Get-Variable -Name IsWindows -ErrorAction Ignore)) -or $IsWindows; [bool] $script:IsLinux = (Get-Variable -Name IsLinux -ErrorAction Ignore) -and $IsLinux; [bool] $script:IsMacOS = (Get-Variable -Name IsMacOS -ErrorAction Ignore) -and $IsMacOS;
-    [bool] $script:IsCoreCLR = $PSVersionTable.ContainsKey('PSEdition') -and $PSVersionTable.PSEdition -eq 'Core';
-}
+[hashtable] $local:environment = @{ Visibility = 'Public'; ErrorAction = 0; };
+
+Set-Variable @local:environment -Name 'IsCoreCLR' -Value (-not $PSEdition -eq 'Desktop' -or $IsCoreCLR);
+Set-Variable @local:environment -Name 'IsFreeBSD' -Value ([OSPlatform].GetProperties().Name -contains 'FreeBSD');
+Set-Variable @local:environment -Name 'IsMacOS'   -Value ([RuntimeInformation]::IsOSPlatform([OSPlatform]::OSX) -or $IsMacOS);
+Set-Variable @local:environment -Name 'IsLinux'   -Value ([RuntimeInformation]::IsOSPlatform([OSPlatform]::OSX) -or $IsLinux);
+Set-Variable @local:environment -Name 'IsWindows' -Value ([RuntimeInformation]::IsOSPlatform([OSPlatform]::Windows) -or $IsWindows);
+Set-Variable @local:environment -Name 'IsUnix'    -Value ([Environment]::OSVersion.Platform -in @([PlatformID]::MacOSX, [PlatformID]::Unix) -or [RuntimeInformation]::IsOSPlatform([OSPlatform]::FreeBSD));
 
 [char] $promptIndicator = 0x276F;
 [string] $corpAccount = "cameron.sowder@blackbaud.me";
@@ -32,7 +37,7 @@ $GitPromptSettings.DefaultPromptPath.Text = $null;
 $GitPromptSettings.DefaultPromptPrefix.Text = ' ';
 $GitPromptSettings.DefaultPromptSuffix = "$($promptIndicator) ";
 $GitPromptSettings.DefaultPromptSuffix.ForegroundColor = 0xD3869B;
-$GitPromptSettings.DefaultPromptWriteStatusFirst = $true
+$GitPromptSettings.DefaultPromptWriteStatusFirst = $true;
 
 $global:hubs = Import-PowerShellDataFile -Path "~/.config/powershell/hubs.psd1";
 
@@ -43,22 +48,17 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
         }
 };
 
-function Invoke-VimOnNT {
-    $rep = $args -replace "\\","/";
-    bash -c "vim $rep";
-};
-
 if ($IsLinux -or $IsMacOS) {
-    Set-Alias -Name "vim" -Value "nvim" -Description "Use Neovim instead of vim on non-Windows platforms";
     if ($IsMacOS) {
         [SecureString] $script:pat = ConvertTo-SecureString "$(security find-generic-password -l 'ps-pat' -w)" -AsPlainText -Force;
         [PSCredential] $global:blkb = [PSCredential]::new($corpAccount, $script:pat);
     }
+    Set-Alias -Name "vim" -Value "nvim" -Description "Use Neovim instead of vim on non-Windows platforms";
+    Enable-AzureRmAlias;
 } else {
     if ($IsWindows -and $IsCoreCLR) {
         Add-WindowsPSModulePath;
     } else {
-        Set-Alias -Name 'ipp' -Value "Import-PackageProvider -Name 'ChocolateyGet' | Out-Null" -Description 'Use OneGet for Chocolatey management';
         [void] [Windows.Security.Credentials.PasswordVault,Windows.Security.Credentials,ContentType=WindowsRuntime]
         [Windows.Security.Credentials.PasswordVault] $vault = New-Object Windows.Security.Credentials.PasswordVault;
         $account = $vault.Retrieve('ps-pat', $corpAccount);
@@ -66,7 +66,9 @@ if ($IsLinux -or $IsMacOS) {
         [PSCredential] $global:blkb = [PSCredential]::new($account.UserName, $script:pat);
     }
     Remove-Item -Path "Alias:/curl" -Force | Out-Null;
+    function Invoke-VimOnNT { &bash -c "vim $($args -replace "\\", "/")" };
     Set-Alias -Name "vim" -Value Invoke-VimOnNT -Description "Use WSL for vim on Windows";
+    Set-Alias -Name 'ipp' -Value "Import-PackageProvider -Name 'ChocolateyGet' | Out-Null" -Description 'Use OneGet for Chocolatey management';
 }
 
 function prompt {

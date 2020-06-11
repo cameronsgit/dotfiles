@@ -31,17 +31,24 @@
     "workbench.sideBar.location": "left",
     "workbench.statusBar.visible": true,
     "yaml.schemas": {
-        "file:///Users/sowderca/.vscode/extensions/atlassian.atlascode-2.1.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+        "file:///Users/sowderca/.vscode/extensions/atlassian.atlascode-2.4.9/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "team.showWelcomeMessage": false,
     "vim.enableNeovim": true,
+    "vsicons.associations.files": [
+        { "icon": "xquery", "extensions": ["kql"], "format": "svg" }
+    ],
     "vsicons.associations.folders": [
         { "icon": "temp", "extensions": ["obj"], "format": "svg" },
-        { "icon": "vs", "extensions": ["vs"], "format": "svg" }
+        { "icon": "temp", "extensions": [".dart_tool", "obj"], "format": "svg" },
+        { "icon": "vs", "extensions": ["vs"], "format": "svg" },
+        { "icon": "asset", "extensions": ["resources"], "format": "svg" },
+        { "icon": "e2e", "extensions": ["diagnostics"], "format": "svg" },
+        { "icon": "mock", "extensions": ["stubs"], "format": "svg" },
+        { "icon": "cli", "extensions": ["cmdlets"], "format": "svg" }
     ],
     "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.useSystemClipboard": true,
-    "powershell.powerShellExePath": "/usr/local/bin/pwsh-preview",
     "team.pinnedQueries": [
         {
             "account": "global",
@@ -58,13 +65,15 @@
         { "text": "FIXME", "color": "lightpink", },
         { "text": "NOTE", "color": "lightblue" },
         { "text": "TODO", "color": "khaki" },
-        { "text": "BUG", "color": "lightcoral" }
+        { "text": "BUG", "color": "lightcoral" },
+        { "text": "SEE", "color": "lightblue" }
     ],
     "files.associations": {
         "*.tf": "terraform",
         "*.command": "shellscript",
         "*.plist": "xml",
-        "Vagrantfile": "ruby"
+        "Vagrantfile": "ruby",
+        "*.make": "makefile"
     },
     "mssql.intelliSense.lowerCaseSuggestions": true,
     "pgsql.intelliSense.lowerCaseSuggestions": true,
@@ -114,5 +123,49 @@
     "workbench.fontAliasing": "auto",
     "window.titleBarStyle": "native",
     "ballerina.codeLens.services.enabled": true,
-    "workbench.colorTheme": "Gruvbox Dark Medium"
+    "go.useLanguageServer": true,
+    "editor.tokenColorCustomizations": {
+        "[Gruvbox Dark Medium]": {
+            "textMateRules": [{
+                "scope": "support.class.dart",
+                "settings": {
+                    "foreground": "#fabd2f"
+                }
+            }]
+        }
+    },
+    "cSpell.userWords": [
+        "Blackbaud",
+        "Citrix",
+        "runbook"
+    ],
+    "mssql.connections": [
+        {
+            "server": "localhost",
+            "database": "",
+            "authenticationType": "SqlLogin",
+            "user": "dba",
+            "password": "",
+            "emptyPasswordInput": false,
+            "savePassword": true,
+            "profileName": "sowderca-win10"
+        }
+    ],
+    "xml.codeLens.enabled": true,
+    "xml.fileAssociations": [
+        {
+        "systemId": "https://raw.githubusercontent.com/PowerShell/Plaster/master/src/Schema/PlasterManifest-v1.xsd",
+        "pattern": "plasterManifest.xml"
+        }
+    ],
+    "explorer.compactFolders": false,
+    "liveshare.presence": true,
+    "csharp.suppressHiddenDiagnostics": false,
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "rust.all_features": true,
+    "rust.clippy_preference": "on",
+    "vim.debug.silent": true,
+    "powershell.pester.useLegacyCodeLens": false
 }

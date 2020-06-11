@@ -8,4 +8,5 @@ function system-update() {
     brew cask upgrade
     mas upgrade
     rustup update
+    tldr --update
 }

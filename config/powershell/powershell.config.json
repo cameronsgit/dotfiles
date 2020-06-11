@@ -3,17 +3,20 @@
     "Microsoft.PowerShell.ExecutionPolicy": "Unrestricted",
     "ExperimentalFeatures": [
         "PSErrorView",
+        "PSUnixFileStat",
         "PSTernaryOperator",
+        "PSUpdatesNotification",
         "PSUpdatesNotification",
         "PSCoalescingOperators",
         "PSForEachObjectParallel",
         "PSPipelineChainOperators",
+        "PSNullConditionalOperators",
         "PSImplicitRemotingBatching",
         "PSCommandNotFoundSuggestion",
         "Microsoft.PowerShell.Utility.PSGetError",
         "PSDesiredStateConfiguration.InvokeDscResource",
         "Microsoft.PowerShell.PSManageBreakpointsInRunspace",
+        "Microsoft.PowerShell.Utility.PSManageBreakpointsInRunspace",
         "Microsoft.PowerShell.Utility.PSDebugRunspaceWithBreakpoints"
     ]
 }
-

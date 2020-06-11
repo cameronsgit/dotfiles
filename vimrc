@@ -13,11 +13,14 @@ endif
 " Plugins
 call plug#begin()
     Plug 'airblade/vim-gitgutter'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'arcticicestudio/nord-vim'
     Plug 'cespare/vim-toml'
     Plug 'chriskempson/base16-vim'
     Plug 'christoomey/vim-tmux-navigator'
+    Plug 'dart-lang/dart-vim-plugin'
+    Plug 'dylon/vim-antlr'
     Plug 'editorconfig/editorconfig-vim'
+    Plug 'ollykel/v-vim'
     Plug 'fatih/vim-go'
     Plug 'hashivim/vim-terraform'
     Plug 'jvirtanen/vim-hcl'
@@ -25,20 +28,21 @@ call plug#begin()
     Plug 'keith/swift.vim'
     Plug 'leafgarland/typescript-vim'
     Plug 'majutsushi/tagbar'
-    Plug 'dart-lang/dart-vim-plugin'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'octol/vim-cpp-enhanced-highlight'
-    Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+    Plug 'phpactor/phpactor',  {'do': 'composer install', 'for': 'php'}
     Plug 'pprovost/vim-ps1'
+    Plug 'rust-lang/rust.vim'
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree'
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
-    Plug 'arcticicestudio/nord-vim'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'vim-scripts/applescript.vim'
-    Plug 'dylon/vim-antlr'
-    Plug 'w0rp/ale'
     Plug 'vim-scripts/MSIL-Assembly'
+    Plug 'vim-scripts/applescript.vim'
+    Plug 'w0rp/ale'
+    Plug 'yorokobi/vim-splunk'
+    Plug 'junegunn/goyo.vim'
 call plug#end()
 
 function! CheckGitCommit()
@@ -59,6 +63,7 @@ augroup SetFileType
     autocmd BufRead,BufNewFile *.mm  set filetype=objcpp
     autocmd BufRead,BufNewFile *.rs  set filetype=rust
     autocmd BufRead,BufNewFile *.tf  set filetype=terraform
+    autocmd BufRead,BufNewFile *.spl set filetype=splunk
     autocmd FileType json syntax match Comment +\/\/.\+$+
 augroup END
 
@@ -69,6 +74,7 @@ augroup FileSettings
 augroup END
 
 " UI settings
+let g:goyo_width = 180
 let base16colorspace = 256
 let airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
@@ -107,6 +113,23 @@ let g:tagbar_type_rust = {'ctagstype': 'rust','kinds' : ['T:types,type definitio
 let g:tagbar_type_typescript = {'ctagstype': 'typescript','kinds': ['c:classes','n:modules','f:functions','v:variables','v:varlambdas','m:members','i:interfaces','e:enums']}
 let g:tagbar_type_go = {'ctagstype': 'go','kinds' : ['p:package','f:function','v:variables','t:type','c:const'] }
 
+
+" Go settings
+let g:go_doc_popup_window = 1
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_functions =  1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
 
 " Minimal desired settings.
 set autowrite
@@ -251,6 +274,7 @@ if has('cmdline_hist') | set history=500 | endif
 if has('mouse') || s:is_gui | set mouse=a | endif
 if has('vertsplit') | set splitright | endif
 if has('windows') | set splitbelow | endif
+if exists('+termguicolors') | set termguicolors | endif
 
 if has('insert_expand')
   set complete-=i completeopt=noinsert,menuone,preview
@@ -305,5 +329,6 @@ endif
 highlight Comment cterm=italic gui=italic
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
+highlight link goBuiltins Keyword
 
 scriptencoding utf-8
