@@ -1,16 +1,15 @@
 # vim: set ft=gitconfig: #
-
 [color "diff"]
     old = red strike
     new = green italic
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
 [user]
-	name = Cameron Sowder
-	email = cameron@sowder.io
+    name = Cameron Sowder
+    email = cameron@sowder.io
     signingkey = CB719BF40CC6C5AF
 [credential]
     helper = osxkeychain
@@ -23,7 +22,7 @@
 [alias]
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [merge]
-	tool = opendiff
+    tool = opendiff
 [difftool]
     prompt = false
 [mergetool]
