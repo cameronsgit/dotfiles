@@ -2,9 +2,6 @@
     "emmet.excludeLanguages": [
         "*"
     ],
-    "atlascode.jira.workingSite": {
-        "baseUrlSuffix": "atlassian.net"
-    },
     "window.nativeTabs": true,
     "breadcrumbs.enabled": false,
     "editor.autoClosingBrackets": "never",
@@ -24,7 +21,7 @@
     },
     "powershell.integratedConsole.showOnStartup": false,
     "projectManager.git.baseFolders": [
-        "$home/Development"
+        "~/Development"
     ],
     "workbench.editor.tabCloseButton": "left",
     "workbench.iconTheme": "vscode-icons",
@@ -35,9 +32,6 @@
     },
     "team.showWelcomeMessage": false,
     "vim.enableNeovim": true,
-    "vsicons.associations.files": [
-        { "icon": "xquery", "extensions": ["kql"], "format": "svg" }
-    ],
     "vsicons.associations.folders": [
         { "icon": "temp", "extensions": ["obj"], "format": "svg" },
         { "icon": "temp", "extensions": [".dart_tool", "obj"], "format": "svg" },
@@ -45,7 +39,8 @@
         { "icon": "asset", "extensions": ["resources"], "format": "svg" },
         { "icon": "e2e", "extensions": ["diagnostics"], "format": "svg" },
         { "icon": "mock", "extensions": ["stubs"], "format": "svg" },
-        { "icon": "cli", "extensions": ["cmdlets"], "format": "svg" }
+        { "icon": "cli", "extensions": ["cmdlets"], "format": "svg" },
+        { "icon": "config", "extensions": ["properties"], "format": "svg" }
     ],
     "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.useSystemClipboard": true,
@@ -73,7 +68,7 @@
         "*.command": "shellscript",
         "*.plist": "xml",
         "Vagrantfile": "ruby",
-        "*.make": "makefile"
+        "*.make": "makefile",
     },
     "mssql.intelliSense.lowerCaseSuggestions": true,
     "pgsql.intelliSense.lowerCaseSuggestions": true,
@@ -96,35 +91,18 @@
     "emmet.showExpandedAbbreviation": "never",
     "javascript.suggest.autoImports": false,
     "python.terminal.activateEnvironment": false,
-    "terraform.indexing": {
-        "enabled": true,
-        "liveIndexing": false,
-        "delay": 500,
-        "exclude": [
-            ".terraform/**/*",
-            "**/.terraform/**/*"
+    "terraform.languageServer": {
+        "external": true,
+        "args": [
+            "serve"
         ]
     },
-    "terraform.languageServer": {
-        "enabled": false,
-        "args": []
-    },
-    "atlascode.jira.jqlList": [
-        {
-            "id": "a1037b9f-5d95-4596-9012-9698dae881df",
-            "enabled": true,
-            "name": "My jira.blackbaud.com Issues",
-            "query": "assignee = currentUser() ORDER BY lastViewed DESC ",
-            "siteId": "jira.blackbaud.com",
-            "monitor": true
-        }
-    ],
     "linkerd-path": "/usr/local/bin/linkerd",
     "workbench.fontAliasing": "auto",
     "window.titleBarStyle": "native",
     "ballerina.codeLens.services.enabled": true,
     "go.useLanguageServer": true,
-    "editor.tokenColorCustomizations": {
+    "editor.tokenColorCustomizations": { 
         "[Gruvbox Dark Medium]": {
             "textMateRules": [{
                 "scope": "support.class.dart",
@@ -154,6 +132,10 @@
     "xml.codeLens.enabled": true,
     "xml.fileAssociations": [
         {
+            "systemId": "https://raw.githubusercontent.com/PowerShell/PowerShell/master/src/Schemas/Types.xsd",
+            "pattern": "pwsh.types.ps1xml"
+        },
+        {
         "systemId": "https://raw.githubusercontent.com/PowerShell/Plaster/master/src/Schema/PlasterManifest-v1.xsd",
         "pattern": "plasterManifest.xml"
         }
@@ -163,9 +145,30 @@
     "csharp.suppressHiddenDiagnostics": false,
     "omnisharp.enableEditorConfigSupport": true,
     "omnisharp.enableRoslynAnalyzers": true,
-    "workbench.colorTheme": "Gruvbox Dark Medium",
     "rust.all_features": true,
     "rust.clippy_preference": "on",
     "vim.debug.silent": true,
-    "powershell.pester.useLegacyCodeLens": false
+    "typescript.autoClosingTags": false,
+    "powershell.codeFormatting.autoCorrectAliases": true,
+    "docomment.activateOnEnter": true,
+    "csharp.semanticHighlighting.enabled": true,
+    "editor.semanticHighlighting.enabled": true,
+    "vs-kubernetes": {
+        "vs-kubernetes.kubectl-path.mac": "/Users/sowderca/.vs-kubernetes/tools/kubectl/kubectl",
+        "vs-kubernetes.minikube-path.mac": "/Users/sowderca/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+        "vs-kubernetes.helm-path.mac": "/Users/sowderca/.vs-kubernetes/tools/helm/darwin-amd64/helm",
+        "vs-kubernetes.draft-path.mac": "/Users/sowderca/.vs-kubernetes/tools/draft/darwin-amd64/draft"
+    },
+    "workbench.activityBar.visible": true,
+    "debug.openDebug": "neverOpen",
+    "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?",
+    "powershell.buttons.showPanelMovementButtons": true,
+    "editor.tabCompletion": "on",
+    "powershell.integratedConsole.focusConsoleOnExecute": false,
+    "files.defaultLanguage": "powershell",
+    "python.languageServer": "Microsoft",
+    "team.showFarewellMessage": false,
+    "dart.checkForSdkUpdates": false,
+    "omnisharp.useGlobalMono": "never",
+    "workbench.colorTheme": "Gruvbox Dark Medium"
 }

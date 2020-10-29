@@ -41,6 +41,7 @@ call plug#begin()
     Plug 'vim-scripts/MSIL-Assembly'
     Plug 'vim-scripts/applescript.vim'
     Plug 'w0rp/ale'
+    Plug 'ollykel/v-vim'
     Plug 'yorokobi/vim-splunk'
     Plug 'junegunn/goyo.vim'
 call plug#end()

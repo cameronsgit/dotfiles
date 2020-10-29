@@ -41,6 +41,7 @@ zplug "plugins/git", from:oh-my-zsh, as:plugin
 zplug "plugins/kops", from:oh-my-zsh, as:plugin
 zplug "plugins/minikube", from:oh-my-zsh, as:plugin
 zplug "plugins/nomad", from:oh-my-zsh, as:plugin
+zplug "plugins/swiftpm", from:oh-my-zsh, as:plugin
 zplug "plugins/npm", from:oh-my-zsh, as:plugin
 zplug "plugins/terraform", from:oh-my-zsh, as:plugin
 zplug "plugins/vagrant", from:oh-my-zsh, as:plugin
@@ -83,7 +84,9 @@ alias localip="ipconfig getifaddr en0"
 alias help=tldr
 
 # PATH setup
+path+=("/opt/omi/bin")
 path+=("/usr/local/sbin")
+path+=("/opt/local/bin")
 path+=("${HOME}/.porter")
 path+=("${HOME}/.yarn/bin")
 path+=("$(go env GOPATH)/bin")
