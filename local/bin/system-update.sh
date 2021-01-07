@@ -5,7 +5,7 @@ function system-update() {
     brew cleanup
     brew update
     brew upgrade
-    brew cask upgrade
+    brew upgrade --cask
     mas upgrade
     rustup update
     tldr --update

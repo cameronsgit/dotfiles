@@ -132,6 +132,9 @@ let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 
+" COC settings
+let g:coc_global_extensions=[ 'coc-powershell', 'coc-python', 'coc-omnisharp', 'coc-tsserver', 'coc-html', 'coc-json', 'coc-css' ]
+
 " Minimal desired settings.
 set autowrite
 set background=dark

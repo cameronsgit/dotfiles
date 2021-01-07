@@ -117,3 +117,5 @@ eval "$(rbenv init -)"
 
 # opam configuration
 test -r /Users/sowderca/.opam/opam-init/init.zsh && . /Users/sowderca/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

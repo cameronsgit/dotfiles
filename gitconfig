@@ -10,7 +10,7 @@
 [user]
     name = Cameron Sowder
     email = cameron@sowder.io
-    signingkey = CB719BF40CC6C5AF
+    signingkey = D755969E65024B62
 [credential]
     helper = osxkeychain
 [core]

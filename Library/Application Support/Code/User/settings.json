@@ -115,6 +115,8 @@
     "cSpell.userWords": [
         "Blackbaud",
         "Citrix",
+        "Cmdlet",
+        "Cmdlets",
         "runbook"
     ],
     "mssql.connections": [
@@ -151,17 +153,19 @@
     "typescript.autoClosingTags": false,
     "powershell.codeFormatting.autoCorrectAliases": true,
     "docomment.activateOnEnter": true,
-    "csharp.semanticHighlighting.enabled": true,
-    "editor.semanticHighlighting.enabled": true,
+    "csharp.semanticHighlighting.enabled": false,
+    "editor.semanticHighlighting.enabled": false,
     "vs-kubernetes": {
-        "vs-kubernetes.kubectl-path.mac": "/Users/sowderca/.vs-kubernetes/tools/kubectl/kubectl",
-        "vs-kubernetes.minikube-path.mac": "/Users/sowderca/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
-        "vs-kubernetes.helm-path.mac": "/Users/sowderca/.vs-kubernetes/tools/helm/darwin-amd64/helm",
-        "vs-kubernetes.draft-path.mac": "/Users/sowderca/.vs-kubernetes/tools/draft/darwin-amd64/draft"
+        "vs-kubernetes.kubectl-path.mac": "/usr/local/bin/kubectl",
+        "vs-kubernetes.minikube-path.mac": "/usr/local/bin/minikube",
+        "vs-kubernetes.helm-path.mac": "/usr/local/bin/helm",
+        "vs-kubernetes.draft-path.mac": "/usr/local/bindraft"
     },
     "workbench.activityBar.visible": true,
     "debug.openDebug": "neverOpen",
     "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?",
+    "csharp.testsCodeLens.enabled": true,
+    "csharp.referencesCodeLens.enabled": true,
     "powershell.buttons.showPanelMovementButtons": true,
     "editor.tabCompletion": "on",
     "powershell.integratedConsole.focusConsoleOnExecute": false,
@@ -170,5 +174,9 @@
     "team.showFarewellMessage": false,
     "dart.checkForSdkUpdates": false,
     "omnisharp.useGlobalMono": "never",
-    "workbench.colorTheme": "Gruvbox Dark Medium"
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "vsdocker.imageUser": "sowderca",
+    "python.showStartPage": false,
+    "powershell.codeFormatting.newLineAfterCloseBrace": false,
+    "powershell.sideBar.CommandExplorerVisibility": false
 }
