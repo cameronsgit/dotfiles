@@ -82,6 +82,7 @@ alias tmux="env TERM=screen-256color tmux"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias help=tldr
+alias reddit=ttrv
 
 # PATH setup
 path+=("/opt/omi/bin")

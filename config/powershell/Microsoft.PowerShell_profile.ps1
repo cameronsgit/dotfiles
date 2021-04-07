@@ -55,6 +55,7 @@ if ($IsLinux -or $IsMacOS) {
     }
     Set-Alias -Name "vim" -Value "nvim" -Description "Use Neovim instead of vim on non-Windows platforms";
     Enable-AzureRmAlias;
+    New-Module -Name 'ActiveDirectory' -ScriptBlock { } | Import-Module;
 } else {
     if ($IsWindows -and $IsCoreCLR) {
         Add-WindowsPSModulePath;

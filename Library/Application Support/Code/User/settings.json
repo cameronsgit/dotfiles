@@ -40,6 +40,7 @@
         { "icon": "e2e", "extensions": ["diagnostics"], "format": "svg" },
         { "icon": "mock", "extensions": ["stubs"], "format": "svg" },
         { "icon": "cli", "extensions": ["cmdlets"], "format": "svg" },
+        { "icon": "library", "extensions": ["shared"], "format": "svg" },
         { "icon": "config", "extensions": ["properties"], "format": "svg" }
     ],
     "vim.neovimPath": "/usr/local/bin/nvim",
@@ -123,12 +124,9 @@
         {
             "server": "localhost",
             "database": "",
-            "authenticationType": "SqlLogin",
-            "user": "dba",
-            "password": "",
-            "emptyPasswordInput": false,
-            "savePassword": true,
-            "profileName": "sowderca-win10"
+            "authenticationType": "Integrated",
+            "profileName": "sowderca-winVM",
+            "password": ""
         }
     ],
     "xml.codeLens.enabled": true,
@@ -178,5 +176,20 @@
     "vsdocker.imageUser": "sowderca",
     "python.showStartPage": false,
     "powershell.codeFormatting.newLineAfterCloseBrace": false,
-    "powershell.sideBar.CommandExplorerVisibility": false
+    "powershell.sideBar.CommandExplorerVisibility": false,
+    "pesterExplorer.autoDiscoverOnOpen": true,
+    "html.autoClosingTags": false,
+    "typescript.implementationsCodeLens.enabled": true,
+    "typescript.preferences.quoteStyle": "single",
+    "angularKarmaTestExplorer.projectType": "",
+    "powershell.notebooks.showToggleButton": true,
+    "powershell.codeFormatting.useConstantStrings": true,
+    "angular.experimental-ivy": true,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "cSpell.enabled": true
 }
