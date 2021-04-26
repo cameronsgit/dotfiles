@@ -32,6 +32,9 @@
     },
     "team.showWelcomeMessage": false,
     "vim.enableNeovim": true,
+    "vsicons.associations.files": [
+        { "icon": "azure", "extensions": ["arm.json"], "format": "svg" }
+    ],
     "vsicons.associations.folders": [
         { "icon": "temp", "extensions": ["obj"], "format": "svg" },
         { "icon": "temp", "extensions": [".dart_tool", "obj"], "format": "svg" },
@@ -118,6 +121,8 @@
         "Citrix",
         "Cmdlet",
         "Cmdlets",
+        "Flyout",
+        "fileoverview",
         "runbook"
     ],
     "mssql.connections": [
@@ -172,7 +177,6 @@
     "team.showFarewellMessage": false,
     "dart.checkForSdkUpdates": false,
     "omnisharp.useGlobalMono": "never",
-    "workbench.colorTheme": "Gruvbox Dark Medium",
     "vsdocker.imageUser": "sowderca",
     "python.showStartPage": false,
     "powershell.codeFormatting.newLineAfterCloseBrace": false,
@@ -191,5 +195,19 @@
             "filenamePattern": "*.ipynb"
         }
     ],
-    "cSpell.enabled": true
+    "cSpell.enabled": true,
+    "workbench.welcomePage.hiddenCategories": [
+        "Beginner",
+        "Setup"
+    ],
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "[bicep]": {
+      "editor.semanticHighlighting.enabled": true
+    },
+    "azureResourceManagerTools.parameterFiles": {
+        "/Users/sowderca/Development/Personal/blackbaud-iaas-pwsh-linter/worker_node.json": "worker_node.parameters.json",
+        "/Users/sowderca/Development/Personal/blackbaud-iaas-pwsh-linter/worker_node.arm.json": "worker_node.parameters.json"
+    },
+    "typescript.referencesCodeLens.enabled": true,
+    "typescript.referencesCodeLens.showOnAllFunctions": true
 }
