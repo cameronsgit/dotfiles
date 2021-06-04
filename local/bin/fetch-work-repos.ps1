@@ -10,7 +10,7 @@ Set-StrictMode -Version 'Latest';
 Import-Module 'Microsoft.PowerShell.Utility';
 
 
-Push-Location -Path '~/Development/Blackbaud' | Out-Null;
+Push-Location -Path '~/Developer/Blackbaud' | Out-Null;
 
 [bool] $vstsCli = (Get-Command -CommandType Application -Name '*vsts*' -All) -as [bool];
 

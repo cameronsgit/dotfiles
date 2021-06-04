@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 function sync-devwork() {
     # Directory that source code lives in.
-    local devPath="${HOME}/Development"
-    # The depth that the actual git repo's are found under $devPath....(~/Development/Blackbaud/blackbaud-iaas-docs = 2 levels)
+    local devPath="${HOME}/Developer"
+    # The depth that the actual git repo's are found under $devPath....(~/Developer/Blackbaud/blackbaud-iaas-docs = 2 levels)
     local nestedLvl=2;
     printf "\\e[32m Switching directories...\\e[0m \\n"
     # Move to the root folder containing the git repos.

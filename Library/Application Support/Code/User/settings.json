@@ -200,7 +200,6 @@
         "Beginner",
         "Setup"
     ],
-    "workbench.colorTheme": "Gruvbox Dark Medium",
     "[bicep]": {
       "editor.semanticHighlighting.enabled": true
     },
@@ -209,5 +208,6 @@
         "/Users/sowderca/Development/Personal/blackbaud-iaas-pwsh-linter/worker_node.arm.json": "worker_node.parameters.json"
     },
     "typescript.referencesCodeLens.enabled": true,
-    "typescript.referencesCodeLens.showOnAllFunctions": true
+    "typescript.referencesCodeLens.showOnAllFunctions": true,
+    "workbench.colorTheme": "Gruvbox Dark Medium"
 }
