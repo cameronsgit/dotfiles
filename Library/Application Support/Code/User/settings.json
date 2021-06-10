@@ -7,7 +7,7 @@
     "editor.autoClosingBrackets": "never",
     "editor.autoSurround": "never",
     "editor.autoClosingQuotes": "never",
-    "editor.fontFamily": "Operator Mono for Powerline",
+    "editor.fontFamily": "OperatorMono Nerd Font",
     "editor.fontSize": 13,
     "editor.minimap.enabled": false,
     "editor.renderIndentGuides": true,
@@ -21,7 +21,7 @@
     },
     "powershell.integratedConsole.showOnStartup": false,
     "projectManager.git.baseFolders": [
-        "~/Development"
+        "~/Developer"
     ],
     "workbench.editor.tabCloseButton": "left",
     "workbench.iconTheme": "vscode-icons",
@@ -77,7 +77,6 @@
     "mssql.intelliSense.lowerCaseSuggestions": true,
     "pgsql.intelliSense.lowerCaseSuggestions": true,
     "pgsql.format.keywordCasing": "lowercase",
-    "python.jediEnabled": false,
     "pgsql.format.datatypeCasing": "lowercase",
     "mssql.format.keywordCasing": "lowercase",
     "mssql.format.datatypeCasing": "lowercase",
@@ -104,16 +103,125 @@
     "linkerd-path": "/usr/local/bin/linkerd",
     "workbench.fontAliasing": "auto",
     "window.titleBarStyle": "native",
-    "ballerina.codeLens.services.enabled": true,
     "go.useLanguageServer": true,
-    "editor.tokenColorCustomizations": { 
+    "workbench.colorCustomizations": {
+        "[Default Dark+]": {
+            "editor.background": "#282828"
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "[Default Dark+]": {
+            "textMateRules": [
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "fontStyle": "italic",
+                        "foreground": "#928374"
+                    }
+                }
+            ]
+        },
         "[Gruvbox Dark Medium]": {
-            "textMateRules": [{
+            "textMateRules": [
+                {
                 "scope": "support.class.dart",
                 "settings": {
                     "foreground": "#fabd2f"
                 }
-            }]
+            },
+            {
+                "scope": [
+                    "variable.other.readwrite.cs",
+                    "entity.name.variable.local.cs",
+                    "entity.name.variable.property.cs",
+                    "entity.name.variable.parameter.cs",
+                    "entity.name.type.namespace.cs"
+                ],
+                "settings": {
+                    //"foreground": "#83a598",
+                    "foreground": "#458588"
+                }
+            },
+            {
+                "scope": [
+                    // "meta.function.cs",
+                    // "entity.name.function.cs",
+                    // "variable.other.object.cs",
+                    "storage.modifier.cs",
+                    "keyword.other.await.cs"
+                ],
+                "settings": {
+                    "foreground":  "#fb4934", 
+                }
+            },
+          {
+                "scope": [
+                    // "meta.function.cs",
+                    // "entity.name.function.cs",
+                    // "variable.other.object.cs",
+                ],
+                "settings": {
+                    "foreground": "#d79921",
+                }
+            },
+            {
+                "scope": [
+                    // "variable.other.object.cs",
+                    "keyword.operator.logical.cs",
+                ],
+                "settings": {
+                    "foreground": "#aec07c",
+                }
+            },
+            {
+                "scope": [
+                    "keyword.type"
+                ],
+                "settings": {
+                    "foreground": "#fabd2f",
+                }
+            },
+            {
+                "scope": [
+                    "variable.other.member.cs",
+                    "meta.function.cs",
+                    "entity.name.function.cs",
+                ],
+                "settings": {
+                    // "foreground": "#fe8019",
+                    "foreground": "#d3896b" 
+                }
+            },
+            {
+                "scope": [
+                    "keyword.other.using.cs",
+                ],
+                "settings": {
+                    "foreground": "#fb4934",
+                }
+            },
+            {
+                "scope": [
+                    "variable.other.object.cs",
+                    "variable.other.object.property.cs",
+                ],
+                "settings": {
+                    // "foreground": "#458588",
+                    "foreground": "#83a598"
+                }
+            },
+            {
+                "scope": [
+                    "meta.function.cs",
+                    "entity.name.function.cs",
+                    //"variable.other.object.cs",
+                ],
+                "settings": {
+                    // "foreground": "#d3896b"
+                    "foreground": "#fe8019"
+                }
+            }
+        ]
         }
     },
     "cSpell.userWords": [
@@ -156,8 +264,6 @@
     "typescript.autoClosingTags": false,
     "powershell.codeFormatting.autoCorrectAliases": true,
     "docomment.activateOnEnter": true,
-    "csharp.semanticHighlighting.enabled": false,
-    "editor.semanticHighlighting.enabled": false,
     "vs-kubernetes": {
         "vs-kubernetes.kubectl-path.mac": "/usr/local/bin/kubectl",
         "vs-kubernetes.minikube-path.mac": "/usr/local/bin/minikube",
@@ -174,21 +280,16 @@
     "powershell.integratedConsole.focusConsoleOnExecute": false,
     "files.defaultLanguage": "powershell",
     "python.languageServer": "Microsoft",
-    "team.showFarewellMessage": false,
     "dart.checkForSdkUpdates": false,
     "omnisharp.useGlobalMono": "never",
     "vsdocker.imageUser": "sowderca",
     "python.showStartPage": false,
     "powershell.codeFormatting.newLineAfterCloseBrace": false,
     "powershell.sideBar.CommandExplorerVisibility": false,
-    "pesterExplorer.autoDiscoverOnOpen": true,
     "html.autoClosingTags": false,
     "typescript.implementationsCodeLens.enabled": true,
     "typescript.preferences.quoteStyle": "single",
-    "angularKarmaTestExplorer.projectType": "",
-    "powershell.notebooks.showToggleButton": true,
     "powershell.codeFormatting.useConstantStrings": true,
-    "angular.experimental-ivy": true,
     "workbench.editorAssociations": [
         {
             "viewType": "jupyter.notebook.ipynb",
@@ -196,10 +297,6 @@
         }
     ],
     "cSpell.enabled": true,
-    "workbench.welcomePage.hiddenCategories": [
-        "Beginner",
-        "Setup"
-    ],
     "[bicep]": {
       "editor.semanticHighlighting.enabled": true
     },
@@ -207,7 +304,10 @@
         "/Users/sowderca/Development/Personal/blackbaud-iaas-pwsh-linter/worker_node.json": "worker_node.parameters.json",
         "/Users/sowderca/Development/Personal/blackbaud-iaas-pwsh-linter/worker_node.arm.json": "worker_node.parameters.json"
     },
+    "editor.semanticHighlighting.enabled": false,
     "typescript.referencesCodeLens.enabled": true,
     "typescript.referencesCodeLens.showOnAllFunctions": true,
-    "workbench.colorTheme": "Gruvbox Dark Medium"
+    "terminal.integrated.tabs.enabled": true,
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "diffEditor.renderSideBySide": false
 }

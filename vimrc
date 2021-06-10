@@ -291,6 +291,12 @@ endif
 if v:version >= 704 | set expandtab | endif
 if v:version >= 800 || has('nvim-0.1.6') | set listchars=tab:→\ ,trail:·,nbsp:• | endif
 
+if has('python')
+  set pyx=2
+elseif has('python3')
+  set pyx=3
+endif
+
 " Try to mimic nvim-defaults.
 if !has('nvim')
     " Copied from :help nvim-defaults

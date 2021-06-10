@@ -15,56 +15,54 @@ autoload -Uz compinit && compinit
 autoload -U colors && colors
 autoload -U add-zsh-hook
 
- [[ -f ~/.zplug/init.zsh ]] || return
-
 # Ensure zplug installation
 if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug ~/.zplug
   source ~/.zplug/init.zsh && zplug update --self
 fi
 
-# Source
-source "${HOME}/.fzf.zsh"
-source "${HOME}/.cargo/env"
-source "${HOME}/.zplug/init.zsh"
-source "${HOME}/.local/bin/sync-devwork.sh"
-source "${HOME}/.local/bin/system-update.sh"
-source "${HOME}/.local/bin/register-completions.zsh"
-source "${HOME}/.local/bin/security.sh"
-source "${HOME}/.iterm2_shell_integration.zsh"
+ # Source
+ source "${HOME}/.fzf.zsh"
+ source "${HOME}/.cargo/env"
+ source "${HOME}/.zplug/init.zsh"
+ source "${HOME}/.local/bin/sync-devwork.sh"
+ source "${HOME}/.local/bin/system-update.sh"
+ source "${HOME}/.local/bin/register-completions.zsh"
+ source "${HOME}/.local/bin/security.sh"
+ source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Load plugins
-zplug "lib/completion", from:oh-my-zsh
-zplug "lib/history", from:oh-my-zsh
-zplug "plugins/docker", from:oh-my-zsh, as:plugin
-zplug "plugins/git", from:oh-my-zsh, as:plugin
-zplug "plugins/kops", from:oh-my-zsh, as:plugin
-zplug "plugins/minikube", from:oh-my-zsh, as:plugin
-zplug "plugins/nomad", from:oh-my-zsh, as:plugin
-zplug "plugins/swiftpm", from:oh-my-zsh, as:plugin
-zplug "plugins/npm", from:oh-my-zsh, as:plugin
-zplug "plugins/terraform", from:oh-my-zsh, as:plugin
-zplug "plugins/vagrant", from:oh-my-zsh, as:plugin
-zplug "plugins/vault", from:oh-my-zsh, as:plugin
-zplug "plugins/vi-mode", from:oh-my-zsh, as:plugin
+ # Load plugins
+ zplug "lib/completion", from:oh-my-zsh
+ zplug "lib/history", from:oh-my-zsh
+ zplug "plugins/docker", from:oh-my-zsh, as:plugin
+ zplug "plugins/git", from:oh-my-zsh, as:plugin
+ zplug "plugins/kops", from:oh-my-zsh, as:plugin
+ zplug "plugins/minikube", from:oh-my-zsh, as:plugin
+ zplug "plugins/nomad", from:oh-my-zsh, as:plugin
+ zplug "plugins/swiftpm", from:oh-my-zsh, as:plugin
+ zplug "plugins/npm", from:oh-my-zsh, as:plugin
+ zplug "plugins/terraform", from:oh-my-zsh, as:plugin
+ zplug "plugins/vagrant", from:oh-my-zsh, as:plugin
+ zplug "plugins/vault", from:oh-my-zsh, as:plugin
+ zplug "plugins/vi-mode", from:oh-my-zsh, as:plugin
 
-# Theme
-zplug "mafredri/zsh-async", from:github
-zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
+ # Theme
+ zplug "mafredri/zsh-async", from:github
+ zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
 
 
-# Completions
-compctl -K _dotnet_zsh_complete dotnet
+ # Completions
+ compctl -K _dotnet_zsh_complete dotnet
 
-# Install packages that have not yet been installed
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  else
-    echo
-  fi
-fi
+ # Install packages that have not yet been installed
+ if ! zplug check --verbose; then
+   printf "Install? [y/N]: "
+   if read -q; then
+     echo; zplug install
+   else
+     echo
+   fi
+ fi
 
 # Load zplug
 zplug load
@@ -82,7 +80,7 @@ alias tmux="env TERM=screen-256color tmux"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias help=tldr
-alias reddit=ttrv
+alias reddit="~/Library/Python/3.9/bin/ttrv"
 
 # PATH setup
 path+=("/opt/omi/bin")
@@ -120,3 +118,4 @@ eval "$(rbenv init -)"
 test -r /Users/sowderca/.opam/opam-init/init.zsh && . /Users/sowderca/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

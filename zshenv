@@ -5,3 +5,4 @@ export NVM_DIR="${HOME}/.nvm"
 export WASMER_DIR="${HOME}/.wasmer"
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export BASE16_THEME=gruvbox-dark-medium
+. "$HOME/.cargo/env"
