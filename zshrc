@@ -81,6 +81,7 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias help=tldr
 alias reddit="~/Library/Python/3.9/bin/ttrv"
+alias hackernews=clx
 
 # PATH setup
 path+=("/opt/omi/bin")
