@@ -1,7 +1,5 @@
 {
-    "emmet.excludeLanguages": [
-        "*"
-    ],
+    "emmet.excludeLanguages": ["*"],
     "window.nativeTabs": true,
     "breadcrumbs.enabled": false,
     "editor.autoClosingBrackets": "never",
@@ -11,9 +9,9 @@
     "editor.fontSize": 13,
     "editor.minimap.enabled": false,
     "editor.renderIndentGuides": true,
-    "editor.renderWhitespace": "boundary",
+    "editor.renderWhitespace": "all",
     "editor.snippetSuggestions": "none",
-    "editor.wordWrap": "on",
+    "editor.wordWrap": "off",
     "explorer.decorations.colors": false,
     "explorer.openEditors.visible": 0,
     "files.exclude": {
@@ -80,7 +78,6 @@
     "pgsql.format.datatypeCasing": "lowercase",
     "mssql.format.keywordCasing": "lowercase",
     "mssql.format.datatypeCasing": "lowercase",
-    "window.zoomLevel": 0,
     "go.vetOnSave": "off",
     "go.testOnSave": false,
     "go.coverOnSave": false,
@@ -121,7 +118,7 @@
                 }
             ]
         },
-        "[Gruvbox Dark Medium]": {
+        "[Gruvbox Dark Soft]": {
             "textMateRules": [
                 {
                 "scope": "support.class.dart",
@@ -147,11 +144,12 @@
                     // "meta.function.cs",
                     // "entity.name.function.cs",
                     // "variable.other.object.cs",
+                    "keyword.control",
                     "storage.modifier.cs",
                     "keyword.other.await.cs"
                 ],
                 "settings": {
-                    "foreground":  "#fb4934", 
+                    "foreground":  "#e2484d", 
                 }
             },
           {
@@ -194,10 +192,11 @@
             },
             {
                 "scope": [
-                    "keyword.other.using.cs",
+                    "keyword.cs",
+                    "storage.type.powershell"
                 ],
                 "settings": {
-                    "foreground": "#fb4934",
+                    "foreground": "#e95c4c",
                 }
             },
             {
@@ -231,7 +230,8 @@
         "Cmdlets",
         "Flyout",
         "fileoverview",
-        "runbook"
+        "runbook",
+        "unessecary"
     ],
     "mssql.connections": [
         {
@@ -272,42 +272,57 @@
     },
     "workbench.activityBar.visible": true,
     "debug.openDebug": "neverOpen",
-    "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "csharp.testsCodeLens.enabled": true,
     "csharp.referencesCodeLens.enabled": true,
     "powershell.buttons.showPanelMovementButtons": true,
     "editor.tabCompletion": "on",
     "powershell.integratedConsole.focusConsoleOnExecute": false,
     "files.defaultLanguage": "powershell",
-    "python.languageServer": "Microsoft",
     "dart.checkForSdkUpdates": false,
     "omnisharp.useGlobalMono": "never",
     "vsdocker.imageUser": "sowderca",
-    "python.showStartPage": false,
     "powershell.codeFormatting.newLineAfterCloseBrace": false,
     "powershell.sideBar.CommandExplorerVisibility": false,
     "html.autoClosingTags": false,
     "typescript.implementationsCodeLens.enabled": true,
     "typescript.preferences.quoteStyle": "single",
     "powershell.codeFormatting.useConstantStrings": true,
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "cSpell.enabled": true,
     "[bicep]": {
       "editor.semanticHighlighting.enabled": true
     },
     "azureResourceManagerTools.parameterFiles": {
         "/Users/sowderca/Development/Personal/blackbaud-iaas-pwsh-linter/worker_node.json": "worker_node.parameters.json",
-        "/Users/sowderca/Development/Personal/blackbaud-iaas-pwsh-linter/worker_node.arm.json": "worker_node.parameters.json"
+        "/Users/sowderca/Development/Personal/blackbaud-iaas-pwsh-linter/worker_node.arm.json": "worker_node.parameters.json",
+        "/Users/sowderca/Scripts/lnx-vm/template.json": "template.parameters.json"
     },
-    "editor.semanticHighlighting.enabled": false,
     "typescript.referencesCodeLens.enabled": true,
     "typescript.referencesCodeLens.showOnAllFunctions": true,
     "terminal.integrated.tabs.enabled": true,
-    "workbench.colorTheme": "Gruvbox Dark Medium",
-    "diffEditor.renderSideBySide": false
+    "diffEditor.renderSideBySide": false,
+    "editor.cursorStyle": "line",
+    "editor.insertSpaces": false,
+    "editor.lineNumbers": "on",
+    "security.workspace.trust.untrustedFiles": "open",
+    "[sql]": {
+        "editor.defaultFormatter": "ms-mssql.mssql"
+    },
+    "redhat.telemetry.enabled": true,
+    "python.pythonPath": "/usr/local/bin/python3",
+    "editor.suggest.showWords": false,
+    "vscode-edge-devtools.mirrorEdits": true,
+    "python.defaultInterpreterPath": "/usr/local/bin/python3",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "Lua.semantic.keyword": true,
+    "editor.semanticHighlighting.enabled": true,
+    "workbench.colorTheme": "Gruvbox Dark Soft",
+    "gitlens.codeLens.scopes": [
+        "containers",
+        "blocks"
+    ],
+    "gitlens.defaultGravatarsStyle": "mp"
 }

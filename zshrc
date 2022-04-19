@@ -25,6 +25,7 @@ fi
  source "${HOME}/.fzf.zsh"
  source "${HOME}/.cargo/env"
  source "${HOME}/.zplug/init.zsh"
+ source "${HOME}/.local/bin/updatePOB.sh"
  source "${HOME}/.local/bin/sync-devwork.sh"
  source "${HOME}/.local/bin/system-update.sh"
  source "${HOME}/.local/bin/register-completions.zsh"
@@ -80,7 +81,6 @@ alias tmux="env TERM=screen-256color tmux"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias help=tldr
-alias reddit="~/Library/Python/3.9/bin/ttrv"
 alias hackernews=clx
 
 # PATH setup
@@ -94,6 +94,7 @@ path+=("${HOME}/.fastlane/bin")
 path+=("${HOME}/.dotnet/tools")
 path+=("${HOME}/.pub-cache/bin")
 path+=("${KREW_ROOT:-$HOME/.krew}/bin")
+path+=("${HOME}/Library/Python/3.9/bin")
 path+=("${HOME}/.config/yarn/global/node_modules/.bin")
 path+=("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/")
 

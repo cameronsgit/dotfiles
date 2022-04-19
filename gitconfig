@@ -43,6 +43,7 @@
     ff = only
 [push]
     default = current
+    followTags = true
 [log]
     abbrevCommit = true
     decorate = short
@@ -57,3 +58,5 @@
     old = red strike
 [color]
     ui = true
+[init]
+    defaultBranch = master

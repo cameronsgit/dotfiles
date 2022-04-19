@@ -15,6 +15,11 @@ call plug#begin()
     Plug 'airblade/vim-gitgutter'
     Plug 'arcticicestudio/nord-vim'
     Plug 'cespare/vim-toml'
+    Plug 'simrat39/symbols-outline.nvim'
+    Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+    Plug 'onsails/lspkind-nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'akinsho/nvim-bufferline.lua'
     Plug 'chriskempson/base16-vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'dart-lang/dart-vim-plugin'
@@ -27,24 +32,32 @@ call plug#begin()
     Plug 'keith/sourcekittendaemon.vim'
     Plug 'keith/swift.vim'
     Plug 'leafgarland/typescript-vim'
-    Plug 'majutsushi/tagbar'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'hrsh7th/nvim-compe'
+    " Plug 'majutsushi/tagbar'
+"    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'phpactor/phpactor',  {'do': 'composer install', 'for': 'php'}
     Plug 'pprovost/vim-ps1'
     Plug 'rust-lang/rust.vim'
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'scrooloose/nerdtree'
+    Plug 'kyazdani42/nvim-tree.lua'
+
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'kabouzeid/nvim-lspinstall'
+    " Plug 'scrooloose/nerdcommenter'
+    " Plug 'scrooloose/nerdtree'
     Plug 'tpope/vim-fugitive'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
     Plug 'vim-scripts/MSIL-Assembly'
     Plug 'vim-scripts/applescript.vim'
-    Plug 'w0rp/ale'
-    Plug 'ollykel/v-vim'
+    " Plug 'w0rp/ale'
+   " Plug 'ollykel/v-vim'
     Plug 'yorokobi/vim-splunk'
-    Plug 'junegunn/goyo.vim'
+    " Plug 'junegunn/goyo.vim'
 call plug#end()
+
+lua require('config')
+" lua require('bufferline').setup{}
 
 function! CheckGitCommit()
     :3
@@ -75,23 +88,23 @@ augroup FileSettings
 augroup END
 
 " UI settings
-let g:goyo_width = 180
+" let g:goyo_width = 180
 let base16colorspace = 256
-let airline_theme = 'base16'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
+" let airline_theme = 'base16'
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#ale#enabled = 1
 colorscheme base16-gruvbox-dark-medium
 
 " Linting
-let g:ale_statusline_format = ['⌦ %d', '⚠︎ %d', '✓ ok']
-let g:ale_echo_msg_error_str = 'Error'
-let g:ale_sign_error = '⌦ '
-let g:ale_sign_warning = '⚠'
-let g:ale_echo_msg_warning_str = 'Warning'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_set_highlights = 0
+" let g:ale_statusline_format = ['⌦ %d', '⚠︎ %d', '✓ ok']
+" let g:ale_echo_msg_error_str = 'Error'
+" let g:ale_sign_error = '⌦ '
+" let g:ale_sign_warning = '⚠'
+" let g:ale_echo_msg_warning_str = 'Warning'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed = 0
+" let g:ale_set_highlights = 0
 
 " Plugin Settings
 let g:cpp_class_scope_highlight = 1
@@ -104,15 +117,15 @@ let g:ale_completion_enabled = 0
 if has('macunix')
 endif
 
-let g:tagbar_type_ansible = { 'ctagstype': 'ansible', 'kinds': [ 't:tasks' ], 'sort': 0 }
-let g:tagbar_type_css = { 'ctagstype': 'Css', 'kinds': ['c:classes', 's:selectors', 'i:identities'] }
-let g:tagbar_type_make = { 'kinds':['m:macros', 't:targets'] }
-let g:tagbar_type_ps1 = { 'ctagstype': 'powershell', 'kinds': ['f:function','i:filter','a:alias', 't:test'] }
-let g:tagbar_type_pester = { 'ctagstype': 'pester', 'kinds': ['f:function','i:filter','a:alias', 'm:method'] }
-let g:tagbar_type_ruby = { 'kinds': ['m:modules','c:classes','d:describes','C:contexts','f:methods','F:singleton methods'] }
-let g:tagbar_type_rust = {'ctagstype': 'rust','kinds' : ['T:types,type definitions','f:functions,function definitions','g:enum,enumeration names','s:structure names','m:modules,module names','c:consts,static constants','t:traits','i:impls,trait implementations'] }
-let g:tagbar_type_typescript = {'ctagstype': 'typescript','kinds': ['c:classes','n:modules','f:functions','v:variables','v:varlambdas','m:members','i:interfaces','e:enums']}
-let g:tagbar_type_go = {'ctagstype': 'go','kinds' : ['p:package','f:function','v:variables','t:type','c:const'] }
+" let g:tagbar_type_ansible = { 'ctagstype': 'ansible', 'kinds': [ 't:tasks' ], 'sort': 0 }
+" let g:tagbar_type_css = { 'ctagstype': 'Css', 'kinds': ['c:classes', 's:selectors', 'i:identities'] }
+" let g:tagbar_type_make = { 'kinds':['m:macros', 't:targets'] }
+" let g:tagbar_type_ps1 = { 'ctagstype': 'powershell', 'kinds': ['f:function','i:filter','a:alias', 't:test'] }
+" let g:tagbar_type_pester = { 'ctagstype': 'pester', 'kinds': ['f:function','i:filter','a:alias', 'm:method'] }
+" let g:tagbar_type_ruby = { 'kinds': ['m:modules','c:classes','d:describes','C:contexts','f:methods','F:singleton methods'] }
+" let g:tagbar_type_rust = {'ctagstype': 'rust','kinds' : ['T:types,type definitions','f:functions,function definitions','g:enum,enumeration names','s:structure names','m:modules,module names','c:consts,static constants','t:traits','i:impls,trait implementations'] }
+" let g:tagbar_type_typescript = {'ctagstype': 'typescript','kinds': ['c:classes','n:modules','f:functions','v:variables','v:varlambdas','m:members','i:interfaces','e:enums']}
+" let g:tagbar_type_go = {'ctagstype': 'go','kinds' : ['p:package','f:function','v:variables','t:type','c:const'] }
 
 
 " Go settings
@@ -133,7 +146,7 @@ let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 
 " COC settings
-let g:coc_global_extensions=[ 'coc-powershell', 'coc-python', 'coc-omnisharp', 'coc-tsserver', 'coc-html', 'coc-json', 'coc-css' ]
+" let g:coc_global_extensions=[ 'coc-powershell', 'coc-python', 'coc-omnisharp', 'coc-tsserver', 'coc-html', 'coc-json', 'coc-css' ]
 
 " Minimal desired settings.
 set autowrite
