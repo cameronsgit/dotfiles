@@ -7,8 +7,6 @@
     "editor.autoClosingQuotes": "never",
     "editor.fontFamily": "OperatorMono Nerd Font",
     "editor.fontSize": 13,
-    "editor.minimap.enabled": false,
-    "editor.renderIndentGuides": true,
     "editor.renderWhitespace": "all",
     "editor.snippetSuggestions": "none",
     "editor.wordWrap": "off",
@@ -35,9 +33,12 @@
     ],
     "vsicons.associations.folders": [
         { "icon": "temp", "extensions": ["obj"], "format": "svg" },
+        { "icon": "temp", "extensions": ["__skyux"], "format": "svg" },
         { "icon": "temp", "extensions": [".dart_tool", "obj"], "format": "svg" },
+        { "icon": "webpack", "extensions": [".angular"], "format": "svg" },
         { "icon": "vs", "extensions": ["vs"], "format": "svg" },
         { "icon": "asset", "extensions": ["resources"], "format": "svg" },
+        { "icon": "www", "extensions": ["environments"], "format": "svg" },
         { "icon": "e2e", "extensions": ["diagnostics"], "format": "svg" },
         { "icon": "mock", "extensions": ["stubs"], "format": "svg" },
         { "icon": "cli", "extensions": ["cmdlets"], "format": "svg" },
@@ -99,7 +100,6 @@
     },
     "linkerd-path": "/usr/local/bin/linkerd",
     "workbench.fontAliasing": "auto",
-    "window.titleBarStyle": "native",
     "go.useLanguageServer": true,
     "workbench.colorCustomizations": {
         "[Default Dark+]": {
@@ -270,7 +270,6 @@
         "vs-kubernetes.helm-path.mac": "/usr/local/bin/helm",
         "vs-kubernetes.draft-path.mac": "/usr/local/bindraft"
     },
-    "workbench.activityBar.visible": true,
     "debug.openDebug": "neverOpen",
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "csharp.testsCodeLens.enabled": true,
@@ -318,11 +317,30 @@
     "python.defaultInterpreterPath": "/usr/local/bin/python3",
     "terminal.integrated.defaultProfile.osx": "zsh",
     "Lua.semantic.keyword": true,
-    "editor.semanticHighlighting.enabled": true,
-    "workbench.colorTheme": "Gruvbox Dark Soft",
     "gitlens.codeLens.scopes": [
         "containers",
         "blocks"
     ],
-    "gitlens.defaultGravatarsStyle": "mp"
+    "gitlens.defaultGravatarsStyle": "mp",
+    "editor.guides.indentation": true,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.bracketPairColorization.enabled": false,
+    "todo.colors.tags.background": [
+        "#32302F"
+    ],
+    "karmaTestExplorer.browser": "Edge",
+    "karmaTestExplorer.enableExtension": false,
+    "vscode-edge-devtools.fallbackRevision": "@a41122be052fe9616f0def5fe6842fa942930d46",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "window.titleBarStyle": "native",
+    "editor.minimap.enabled": false,
+    "terminal.integrated.shellIntegration.decorationIcon": "' '",
+    "terminal.integrated.shellIntegration.decorationsEnabled": false,
+    "terminal.integrated.shellIntegration.decorationIconSuccess": "' '",
+    "terminal.integrated.shellIntegration.decorationIconError": " ' '",
+    "azure-work-management.organization": "blackbaud",
+    "azure-work-management.personal-access-token": "t6qgjydbbenxzeid4bgzaib2ufxqn44xpkhsd33al7fzfar2er6a",
+    "azure-work-management.project": "Products",
+    "azure-work-management.team": "IECO AppMgmt CORE",
+    "azure-work-management.iteration": "Products\\2022\\Block 5\\1 MonFri\\B5S6 (Jul 25 - Jul 29)"
 }

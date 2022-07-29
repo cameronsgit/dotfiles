@@ -57,6 +57,7 @@ cmp.setup({
             end,
             { "i", "s" }
         ),
+      ['d'] = vim.lsp.buf.hover(),
       ['<C-e>'] = cmp.mapping.abort(),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),

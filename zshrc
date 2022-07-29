@@ -52,18 +52,18 @@ fi
  zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
 
 
- # Completions
- compctl -K _dotnet_zsh_complete dotnet
+# Completions
+compctl -K _dotnet_zsh_complete dotnet
 
- # Install packages that have not yet been installed
- if ! zplug check --verbose; then
-   printf "Install? [y/N]: "
-   if read -q; then
-     echo; zplug install
-   else
-     echo
-   fi
- fi
+# Install packages that have not yet been installed
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  else
+    echo
+  fi
+fi
 
 # Load zplug
 zplug load
