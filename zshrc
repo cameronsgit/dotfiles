@@ -25,6 +25,7 @@ fi
  source "${HOME}/.fzf.zsh"
  source "${HOME}/.cargo/env"
  source "${HOME}/.zplug/init.zsh"
+ source "${HOME}/.local/bin/crawl.zsh"
  source "${HOME}/.local/bin/updatePOB.sh"
  source "${HOME}/.local/bin/sync-devwork.sh"
  source "${HOME}/.local/bin/system-update.sh"
@@ -69,19 +70,20 @@ fi
 zplug load
 
 # Alias
-alias cls=clear
-alias vim=nvim
+alias cls="clear"
+alias vim="nvim"
 alias dir="ls -lh"
-alias del=rm
-alias git=hub
-alias powershell=pwsh
+alias del="rm"
+alias git="hub"
+alias crawl="dcss && fg"
+alias powershell="pwsh"
 alias pass="read-password"
-alias start=open
+alias start="open"
 alias tmux="env TERM=screen-256color tmux"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
-alias help=tldr
-alias hackernews=clx
+alias help="tldr"
+alias hackernews="clx"
 
 # PATH setup
 path+=("/opt/omi/bin")
