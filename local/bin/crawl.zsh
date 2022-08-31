@@ -15,7 +15,7 @@ function crawl {
     if [ -n "$1" ]
     then
         # Play / watch online
-        ssh "${online_user}@${online_host}"
+        ssh -i ~/.ssh/cao_key "${online_user}@${online_host}"
     else
         # Play locally
         "${binary_path}/crawl" &
