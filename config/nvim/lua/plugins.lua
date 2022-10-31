@@ -7,6 +7,7 @@ return require('packer').startup(
         use { 'hrsh7th/cmp-cmdline' }
         use { 'hrsh7th/cmp-nvim-lsp' }
         use { 'neovim/nvim-lspconfig' }
+        use { 'carlsmedstad/vim-bicep' }
         use { 'wbthomason/packer.nvim' }
         use { 'saadparwaiz1/cmp_luasnip' }
         use { 'sainnhe/gruvbox-material' }

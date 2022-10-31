@@ -11,7 +11,7 @@ local has_words_before = function()
 end
 
 
-local capabilities = cfg.update_capabilities(
+local capabilities = cfg.default_capabilities(
     vim.lsp.protocol.make_client_capabilities()
 )
 

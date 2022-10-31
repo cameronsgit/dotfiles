@@ -1,5 +1,7 @@
 {
-    "emmet.excludeLanguages": ["*"],
+    "emmet.excludeLanguages": [
+        "*"
+    ],
     "window.nativeTabs": true,
     "breadcrumbs.enabled": false,
     "editor.autoClosingBrackets": "never",
@@ -29,21 +31,107 @@
     "team.showWelcomeMessage": false,
     "vim.enableNeovim": true,
     "vsicons.associations.files": [
-        { "icon": "azure", "extensions": ["arm.json"], "format": "svg" }
+        {
+            "icon": "azure",
+            "extensions": [
+                "arm.json"
+            ],
+            "format": "svg"
+        }
     ],
     "vsicons.associations.folders": [
-        { "icon": "temp", "extensions": ["obj"], "format": "svg" },
-        { "icon": "temp", "extensions": ["__skyux"], "format": "svg" },
-        { "icon": "temp", "extensions": [".dart_tool", "obj"], "format": "svg" },
-        { "icon": "webpack", "extensions": [".angular"], "format": "svg" },
-        { "icon": "vs", "extensions": ["vs"], "format": "svg" },
-        { "icon": "asset", "extensions": ["resources"], "format": "svg" },
-        { "icon": "www", "extensions": ["environments"], "format": "svg" },
-        { "icon": "e2e", "extensions": ["diagnostics"], "format": "svg" },
-        { "icon": "mock", "extensions": ["stubs"], "format": "svg" },
-        { "icon": "cli", "extensions": ["cmdlets"], "format": "svg" },
-        { "icon": "library", "extensions": ["shared"], "format": "svg" },
-        { "icon": "config", "extensions": ["properties"], "format": "svg" }
+        {
+            "icon": "temp",
+            "extensions": [
+                "obj"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "temp",
+            "extensions": [
+                "__skyux"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "temp",
+            "extensions": [
+                ".dart_tool",
+                "obj"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "webpack",
+            "extensions": [
+                ".angular"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "vs",
+            "extensions": [
+                "vs"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "asset",
+            "extensions": [
+                "resources"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "www",
+            "extensions": [
+                "environments"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "e2e",
+            "extensions": [
+                "diagnostics"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "mock",
+            "extensions": [
+                "stubs"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "cli",
+            "extensions": [
+                "cmdlets"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "module",
+            "extensions": [
+                "module"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "library",
+            "extensions": [
+                "shared"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "config",
+            "extensions": [
+                "properties"
+            ],
+            "format": "svg"
+        }
     ],
     "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.useSystemClipboard": true,
@@ -60,11 +148,26 @@
         "backgroundColor": "#282828"
     },
     "todohighlight.keywords": [
-        { "text": "FIXME", "color": "lightpink", },
-        { "text": "NOTE", "color": "lightblue" },
-        { "text": "TODO", "color": "khaki" },
-        { "text": "BUG", "color": "lightcoral" },
-        { "text": "SEE", "color": "lightblue" }
+        {
+            "text": "FIXME",
+            "color": "lightpink",
+        },
+        {
+            "text": "NOTE",
+            "color": "lightblue"
+        },
+        {
+            "text": "TODO",
+            "color": "khaki"
+        },
+        {
+            "text": "BUG",
+            "color": "lightcoral"
+        },
+        {
+            "text": "SEE",
+            "color": "lightblue"
+        }
     ],
     "files.associations": {
         "*.tf": "terraform",
@@ -118,109 +221,109 @@
                 }
             ]
         },
-        "[Gruvbox Dark Soft]": {
+        "[Gruvbox Dark Medium]": {
             "textMateRules": [
                 {
-                "scope": "support.class.dart",
-                "settings": {
-                    "foreground": "#fabd2f"
+                    "scope": "support.class.dart",
+                    "settings": {
+                        "foreground": "#fabd2f"
+                    }
+                },
+                {
+                    "scope": [
+                        "variable.other.readwrite.cs",
+                        "entity.name.variable.local.cs",
+                        "entity.name.variable.property.cs",
+                        "entity.name.variable.parameter.cs",
+                        "entity.name.type.namespace.cs"
+                    ],
+                    "settings": {
+                        //"foreground": "#83a598",
+                        "foreground": "#458588"
+                    }
+                },
+                {
+                    "scope": [
+                        // "meta.function.cs",
+                        // "entity.name.function.cs",
+                        // "variable.other.object.cs",
+                        "keyword.control",
+                        "storage.modifier.cs",
+                        "keyword.other.await.cs"
+                    ],
+                    "settings": {
+                        "foreground": "#e2484d",
+                    }
+                },
+                {
+                    "scope": [
+                        // "meta.function.cs",
+                        // "entity.name.function.cs",
+                        // "variable.other.object.cs",
+                    ],
+                    "settings": {
+                        "foreground": "#d79921",
+                    }
+                },
+                {
+                    "scope": [
+                        // "variable.other.object.cs",
+                        "keyword.operator.logical.cs",
+                    ],
+                    "settings": {
+                        "foreground": "#aec07c",
+                    }
+                },
+                {
+                    "scope": [
+                        "keyword.type"
+                    ],
+                    "settings": {
+                        "foreground": "#fabd2f",
+                    }
+                },
+                {
+                    "scope": [
+                        "variable.other.member.cs",
+                        "meta.function.cs",
+                        "entity.name.function.cs",
+                    ],
+                    "settings": {
+                        // "foreground": "#fe8019",
+                        "foreground": "#d3896b"
+                    }
+                },
+                {
+                    "scope": [
+                        "keyword.cs",
+                        "storage.type.powershell"
+                    ],
+                    "settings": {
+                        "foreground": "#e95c4c",
+                    }
+                },
+                {
+                    "scope": [
+                        "variable.other.object.cs",
+                        "variable.other.object.property.cs",
+                    ],
+                    "settings": {
+                        // "foreground": "#458588",
+                        "foreground": "#83a598"
+                    }
+                },
+                {
+                    "scope": [
+                        "meta.function.cs",
+                        "entity.name.function.cs",
+                        //"variable.other.object.cs",
+                    ],
+                    "settings": {
+                        // "foreground": "#d3896b"
+                        "foreground": "#fe8019"
+                    }
                 }
-            },
-            {
-                "scope": [
-                    "variable.other.readwrite.cs",
-                    "entity.name.variable.local.cs",
-                    "entity.name.variable.property.cs",
-                    "entity.name.variable.parameter.cs",
-                    "entity.name.type.namespace.cs"
-                ],
-                "settings": {
-                    //"foreground": "#83a598",
-                    "foreground": "#458588"
-                }
-            },
-            {
-                "scope": [
-                    // "meta.function.cs",
-                    // "entity.name.function.cs",
-                    // "variable.other.object.cs",
-                    "keyword.control",
-                    "storage.modifier.cs",
-                    "keyword.other.await.cs"
-                ],
-                "settings": {
-                    "foreground":  "#e2484d", 
-                }
-            },
-          {
-                "scope": [
-                    // "meta.function.cs",
-                    // "entity.name.function.cs",
-                    // "variable.other.object.cs",
-                ],
-                "settings": {
-                    "foreground": "#d79921",
-                }
-            },
-            {
-                "scope": [
-                    // "variable.other.object.cs",
-                    "keyword.operator.logical.cs",
-                ],
-                "settings": {
-                    "foreground": "#aec07c",
-                }
-            },
-            {
-                "scope": [
-                    "keyword.type"
-                ],
-                "settings": {
-                    "foreground": "#fabd2f",
-                }
-            },
-            {
-                "scope": [
-                    "variable.other.member.cs",
-                    "meta.function.cs",
-                    "entity.name.function.cs",
-                ],
-                "settings": {
-                    // "foreground": "#fe8019",
-                    "foreground": "#d3896b" 
-                }
-            },
-            {
-                "scope": [
-                    "keyword.cs",
-                    "storage.type.powershell"
-                ],
-                "settings": {
-                    "foreground": "#e95c4c",
-                }
-            },
-            {
-                "scope": [
-                    "variable.other.object.cs",
-                    "variable.other.object.property.cs",
-                ],
-                "settings": {
-                    // "foreground": "#458588",
-                    "foreground": "#83a598"
-                }
-            },
-            {
-                "scope": [
-                    "meta.function.cs",
-                    "entity.name.function.cs",
-                    //"variable.other.object.cs",
-                ],
-                "settings": {
-                    // "foreground": "#d3896b"
-                    "foreground": "#fe8019"
-                }
-            }
-        ]
+            ]
         }
     },
     "cSpell.userWords": [
@@ -249,8 +352,8 @@
             "pattern": "pwsh.types.ps1xml"
         },
         {
-        "systemId": "https://raw.githubusercontent.com/PowerShell/Plaster/master/src/Schema/PlasterManifest-v1.xsd",
-        "pattern": "plasterManifest.xml"
+            "systemId": "https://raw.githubusercontent.com/PowerShell/Plaster/master/src/Schema/PlasterManifest-v1.xsd",
+            "pattern": "plasterManifest.xml"
         }
     ],
     "explorer.compactFolders": false,
@@ -292,7 +395,7 @@
     },
     "cSpell.enabled": true,
     "[bicep]": {
-      "editor.semanticHighlighting.enabled": true
+        "editor.semanticHighlighting.enabled": true
     },
     "azureResourceManagerTools.parameterFiles": {
         "/Users/sowderca/Development/Personal/blackbaud-iaas-pwsh-linter/worker_node.json": "worker_node.parameters.json",
@@ -314,7 +417,7 @@
     "python.pythonPath": "/usr/local/bin/python3",
     "editor.suggest.showWords": false,
     "vscode-edge-devtools.mirrorEdits": true,
-    "python.defaultInterpreterPath": "/usr/local/bin/python3",
+    "python.defaultInterpreterPath": "/usr/local/bin/python3.9",
     "terminal.integrated.defaultProfile.osx": "zsh",
     "Lua.semantic.keyword": true,
     "gitlens.codeLens.scopes": [
@@ -331,7 +434,6 @@
     "karmaTestExplorer.browser": "Edge",
     "karmaTestExplorer.enableExtension": false,
     "vscode-edge-devtools.fallbackRevision": "@a41122be052fe9616f0def5fe6842fa942930d46",
-    "workbench.colorTheme": "Gruvbox Dark Medium",
     "window.titleBarStyle": "native",
     "editor.minimap.enabled": false,
     "terminal.integrated.shellIntegration.decorationIcon": "' '",
@@ -342,5 +444,13 @@
     "azure-work-management.personal-access-token": "t6qgjydbbenxzeid4bgzaib2ufxqn44xpkhsd33al7fzfar2er6a",
     "azure-work-management.project": "Products",
     "azure-work-management.team": "IECO AppMgmt CORE",
-    "azure-work-management.iteration": "Products\\2022\\Block 5\\1 MonFri\\B5S6 (Jul 25 - Jul 29)"
+    "azure-work-management.iteration": "Products\\2022\\Block 5\\1 MonFri\\B5S6 (Jul 25 - Jul 29)",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "gitlens.autolinks": [
+        {
+            "url": "https://dev.azure.com/blackbaud/Products/_workitems/edit/<num>",
+            "prefix": "Related work items: #"
+        }
+    ],
+    "workbench.colorTheme": "Gruvbox Dark Medium"
 }
