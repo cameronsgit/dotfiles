@@ -122,3 +122,7 @@ test -r /Users/sowderca/.opam/opam-init/init.zsh && . /Users/sowderca/.opam/opam
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

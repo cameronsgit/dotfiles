@@ -2,8 +2,14 @@ local cmp = require('cmp')
 local snp = require('luasnip')
 local lsp = require('lspconfig')
 local cfg = require('cmp_nvim_lsp')
-local add = require('nvim-lsp-installer')
 
+require('mason').setup()
+require('mason-lspconfig').setup()
+
+require('lspconfig').tsserver.setup{}
+require('lspconfig').angularls.setup{}
+require('lspconfig').sourcekit.setup{}
+require('lspconfig').powershell_es.setup{}
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -65,23 +71,3 @@ cmp.setup({
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
 })
-
-
-add.settings({
-    ui = {
-        icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-        }
-    }
-})
-
-
-add.on_server_ready(
-    function(server)
-        local opts = { }
-        opts.capabilities = capabilities
-        server:setup(opts)
-    end
-)
