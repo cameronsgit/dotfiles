@@ -6,10 +6,13 @@ local cfg = require('cmp_nvim_lsp')
 require('mason').setup()
 require('mason-lspconfig').setup()
 
+require('lspconfig').gopls.setup{}
+require('lspconfig').csharp_ls.setup{}
 require('lspconfig').tsserver.setup{}
 require('lspconfig').angularls.setup{}
 require('lspconfig').sourcekit.setup{}
 require('lspconfig').powershell_es.setup{}
+
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))

@@ -70,11 +70,13 @@ fi
 zplug load
 
 # Alias
+alias dev="pushd ~/Developer"
 alias cls="clear"
 alias vim="nvim"
 alias dir="ls -lh"
 alias del="rm"
 alias git="hub"
+alias chatgpt="aichat"
 alias powershell="pwsh"
 alias pass="read-password"
 alias start="open"
@@ -83,6 +85,7 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias help="tldr"
 alias hackernews="clx"
+
 
 # PATH setup
 path+=("/opt/omi/bin")
@@ -126,3 +129,4 @@ test -r /Users/sowderca/.opam/opam-init/init.zsh && . /Users/sowderca/.opam/opam
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+export PATH=/Users/sowderca/.rbenv/shims:/Users/sowderca/.jenv/shims:/Users/sowderca/.nvm/versions/node/v20.4.0/bin:/Users/sowderca/.zplug/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/sowderca/.rbenv/shims:/Users/sowderca/.jenv/shims:/Users/sowderca/.nvm/versions/node/v20.4.0/bin:/Users/sowderca/.cargo/bin:/usr/local/opt/fzf/bin:/opt/omi/bin:/usr/local/sbin:/opt/local/bin:/Users/sowderca/.porter:/Users/sowderca/.yarn/bin:/Users/sowderca/.go/bin:/Users/sowderca/.fastlane/bin:/Users/sowderca/.dotnet/tools:/Users/sowderca/.pub-cache/bin:/Users/sowderca/.krew/bin:/Users/sowderca/Library/Python/3.9/bin:/Users/sowderca/.config/yarn/global/node_modules/.bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/:/Users/sowderca/bin
