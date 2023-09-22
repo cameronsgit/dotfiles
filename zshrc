@@ -7,8 +7,9 @@ bindkey -v
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # options
-setopt interactivecomments
+setopt auto_cd
 setopt no_beep
+setopt interactivecomments
 
 # compinit
 autoload -Uz compinit && compinit
@@ -21,36 +22,40 @@ if [[ ! -d ~/.zplug ]]; then
   source ~/.zplug/init.zsh && zplug update --self
 fi
 
- # Source
- source "${HOME}/.fzf.zsh"
- source "${HOME}/.cargo/env"
- source "${HOME}/.zplug/init.zsh"
- source "${HOME}/.local/bin/crawl.zsh"
- source "${HOME}/.local/bin/updatePOB.sh"
- source "${HOME}/.local/bin/sync-devwork.sh"
- source "${HOME}/.local/bin/system-update.sh"
- source "${HOME}/.local/bin/register-completions.zsh"
- source "${HOME}/.local/bin/security.sh"
- source "${HOME}/.iterm2_shell_integration.zsh"
+cdpath=($HOME/Developer)
 
- # Load plugins
- zplug "lib/completion", from:oh-my-zsh
- zplug "lib/history", from:oh-my-zsh
- zplug "plugins/docker", from:oh-my-zsh, as:plugin
- zplug "plugins/git", from:oh-my-zsh, as:plugin
- zplug "plugins/kops", from:oh-my-zsh, as:plugin
- zplug "plugins/minikube", from:oh-my-zsh, as:plugin
- zplug "plugins/nomad", from:oh-my-zsh, as:plugin
- zplug "plugins/swiftpm", from:oh-my-zsh, as:plugin
- zplug "plugins/npm", from:oh-my-zsh, as:plugin
- zplug "plugins/terraform", from:oh-my-zsh, as:plugin
- zplug "plugins/vagrant", from:oh-my-zsh, as:plugin
- zplug "plugins/vault", from:oh-my-zsh, as:plugin
- zplug "plugins/vi-mode", from:oh-my-zsh, as:plugin
 
- # Theme
- zplug "mafredri/zsh-async", from:github
- zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
+# Source
+source "${HOME}/.fzf.zsh"
+source "${HOME}/.cargo/env"
+source "${HOME}/.zplug/init.zsh"
+source "${HOME}/.local/bin/crawl.zsh"
+source "${HOME}/.local/bin/updatePOB.sh"
+source "${HOME}/.local/bin/sync-devwork.sh"
+source "${HOME}/.local/bin/system-update.sh"
+source "${HOME}/.local/bin/register-completions.zsh"
+source "${HOME}/.local/bin/security.sh"
+source "${HOME}/.iterm2_shell_integration.zsh"
+source "${HOME}/.config/base16-shell/scripts/base16-gruvbox-dark-medium.sh"
+
+# Load plugins
+zplug "lib/completion", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh, as:plugin
+zplug "plugins/git", from:oh-my-zsh, as:plugin
+zplug "plugins/kops", from:oh-my-zsh, as:plugin
+zplug "plugins/minikube", from:oh-my-zsh, as:plugin
+zplug "plugins/nomad", from:oh-my-zsh, as:plugin
+zplug "plugins/swiftpm", from:oh-my-zsh, as:plugin
+zplug "plugins/npm", from:oh-my-zsh, as:plugin
+zplug "plugins/terraform", from:oh-my-zsh, as:plugin
+zplug "plugins/vagrant", from:oh-my-zsh, as:plugin
+zplug "plugins/vault", from:oh-my-zsh, as:plugin
+zplug "plugins/vi-mode", from:oh-my-zsh, as:plugin
+
+# Theme
+zplug "mafredri/zsh-async", from:github
+zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
 
 
 # Completions
@@ -70,7 +75,6 @@ fi
 zplug load
 
 # Alias
-alias dev="pushd ~/Developer"
 alias cls="clear"
 alias vim="nvim"
 alias dir="ls -lh"
@@ -88,11 +92,16 @@ alias hackernews="clx"
 
 
 # PATH setup
+path+=("/opt/dsc")
+path+=("/opt/git-tf")
+path+=("/opt/hermes")
 path+=("/opt/omi/bin")
 path+=("/usr/local/sbin")
 path+=("/opt/local/bin")
 path+=("${HOME}/.porter")
+path+=("${HOME}/.tiup/bin")
 path+=("${HOME}/.yarn/bin")
+path+=("${HOME}/.jenv/bin")
 path+=("$(go env GOPATH)/bin")
 path+=("${HOME}/.fastlane/bin")
 path+=("${HOME}/.dotnet/tools")
@@ -100,14 +109,24 @@ path+=("${HOME}/.pub-cache/bin")
 path+=("${KREW_ROOT:-$HOME/.krew}/bin")
 path+=("${HOME}/Library/Python/3.9/bin")
 path+=("${HOME}/.config/yarn/global/node_modules/.bin")
+path+=("/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/")
 path+=("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/")
 
 export PATH
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source <(kratos  completion zsh)
+source <(kubectl completion zsh)
+
+compdef _kratos kratos
+
+# source <(ng completion script)
 
 # Settings for base16
 BASE16_SHELL="$HOME/.config/base16-shell"
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ]
 
 # NVM / Node.js
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -116,17 +135,17 @@ BASE16_SHELL="$HOME/.config/base16-shell"
 # RBENV & JENV
 eval "$(jenv init -)"
 eval "$(rbenv init -)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$($BASE16_SHELL/profile_helper.sh)"
+# source <(ng completion script)
 
-# Wasmer
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
+autoload -U +X bashcompinit && bashcompinit
 
-# opam configuration
-test -r /Users/sowderca/.opam/opam-init/init.zsh && . /Users/sowderca/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+complete -o nospace -C /Users/sowderca/.go/bin/gocomplete go
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# bun completions
+[ -s "/Users/sowderca/.bun/_bun" ] && source "/Users/sowderca/.bun/_bun"
 
-
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-export PATH=/Users/sowderca/.rbenv/shims:/Users/sowderca/.jenv/shims:/Users/sowderca/.nvm/versions/node/v20.4.0/bin:/Users/sowderca/.zplug/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/sowderca/.rbenv/shims:/Users/sowderca/.jenv/shims:/Users/sowderca/.nvm/versions/node/v20.4.0/bin:/Users/sowderca/.cargo/bin:/usr/local/opt/fzf/bin:/opt/omi/bin:/usr/local/sbin:/opt/local/bin:/Users/sowderca/.porter:/Users/sowderca/.yarn/bin:/Users/sowderca/.go/bin:/Users/sowderca/.fastlane/bin:/Users/sowderca/.dotnet/tools:/Users/sowderca/.pub-cache/bin:/Users/sowderca/.krew/bin:/Users/sowderca/Library/Python/3.9/bin:/Users/sowderca/.config/yarn/global/node_modules/.bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/:/Users/sowderca/bin
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
