@@ -58,10 +58,6 @@ zplug "plugins/vi-mode", from:oh-my-zsh, as:plugin
 zplug "mafredri/zsh-async", from:github
 zplug "sowderca/pure", use:pure.zsh, from:github, as:theme
 
-
-# Completions
-compctl -K _dotnet_zsh_complete dotnet
-
 # Install packages that have not yet been installed
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
