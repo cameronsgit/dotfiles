@@ -15,6 +15,7 @@ setopt interactivecomments
 autoload -Uz compinit && compinit
 autoload -U colors && colors
 autoload -U add-zsh-hook
+autoload -U +X bashcompinit && bashcompinit
 
 # Ensure zplug installation
 if [[ ! -d ~/.zplug ]]; then
@@ -114,20 +115,6 @@ path+=("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoo
 
 export PATH
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-source <(kratos  completion zsh)
-source <(kubectl completion zsh)
-
-compdef _kratos kratos
-
-# source <(ng completion script)
-
-# Settings for base16
-BASE16_SHELL="$HOME/.config/base16-shell"
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ]
-
 # NVM / Node.js
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -136,16 +123,17 @@ BASE16_SHELL="$HOME/.config/base16-shell"
 eval "$(jenv init -)"
 eval "$(rbenv init -)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$($BASE16_SHELL/profile_helper.sh)"
-# source <(ng completion script)
+eval "$($HOME/.config/base16-shell/profile_helper.sh)"
 
-autoload -U +X bashcompinit && bashcompinit
+[ -f ~/.fzf.zsh ]  && source ~/.fzf.zsh
+[ -f ~/.bun/_bun ] && source ~/.bun/_bun
 
-complete -o nospace -C /Users/sowderca/.go/bin/gocomplete go
+source <(ng      completion script)
+source <(kratos  completion zsh)
+source <(kubectl completion zsh)
 
-# bun completions
-[ -s "/Users/sowderca/.bun/_bun" ] && source "/Users/sowderca/.bun/_bun"
+compdef _kratos kratos
+compctl -K _dotnet_zsh_complete dotnet
+complete -o nospace -C ~/.go/bin/gocomplete go
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+
