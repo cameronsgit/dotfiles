@@ -25,7 +25,6 @@ Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete;
 [hashtable] $local:environment = @{ Visibility = 'Public'; ErrorAction = 0; Scope = 'Global'; };
 
 Set-Variable @local:environment -Name 'IsCoreCLR' -Value (-not $PSEdition -eq 'Desktop' -or (Get-Variable -Name 'IsCoreCLR' -ValueOnly -EA 0));
-Set-Variable @local:environment -Name 'IsFreeBSD' -Value ([OSPlatform]::GetNames([OSPlatform]) -contains 'FreeBSD');
 Set-Variable @local:environment -Name 'IsMacOS'   -Value ([RuntimeInformation]::IsOSPlatform([OSPlatform]::OSX) -or (Get-Variable -Name 'IsMacOS' -ValueOnly -EA 0));
 Set-Variable @local:environment -Name 'IsLinux'   -Value ([RuntimeInformation]::IsOSPlatform([OSPlatform]::Linux) -or (Get-Variable -Name 'IsLinux' -ValueOnly -EA 0));
 Set-Variable @local:environment -Name 'IsWindows' -Value ([RuntimeInformation]::IsOSPlatform([OSPlatform]::Windows) -or (Get-Variable -Name 'IsWindows' -ValueOnly -EA 0));
@@ -34,6 +33,9 @@ if (-not $PSEdition -eq 'Desktop') {
 } else {
     Set-Variable @local:environment -Name 'IsUnix'    -Value $false;
 }
+Set-Variable @local:environment -Name 'IsFreeBSD' -Value (
+	(([OSPlatform] |  Get-Member -Static -MemberType 'Property' | Select-Object -ExpandProperty 'Name') -contains 'FreeBSD') -and $true -notin @($global:IsLinux, $global:IsMacOS, $global:IsWindows)
+);
 
 [char] $promptIndicator = 0x276F;
 [string] $corpAccount = "cameron.sowder@blackbaud.me";
